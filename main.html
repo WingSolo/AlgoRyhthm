@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Welcome to Algorithm, your go-to company for data analysis solutions.">
+    <title>main</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-image: url('chart01.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding-top: 60px;
+            font-size: 18px;
+        }
+
+        .navbar {
+            background-color: rgba(51, 51, 51, 0.8);
+            overflow: hidden;
+            padding: 10px 0;
+            color: #fff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: transform 0.3s ease;
+        }
+
+        .navbar.hidden {
+            transform: translateY(-100%);
+        }
+
+        .navbar .logo {
+            height: 50px;
+            margin-right: 20px;
+        }
+
+        .navbar a {
+            display: inline-block;
+            color: #ffcc00;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            position: relative;
+        }
+
+        .navbar a:hover {
+            background-color: #575757;
+            color: #ffffff;
+        }
+
+        .navbar a.active {
+            background-color: #575757;
+            color: #ffffff;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 1080px;
+            margin: 0 auto;
+            box-sizing: border-box;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .left, .right {
+            box-sizing: border-box;
+            padding: 20px;
+            background-image: url('chart01.png');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: 100% auto;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .left {
+            flex: 0 0 35%;
+            height: 1080px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .right {
+            flex: 0 0 65%;
+            height: 1080px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .company {
+            font-size: 32px;
+            color: #267d9b;
+            margin-bottom: 20px;
+        }
+
+        .moving-text {
+            display: inline-block;
+            font-size: 32px;
+            color: #2c0c30;
+            animation: slideLeftRight 3s infinite alternate;
+        }
+
+        .right h1 {
+            font-size: 40px;
+            color: #267d9b;
+        }
+
+        @keyframes slideLeftRight {
+            0% { transform: translateX(0); }
+            50% { transform: translateX(15px); }
+            100% { transform: translateX(0); }
+        }
+
+        @media (max-width: 768px) {
+            .navbar a {
+                display: block;
+                text-align: center;
+            }
+            .container {
+                flex-direction: column;
+            }
+            .left, .right {
+                flex: 1 1 auto;
+                width: 100%;
+                height: auto;
+                margin-top: 10px;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .auth-buttons, .info-buttons {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+        }
+
+        .auth-buttons button, .info-buttons button {
+            padding: 10px;
+            margin: 5px;
+            border: none;
+            border-radius: 4px;
+            background-color: #267d9b;
+            color: white;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .auth-buttons button:hover, .info-buttons button:hover {
+            background-color: #1f5e74;
+        }
+
+        .form-container {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            padding: 20px;
+            margin-top: 20px;
+            width: 80%;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .form-container form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-container label {
+            margin-top: 10px;
+            text-align: left;
+        }
+
+        .form-container input {
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-container button {
+            margin-top: 20px;
+            padding: 10px;
+            border: none;
+            border-radius: 4px;
+            background-color: #267d9b;
+            color: white;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #1f5e74;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar" role="navigation">
+        <img src="logo.png" alt="Algorithm Logo" class="logo">
+        <a href="#home" aria-label="Home" id="home-link">홈</a>
+        <a href="#company" aria-label="Company Introduction" id="company-link">회사소개</a>
+        <a href="#notices" aria-label="Notices" id="notices-link">공지사항</a>
+        <a href="#inquiries" aria-label="Introduction & Inquiries" id="inquiries-link">도입 및 문의사항</a>
+        <a href="#login" aria-label="Login" id="login-link">로그인</a>
+    </header>
+    <div class="container">
+        <div class="left" id="left-panel">
+            <!-- Content will be inserted here by JavaScript -->
+        </div>
+        <div class="right" id="right-panel">
+            <!-- Default content will be inserted here by JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const loginLink = document.getElementById('login-link');
+            const companyLink = document.getElementById('company-link');
+            const homeLink = document.getElementById('home-link');
+            const leftPanel = document.getElementById('left-panel');
+            const rightPanel = document.getElementById('right-panel');
+
+            function showLoginSignup() {
+                leftPanel.innerHTML = `
+                    <div class="auth-buttons">
+                        <button id="show-login">로그인</button>
+                        <button id="show-signup">회원 가입</button>
+                    </div>
+                `;
+                document.getElementById('show-login').addEventListener('click', () => {
+                    rightPanel.innerHTML = `
+                        <div class="form-container">
+                            <h2>로그인</h2>
+                            <form>
+                                <label for="login-ID">아이디:</label>
+                                <input type="text" id="login-ID" name="ID" required>
+                                <label for="login-password">비밀번호:</label>
+                                <input type="password" id="login-password" name="password" required>
+                                <button type="submit">로그인</button>
+                            </form>
+                        </div>
+                    `;
+                });
+
+                document.getElementById('show-signup').addEventListener('click', () => {
+                    rightPanel.innerHTML = `
+                        <div class="form-container">
+                            <h2>회원 가입</h2>
+                            <form>
+                                <label for="signup-ID">아이디(필수사항):</label>
+                                <input type="text" id="signup-ID" name="ID" required>
+                                <label for="signup-password">비밀번호(필수사항):</label>
+                                <input type="password" id="signup-password" name="password" required>
+                                <label for="signup-password-confirm">비밀번호 확인(필수사항):</label>
+                                <input type="password" id="signup-password-confirm" name="password-confirm" required>
+                                <label for="signup-name">이름(필수사항):</label>
+                                <input type="text" id="signup-name" name="name" required>
+                                <label for="signup-email">이메일(필수사항):</label>
+                                <input type="email" id="signup-email" name="email" required>
+                                <label for="signup-phone">전화번호(필수사항):</label>
+                                <input type="tel" id="signup-phone" name="phone" required>
+                                <label for="signup-organization">소속기관명(필수사항):</label>
+                                <input type="text" id="signup-organization" name="organization" required>
+                                <label for="signup-department">부서:</label>
+                                <input type="text" id="signup-department" name="department">
+                                <label for="signup-position">직위:</label>
+                                <input type="text" id="signup-position" name="position">
+                                <button type="submit">회원 가입</button>
+                            </form>
+                        </div>
+                    `;
+                });
+            }
+
+            function showCompanyInfo() {
+                leftPanel.innerHTML = `
+                    <div class="info-buttons">
+                        <button id="show-company-info">회사소개</button>
+                        <button id="show-case-studies">분석사례</button>
+                    </div>
+                `;
+                document.getElementById('show-company-info').addEventListener('click', () => {
+                    rightPanel.innerHTML = `
+                        <h1>회사소개</h1>
+                        <p>여기에 회사소개 내용이 들어갑니다.</p>
+                    `;
+                });
+
+                document.getElementById('show-case-studies').addEventListener('click', () => {
+                    rightPanel.innerHTML = `
+                        <div class="case-study-buttons">
+                            <button id="case-study-heat-treatment">열처리</button>
+                            <button id="case-study-casting">주조</button>
+                        </div>
+                        <div id="case-study-content" class="case-study-content"></div>
+                    `;
+                    document.getElementById('case-study-heat-treatment').addEventListener('click', () => {
+                        document.getElementById('case-study-content').innerHTML = `
+                            <h2>열처리</h2>
+                            <p>여기에 열처리에 대한 분석사례 내용이 들어갑니다.</p>
+                        `;
+                    });
+
+                    document.getElementById('case-study-casting').addEventListener('click', () => {
+                        document.getElementById('case-study-content').innerHTML = `
+                            <h2>주조</h2>
+                            <p>여기에 주조에 대한 분석사례 내용이 들어갑니다.</p>
+                        `;
+                    });
+                });
+            }
+
+            function resetToHome() {
+                leftPanel.innerHTML = `
+                    <h1 class="company">데이터 분석 전문 회사</h1>
+                    <h1 class="moving-text">알고리듬</h1>
+                `;
+                rightPanel.innerHTML = `
+                    <h1>알고리듬에 오신 것을 환영합니다.</h1>
+                `;
+            }
+
+            loginLink.addEventListener('click', (event) => {
+                event.preventDefault();
+                resetToHome(); // Clear any other content
+                showLoginSignup();
+            });
+
+            companyLink.addEventListener('click', (event) => {
+                event.preventDefault();
+                resetToHome(); // Clear any other content
+                showCompanyInfo();
+            });
+
+            homeLink.addEventListener('click', (event) => {
+                event.preventDefault();
+                resetToHome();
+            });
+
+            // Show home content by default on page load
+            resetToHome();
+        });
+    </script>
+</body>
+</html>
