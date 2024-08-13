@@ -1,3 +1,4 @@
+/* General body styling */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
@@ -6,16 +7,18 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    padding-top: 60px;
+    padding-top: 50px; /* Adjust for new height of the navbar */
+    padding-bottom: 50px; /* Adjust for new height of the footer */
     font-size: 18px;
+    color: #333; /* Improved text color for readability */
 }
 
+/* Navigation bar styling */
 .navbar {
     background-color: rgba(51, 51, 51, 0.8);
     overflow: hidden;
-    padding: 10px 0;
+    padding: 5px 0; /* Reduced padding */
     color: #fff;
-    margin-bottom: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -31,30 +34,27 @@ body {
 }
 
 .navbar .logo {
-    height: 50px;
-    margin-right: 20px;
+    height: 40px; /* Reduced logo height */
+    margin-right: 15px; /* Reduced margin */
 }
 
 .navbar a {
     display: inline-block;
     color: #ffcc00;
     text-align: center;
-    padding: 14px 20px;
+    padding: 10px 15px; /* Reduced padding */
     text-decoration: none;
     transition: background-color 0.3s ease, color 0.3s ease;
     position: relative;
+    font-size: 16px; /* Reduced font size */
 }
 
-.navbar a:hover {
+.navbar a:hover, .navbar a.active {
     background-color: #575757;
     color: #ffffff;
 }
 
-.navbar a.active {
-    background-color: #575757;
-    color: #ffffff;
-}
-
+/* Main content container */
 .container {
     display: flex;
     width: 100%;
@@ -63,8 +63,11 @@ body {
     box-sizing: border-box;
     overflow: hidden;
     position: relative;
+    padding-top: 50px; /* Space for content below navbar */
+    padding-bottom: 50px; /* Height of the footer */
 }
 
+/* Left and right panels */
 .left, .right {
     box-sizing: border-box;
     padding: 20px;
@@ -78,21 +81,22 @@ body {
 }
 
 .left {
-    flex: 0 0 35%;
+    flex: 0 0 25%;
     height: 1080px;
-    margin-top: 20px;
+    margin-top: 10px;
     text-align: center;
 }
 
 .right {
-    flex: 0 0 65%;
+    flex: 0 0 75%;
     height: 1080px;
-    margin-top: 20px;
+    margin-top: 0px;
+    padding-top: 0px;
     text-align: center;
 }
 
 .company {
-    font-size: 32px;
+    font-size: 22px;
     color: #267d9b;
     margin-bottom: 20px;
 }
@@ -115,6 +119,7 @@ body {
     100% { transform: translateX(0); }
 }
 
+/* Responsive design adjustments */
 @media (max-width: 768px) {
     .navbar a {
         display: block;
@@ -122,19 +127,22 @@ body {
     }
     .container {
         flex-direction: column;
+        padding-top: 60px;
     }
     .left, .right {
         flex: 1 1 auto;
         width: 100%;
         height: auto;
-        margin-top: 10px;
+        margin-top: 5px;
     }
 }
 
+/* Hidden class for elements */
 .hidden {
     display: none;
 }
 
+/* Buttons styling */
 .auth-buttons, .info-buttons {
     display: flex;
     flex-direction: column;
@@ -150,18 +158,20 @@ body {
     color: white;
     cursor: pointer;
     font-size: 18px;
+    transition: background-color 0.3s ease;
 }
 
 .auth-buttons button:hover, .info-buttons button:hover {
     background-color: #1f5e74;
 }
 
+/* Form container styling */
 .form-container {
     background: rgba(255, 255, 255, 0.8);
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     padding: 20px;
-    margin-top: 20px;
+    margin-top: 0px;
     width: 80%;
     max-width: 400px;
     margin-left: auto;
@@ -183,6 +193,11 @@ body {
     margin-top: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
+    outline: none; /* Removes default focus outline */
+}
+
+.form-container input:focus {
+    border-color: #267d9b; /* Focus border color */
 }
 
 .form-container button {
@@ -193,8 +208,23 @@ body {
     background-color: #267d9b;
     color: white;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .form-container button:hover {
     background-color: #1f5e74;
+}
+
+/* Footer styling */
+.trailer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(51, 51, 51, 0.8);
+    color: #fff;
+    text-align: center;
+    padding: 5px 0; /* Reduced padding */
+    z-index: 1000;
+    font-size: 14px; /* Reduced font size */
 }
