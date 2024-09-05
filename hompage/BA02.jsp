@@ -67,7 +67,7 @@
             </a>
             <!-- Display "로그아웃" if the user is logged in, otherwise "관리자" -->
             <% if (user != null) { %>
-              <a href="logout">
+              <a href="Logout">
                 <i class="fa fa-sign-out" aria-hidden="true"></i>
                 <span>로그아웃</span>
               </a>
