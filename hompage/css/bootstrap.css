@@ -1069,6 +1069,17 @@ pre code {
     flex: 0 0 100%;
     max-width: 100%;
   }
+  .col-md-13 {
+    -ms-flex: 0 0 70%;
+    flex: 0 0 70%;
+    max-width: 70%;
+  }
+
+  .col-md-14 {
+    -ms-flex: 0 0 100%;
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
   .order-md-first {
     -ms-flex-order: -1;
     order: -1;
@@ -1240,6 +1251,11 @@ pre code {
     -ms-flex: 0 0 100%;
     flex: 0 0 100%;
     max-width: 100%;
+  }
+  .col-lg-13 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
   }
   .order-lg-first {
     -ms-flex-order: -1;

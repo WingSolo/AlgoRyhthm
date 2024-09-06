@@ -769,6 +769,83 @@ a:focus {
 
 // end contact section
 
+// start ana section
+
+.ana_section {
+  position: relative;
+
+  .heading_container {
+    margin-bottom: 45px;
+
+  }
+
+  .row {
+    align-items: stretch;
+  }
+
+  .form_container {
+    background-color: $primary1;
+    padding: 45px;
+
+    .form-control {
+      width: 100%;
+      border: none;
+      height: 50px;
+      margin-bottom: 15px;
+      padding-left: 15px;
+      outline: none;
+      color: #101010;
+      box-shadow: 0 0 25px 0 rgba($color: #000000, $alpha: .15);
+      border-radius: 0;
+
+      &::placeholder {
+        color: #565554;
+      }
+
+      &.message-box {
+        height: 95px;
+      }
+    }
+
+    .btn_box {
+      display: flex;
+
+      button {
+        border: none;
+        text-transform: uppercase;
+        @include hero_btn($primary2, $white, 12px, 55px, 0px);
+      }
+    }
+      .data-upload {
+      display: flex;
+
+      border: none;
+        text-transform: uppercase;
+        @include hero_btn($primary2, $white, 12px, 55px, 0px);
+    }
+  }
+
+  .map_container {
+    height: 100%;
+    min-height: 375px;
+    overflow: hidden;
+    display: flex;
+    align-items: stretch;
+    padding: 0;
+
+    .map {
+      height: 100%;
+      flex: 1;
+
+      #googleMap {
+        height: 100%;
+      }
+    }
+  }
+}
+
+// end ana section
+
 
 // client section
 

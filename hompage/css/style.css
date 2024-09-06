@@ -919,6 +919,141 @@ a:focus {
   height: 100%;
 }
 
+/* ana_section 추가 */
+
+.ana_section {
+  position: relative;
+}
+
+.ana_section .heading_container {
+  margin-bottom: 45px;
+}
+
+.ana_section .row {
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.ana_section .form_container {
+  background-color: #003471;
+  padding: 45px;
+}
+
+.ana_section .form_container .form-control {
+  display: inline-block;
+  width: 350px;
+  border: none;
+  height: 50px;
+  margin-bottom: 15px;
+  margin-right: 15px;
+  padding-left: 15px;
+  outline: none;
+  color: #101010;
+  -webkit-box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.15);
+          box-shadow: 0 0 25px 0 rgba(0, 0, 0, 0.15);
+  border-radius: 0;
+}
+
+
+.ana_section .form_container .form-control::-webkit-input-placeholder {
+  color: #565554;
+}
+
+.ana_section .form_container .form-control:-ms-input-placeholder {
+  color: #565554;
+}
+
+.ana_section .form_container .form-control::-ms-input-placeholder {
+  color: #565554;
+}
+
+.ana_section .form_container .form-control::placeholder {
+  color: #565554;
+}
+
+.ana_section .form_container .form-control.message-box {
+  height: 95px;
+}
+
+.ana_section .form_container .btn_box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+
+
+.ana_section .upload-name {
+  display: inline-block;
+  height: 40px;
+  padding: 0 10px;
+  vertical-align: middle;
+  border: 1px solid #dddddd;
+  width: 60%;
+  color: #999999;
+  margin-bottom: 15px;
+  margin-left: -5px;
+}
+
+.ana_section .form_container label {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #fff;
+  vertical-align: middle;
+  background-color: #999999;
+  cursor: pointer;
+  height: 40px;
+  margin-left: 10px;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+.ana_section input[type="file"] {
+  position: absolute;
+  width: 0;
+  height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+}
+
+.ana_section .form_container .btn_box button {
+  height:50px;
+  border: none;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 12px 55px;
+  background-color: #da7426;
+  color: #ffffff;
+  border-radius: 0px;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  border: 1px solid #da7426;
+  margin-left: -5px;
+}
+
+.ana_section .form_container .btn_box button:hover {
+  background-color: transparent;
+  background-color: #ffffff;
+  color: #da7426;
+}
+
+.ana_section .form_container .ana-result {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 300px;
+  width: 100%;
+  margin-top: 15px;
+  margin-left: -5px;
+  margin-bottom: 15px;
+  padding-left : 45% ;
+}
+
+/* ana_section 종료 */
+
+
 .client_section .heading_container {
   margin-bottom: 45px;
 }

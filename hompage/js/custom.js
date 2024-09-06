@@ -15,7 +15,7 @@ var owl = $('.portfolio_carousel').owlCarousel({
     margin: 15,
     dots: false,
     center: true,
-    autoplay: true,
+    autoplay: false,
     navText: [
         '<i class="fa fa-arrow-left" aria-hidden="true"></i>',
         '<i class="fa fa-arrow-right" aria-hidden="true"></i>'
