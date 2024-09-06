@@ -22,27 +22,92 @@
   <link href="css/responsive.css" rel="stylesheet" />
 </head>
 
+
 <body class="sub_page">
   <div class="hero_area">
-    <!-- header section starts -->
+    <!-- header section strats -->
     <header class="header_section">
       <div class="header_top">
         <div class="container-fluid header_top_container">
+          
           <div class="contact_nav">
-            <a href="A01.jsp"><i class="fa fa-map-marker" aria-hidden="true"></i><span>Location</span></a>
-            <a href="BA02.jsp"><i class="fa fa-phone" aria-hidden="true"></i><span>전화번호 : 031-224-3636</span></a>
-            <a href="BA02.jsp"><i class="fa fa-envelope" aria-hidden="true"></i><span>Algo@gmail.com</span></a>
+            <a href="A01.jsp">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <span>
+                Location
+              </span>
+            </a>
+            <a href="BA02.jsp">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              <span>
+                전화번호 : 031-224-3636
+              </span>
+            </a>
+            <a href="BA02.jsp">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+              <span>
+                Algo@gmail.com
+              </span>
+            </a>
+            <!-- Display "로그아웃" if the user is logged in, otherwise "관리자" -->
             <% if (user != null) { %>
-              <a href="Logout"><i class="fa fa-sign-out" aria-hidden="true"></i><span>로그아웃</span></a>
+              <a href="Logout">
+                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                <span>로그아웃</span>
+              </a>
             <% } else { %>
-              <a href="login.jsp"><i class="fa fa-user" aria-hidden="true"></i><span>관리자</span></a>
+              <a href="login.jsp">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                <span>관리자</span>
+              </a>
             <% } %>
           </div> 
+        </div>
+      </div>
+      
+      <div class="header_bottom">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container ">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" height="27px"></span></a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="main.jsp">홈<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="A01.jsp">회사소개</a>
+                </li>
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="CA01.jsp">공지사항</a>
+                </li>                
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="AB_main.jsp">분석사례</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="BA01.jsp">분석</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="BA02.jsp">문의하기</a>
+                </li>                
+                <!-- Show "마이페이지" next to "공지사항" if the user is logged in -->
+                <% if (user != null) { %>
+                <li class="nav-item">
+                  <a class="nav-link" href="DA01.jsp">마이페이지</a>
+                </li>
+                <% } %>
+              </ul>
+            </div>
+          </nav>
         </div>
       </div>
     </header>
     <!-- end header section -->
   </div>
+
   
   <!-- Login Section -->
   <section class="contact_section layout_padding">
