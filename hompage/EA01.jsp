@@ -3,6 +3,11 @@
     // 세션에서 user 객체 가져오기
     Object user = session.getAttribute("user");
 %>
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.Statement"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.*"%>
 
 <!DOCTYPE html>
 <html>
@@ -18,7 +23,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>ë¬¸ìë´ì­</title>
+  <title>문의 내역</title>
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -120,6 +125,19 @@
         <h2>문의내역</h2>
         <br>
         <br>
+  <%
+Class.forName("org.mariadb.jdbc.Driver");
+try {
+	Connection conn = DriverManager.getConnection(
+			"jdbc:mariadb://localhost:3306/algo", "root", "maria");
+		
+		
+		//쿼리 실행
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery("select num, cust_name,email, phone, comp_name, data_type,coun_type, visit_path, time from intro_inq order by num desc");
+		{
+	
+%>      
       
         
       <title>게시판 리스트</title>
@@ -142,46 +160,44 @@
                         <th>일시</th>
                     </tr>
                 </thead>
-                <!-- <?php       // DB에 저장된 글 목록을 idx의 내림차순으로 가져와 페이지에 집어넣기
-                $sql = "SELECT * FROM board ORDER BY idx DESC limit $begin,$page_size";
-                $result = $db->query($sql);
-                while($board=$result->fetch_array(MYSQLI_ASSOC)){
-                    $title = $board['title'];
-                    // 만약 title의 길이가 길면 중간을 '....'으로 표시
-                    if(strlen($title)>15){ 
-                        $title=str_replace($board["title"],mb_substr($board["title"],0,15,"UTF8")."...",$board["title"]); //titleì´ 15ì ëì´ìë©´ ...íì
-                    }
-                ?> -->
+               
                 <tbody>
                     <tr>
-                        <td><?php echo $board['idx'];?></td>
-                        <!--제목클릭시 게시글 읽기-->
-                        <td><a href ="/test/notice_board/read?idx=<?php echo $board['idx']; ?>"><?php echo $title;?></td>
-                        <td><?php echo $board['author'];?></td>
-                        <td><?php echo $board['date'];?></td>
-                        <td><?php echo $board['views'];?></td>
-                    </tr>
+            <td><%=rs.getInt("num") %></td>
+            <!--  <td style="text-align:left;"></td>-->
+			<td><%=rs.getString("cust_name") %></td>
+			<td><%=rs.getString("email") %></td>
+			<td><%=rs.getString("phone") %></td>
+			<td><%=rs.getString("comp_name") %></td>
+			<td><%=rs.getString("data_type") %></td>
+			<td><%=rs.getString("coun_type") %></td>
+			<td><%=rs.getString("visit_path") %></td>
+			<td><%=rs.getString("time") %></td>
+			
+        			</tr>
                 </tbody>
-        <?php   } ?>    <!--while문 종료-->
+
             </table>
             <hr/>
         
-        <!--페이지 번호-->
-        <?php
-            $page_sql = "SELECT COUNT(idx) FROM board";     // 글 목록 수 구하는 쿼리문
-            $page_result = mysqli_query($db, $page_sql);    // 쿼리문 실행
-            $row = mysqli_fetch_row($page_result);          // 실행 값 열로 가져오기(데이터 접근하기위해)
-            $total_records = $row[0];                       // [0]번째에 저장되어 있음
-            $total_pages = ceil($total_records / $page_size);   // 페이지 수 구하기
-        ?>
-            <div class = "pagination justify-content-center">
-            <ul class = 'pagination'>
-                <?php
-                    // 페이지 수 만큼 페이지 버튼 만들고 해당 페이지 번호에 게시글 배정
-                    for ($i=1; $i<=$total_pages; $i++) {
-                        ?><li class='page-item'><a class='page-link' href='/test/main?current_page=<?php echo $i;?>'><?php echo $i;?></a></li>
-                <?php } ?>
-            </div>
+       <!-- 페이징 -->
+            <div class="col-sm-12 col-md-7">
+			<div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
+				<ul class="pagination">
+					<!-- Previous 시작 -->
+					<li class="paginate_button page-item previous <c:if test='${list.startPage<6 }'>disabled</c:if>" id="dataTable_previous"><a href="/lprod/list?currentPage=${list.startPage-5 }" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
+					<!-- Previous 끝 -->
+					<!-- Page번호 시작 -->
+					<c:forEach var="pNo" begin="${list.startPage }" end="${list.endPage }" step="1">
+						<li class="paginate_button page-item  <c:if test='${param.currentPage eq pNo }'>active</c:if>"><a href="/lprod/list?currentPage=${pNo }" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">${pNo }</a></li>
+					</c:forEach>
+					<!-- Page번호 끝 -->
+					<!-- Next 시작 -->
+					<li class="paginate_button page-item next <c:if test='${list.endPage>=list.totalPages }'>disabled</c:if>" id="dataTable_next"><a href="/lprod/list?currentPage=${list.startPage+5 }" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+					<!-- Next 끝 -->
+				</ul>
+			</div>
+			</div>
         </div>
       
       
