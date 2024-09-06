@@ -1,0 +1,162 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <!-- Site Metas -->
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="author" content="" />
+
+  <title>문의 내역상세</title>
+
+  <!-- bootstrap core css -->
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+
+  <!-- fonts style -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <!--owl slider stylesheet -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <!-- nice select -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha256-mLBIhmBvigTFWPSCtvdu6a76T+3Xyt+K571hupeFLg4=" crossorigin="anonymous" />
+  <!-- font awesome style -->
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+
+  <!-- Custom styles for this template -->
+  <link href="css/style.css" rel="stylesheet" />
+  <!-- responsive style -->
+  <link href="css/responsive.css" rel="stylesheet" />
+</head>
+
+<body class="sub_page">
+  <div class="hero_area">
+    <!-- header section strats -->
+    <header class="header_section">
+      <div class="header_top">
+        <div class="container-fluid header_top_container">
+          
+          <div class="contact_nav">
+            <a href="A01.html">
+              <i class="fa fa-map-marker" aria-hidden="true"></i>
+              <span>
+                Location
+              </span>
+            </a>
+            <a href="BA02.html">
+              <i class="fa fa-phone" aria-hidden="true"></i>
+              <span>
+               전화번호 : 031-224-3636
+              </span>
+            </a>
+            <a href="BA02.html">
+              <i class="fa fa-envelope" aria-hidden="true"></i>
+              <span>
+                Algo@gmail.com
+              </span>
+            </a>
+            <a href="login.html">
+              <i class="fa fa-user" aria-hidden="true"></i>
+              <span>
+                 관리자
+              </span>
+              </a>
+          </div> 
+        </div>
+      </div>
+      
+      <div class="header_bottom">
+        <div class="container-fluid">
+          <nav class="navbar navbar-expand-lg custom_nav-container ">
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav">
+                <li class="nav-item active">
+                  <a class="nav-link" href="main.html"><span><img src="/images/logo.png" alt="logo" height="27px"></span></a>
+                </li>
+                <li class="nav-item active">
+                  <a class="nav-link" href="main.html">홈<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="A01.html">회사소개</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="AB_main.html">분석사례</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="BA01.html">분석</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="BA02.html">문의하기</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="CA01.html">공지사항</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="EA01.html">마이페이지</a>
+                </li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <!-- end header section -->
+  </div>
+
+  <!-- service section -->
+
+  <section class="service_section layout_padding">
+    <div class="container ">
+      <div class="heading_container heading_center">
+        <h2>문의내역 상세</h2>
+        <br>
+        <br>
+        </div>
+      </head>
+    <body>
+      
+        <div class ="container">
+            <table class ="table table-bordered">
+                
+                <tbody>
+                    <tr>
+                        <th>작성자 : </th>
+                        <td><%=rs.getString("cust_name") %></td>
+                    </tr>
+                    <tr>
+                        <th>작성 일자 : </th>
+                        <td><%=rs.getDate("time") %></td>
+                    </tr>
+                    <tr>    
+                        <th>email : </th>
+                        <td><%=rs.getString("email") %></td>
+                    </tr>
+                    <tr>
+                        <th>연락처 : </th>
+                        <td><%=rs.getString("phone") %></td>
+                    </tr>
+                    <tr>
+                        <th>기관명 : </th>
+                        <td><%=rs.getString("comp_name") %></td>
+                    </tr>
+                    <tr>
+                        <th>데이터 유형: </th>
+                        <td><%=rs.getString("data_type") %></td>
+                    </tr>
+                    <tr>
+                        <th>문의 내역: </th>
+                        <td><%=rs.getString("content") %></td>
+                    </tr>
+                    
+                </tbody>
+                
+            </table>
+            <a  href="EA01.html">뒤로가기</a>
+        </div>
+    </body>
+</html>
