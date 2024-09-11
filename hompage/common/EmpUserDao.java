@@ -3,27 +3,32 @@ package common;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sql.DataSource;
+import org.mariadb.jdbc.MariaDbPoolDataSource;
 
 public class EmpUserDao {
-    private static final String DRIVER = "org.mariadb.jdbc.Driver";
     private static final String DB_URL = "jdbc:mariadb://localhost:3306/Algo";
     private static final String DB_USER = "root";
     private static final String DB_PASSWORD = "1234";
     private static final Logger logger = Logger.getLogger(EmpUserDao.class.getName());
+    private DataSource dataSource;
 
-    // Constructor to load the JDBC driver
+    // Constructor to initialize the connection pool
     public EmpUserDao() {
         try {
-            Class.forName(DRIVER);
-            logger.info("MariaDB JDBC Driver loaded successfully.");
-        } catch (ClassNotFoundException e) {
-            logger.log(Level.SEVERE, "Failed to load MariaDB driver", e);
+            MariaDbPoolDataSource pool = new MariaDbPoolDataSource(DB_URL);
+            pool.setUser(DB_USER);
+            pool.setPassword(DB_PASSWORD);
+            this.dataSource = pool;
+            logger.info("MariaDB JDBC Connection Pool initialized successfully.");
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Failed to initialize MariaDB connection pool", e);
         }
     }
 
     // Method to establish a connection to the database
     private Connection getConnection() throws SQLException {
-        return DriverManager.getConnection(DB_URL, DB_USER, DB_PASSWORD);
+        return dataSource.getConnection();
     }
 
     // Read: Get an EmpUser by emp_id
@@ -39,7 +44,7 @@ public class EmpUserDao {
                     user = new EmpUser(
                             rs.getString("emp_id"),
                             rs.getString("password"),
-                            rs.getString("name"),
+                            rs.getString("emp_name"),
                             rs.getString("email"),
                             rs.getString("phone"),
                             rs.getString("user_dept"),
