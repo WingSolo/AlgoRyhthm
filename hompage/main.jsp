@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
     // 세션에서 user 객체 가져오기
-    Object user = session.getAttribute("user");
+    Object user = session.getAttribute("loginUser");
 %>
 
 
@@ -96,9 +96,10 @@
                   <a class="nav-link" href="A01.jsp">회사소개</a>
                 </li>
                 
+                <!-- 공지사항 링크-->
                 <li class="nav-item">
-                  <a class="nav-link" href="CA01.jsp">공지사항</a>
-                </li>                
+                    <a class="nav-link" href="CA01.jsp">공지사항</a>
+                </li>             
                 
                 <li class="nav-item">
                   <a class="nav-link" href="AB_main.jsp">분석사례</a>

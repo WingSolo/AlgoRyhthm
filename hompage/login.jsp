@@ -3,7 +3,7 @@
 
 <%
     // 세션에서 user 객체 가져오기
-    Object user = session.getAttribute("user");
+    Object user = session.getAttribute("loginUser");
 %>
 
 <!DOCTYPE html>
@@ -22,50 +22,26 @@
   <link href="css/responsive.css" rel="stylesheet" />
 </head>
 
-
 <body class="sub_page">
   <div class="hero_area">
-    <!-- header section strats -->
+    <!-- header section starts -->
     <header class="header_section">
       <div class="header_top">
         <div class="container-fluid header_top_container">
-          
           <div class="contact_nav">
-            <a href="A01.jsp">
-              <i class="fa fa-map-marker" aria-hidden="true"></i>
-              <span>
-                Location
-              </span>
-            </a>
-            <a href="BA02.jsp">
-              <i class="fa fa-phone" aria-hidden="true"></i>
-              <span>
-                전화번호 : 031-224-3636
-              </span>
-            </a>
-            <a href="BA02.jsp">
-              <i class="fa fa-envelope" aria-hidden="true"></i>
-              <span>
-                Algo@gmail.com
-              </span>
-            </a>
-            <!-- Display "로그아웃" if the user is logged in, otherwise "관리자" -->
+            <a href="A01.jsp"><i class="fa fa-map-marker" aria-hidden="true"></i><span>Location</span></a>
+            <a href="BA02.jsp"><i class="fa fa-phone" aria-hidden="true"></i><span>전화번호 : 031-224-3636</span></a>
+            <a href="BA02.jsp"><i class="fa fa-envelope" aria-hidden="true"></i><span>Algo@gmail.com</span></a>
             <% if (user != null) { %>
-              <a href="Logout">
-                <i class="fa fa-sign-out" aria-hidden="true"></i>
-                <span>로그아웃</span>
-              </a>
+              <a href="Logout"><i class="fa fa-sign-out" aria-hidden="true"></i><span>로그아웃</span></a>
             <% } else { %>
-              <a href="login.jsp">
-                <i class="fa fa-user" aria-hidden="true"></i>
-                <span>관리자</span>
-              </a>
+              <a href="login.jsp"><i class="fa fa-user" aria-hidden="true"></i><span>관리자</span></a>
             <% } %>
           </div> 
         </div>
       </div>
-      
-      <div class="header_bottom">
+  
+        <div class="header_bottom">
         <div class="container-fluid">
           <nav class="navbar navbar-expand-lg custom_nav-container ">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -80,9 +56,11 @@
                   <a class="nav-link" href="A01.jsp">회사소개</a>
                 </li>
                 
+                <!-- 공지사항 링크-->
                 <li class="nav-item">
-                  <a class="nav-link" href="CA01.jsp">공지사항</a>
+                    <a class="nav-link" href="CA01.jsp">공지사항</a> <!-- 비로그인 시 CA01.jsp로 이동 -->
                 </li>                
+                  
                 
                 <li class="nav-item">
                   <a class="nav-link" href="AB_main.jsp">분석사례</a>
@@ -107,7 +85,8 @@
     </header>
     <!-- end header section -->
   </div>
-
+  
+  
   
   <!-- Login Section -->
   <section class="contact_section layout_padding">
