@@ -19,7 +19,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>분석</title>
+  <title>분석하기</title>
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -42,42 +42,35 @@
 <body class="sub_page">
   <div class="hero_area">
     <!-- header section strats -->
-    <!-- header section strats -->
     <header class="header_section">
       <div class="header_top">
         <div class="container-fluid header_top_container">
           
           <div class="contact_nav">
-            <a href="A01.jsp">
+            <a href="A01.html">
               <i class="fa fa-map-marker" aria-hidden="true"></i>
               <span>
                 Location
               </span>
             </a>
-            <a href="BA02.jsp">
+            <a href="BA02.html">
               <i class="fa fa-phone" aria-hidden="true"></i>
               <span>
                 전화번호 : 031-224-3636
               </span>
             </a>
-            <a href="BA02.jsp">
+            <a href="BA02.html">
               <i class="fa fa-envelope" aria-hidden="true"></i>
               <span>
                 Algo@gmail.com
               </span>
             </a>
-            <!-- Display "로그아웃" if the user is logged in, otherwise "관리자" -->
-            <% if (user != null) { %>
-              <a href="Logout">
-                <i class="fa fa-sign-out" aria-hidden="true"></i>
-                <span>로그아웃</span>
+            <a href="login.html">
+              <i class="fa fa-user" aria-hidden="true"></i>
+              <span>
+                  관리자
+              </span>
               </a>
-            <% } else { %>
-              <a href="login.jsp">
-                <i class="fa fa-user" aria-hidden="true"></i>
-                <span>관리자</span>
-              </a>
-            <% } %>
           </div> 
         </div>
       </div>
@@ -88,34 +81,26 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
                 <li class="nav-item active">
-                  <a class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" height="27px"></span></a>
+                  <a class="nav-link" href="main.html"><span><img src="/images/logo.png" alt="logo" height="27px"></span></a>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="main.jsp">홈<span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="main.html">홈<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="A01.jsp">회사소개</a>
-                </li>
-                
-                <li class="nav-item">
-                  <a class="nav-link" href="CA01.jsp">공지사항</a>
-                </li>                
-                
-                <li class="nav-item">
-                  <a class="nav-link" href="AB_main.jsp">분석사례</a>
+                  <a class="nav-link" href="A01.html">회사소개</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="BA01.jsp">분석</a>
+                  <a class="nav-link" href="AB_main.html">분석사례</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="BA02.jsp">문의하기</a>
-                </li>                
-                <!-- Show "마이페이지" next to "공지사항" if the user is logged in -->
-                <% if (user != null) { %>
-                <li class="nav-item">
-                  <a class="nav-link" href="DA01.jsp">마이페이지</a>
+                    <a class="nav-link" href="BA01.html">분석</a>
                 </li>
-                <% } %>
+                <li class="nav-item">
+                  <a class="nav-link" href="BA02.html">문의하기</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="CA01.html">공지사항</a>
+                </li>
               </ul>
             </div>
           </nav>
@@ -125,49 +110,50 @@
     <!-- end header section -->
   </div>
 
-  <!-- service section -->
 
-  <section class="service_section layout_padding">
-    <div class="container ">
+  <!-- ana section -->
+  <section class="ana_section layout_padding">
+    <div class="container">
       <div class="heading_container heading_center">
-        <h2>분석<span>바로하기</span></h2>
+        <h2>분석하기</h2>
       </div>
-      <div class="row">
-        <div class="col-sm-6 col-md-4">
-          <div class="box ">
+      <div class="row justify-content-center"> 
+        <div class="col-md-13 px-0">
+          <div class="form_container">
+            <form action="" >             
+              <div class = 'form-row'>
+                    <input type="text" class="form-control" placeholder="email" required/>
+                    <select name="sel_type" id="" class="form-control">
+                      <option >분석 종류 (선택)</option>
+                      <option value="image">공정최적화</option>
+                      <option value="text">예지보전</option>
+                      <option value="ect">품질보증</option>
+                    </select>
+                </div>
+                <div class = 'data-upload'>
+                      <input class = 'upload-name' value="첨부파일" placeholder = '첨부파일' disabled = 'disabled'>
+                      <label for = 'file'>파일찾기</label>
+                      <input type = 'file' id = 'file' accept=".csv"/>
+                </div>
+                  <div class="btn_box">
+                    <button class = 'ana_btn'>
+                      분석하기
+                    </button>
+                  </div>
+                  <div class="form-row">
+                    <div class="col-md-14">
+                      <input type="text" class="ana-result" placeholder="분석결과" disabled/>
+                    </div>
+                  </div>
+            </form>
           </div>
         </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="box ">
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="box ">
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="box ">
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="box ">
-          </div>
-        </div>
-        <div class="col-sm-6 col-md-4">
-          <div class="box ">
-          </div>
-        </div>
-        
-      </div>
-      <div class="btn-box">
-        <a href="">
-          Read More
-        </a>
       </div>
     </div>
   </section>
-  
-  
+  <!-- end ana section -->
+
+ 
   <!-- footer section -->
   <footer class="footer_section">
     <div class="container">
@@ -193,8 +179,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js" integrity="sha256-Zr3vByTlMGQhvMfgkQ5BtWRSKBGa2QlspKYJnkjZTmo=" crossorigin="anonymous"></script>
   <!-- custom js -->
   <script src="js/custom.js"></script>
-  <!-- Google Map -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
+
   <!-- End Google Map -->
 
 </body>
