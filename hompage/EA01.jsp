@@ -8,6 +8,32 @@
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
 <%@page import="java.sql.*"%>
+<%@page import="common.IntroDao, common.Intro, common.IntroList" %>
+<%@page import="java.util.List" %>
+
+<%
+	IntroDao introDao = new IntroDao();  // NoticeDao 객체 생성
+
+
+    // 페이지 번호 및 페이지 크기 설정 (기본값 1페이지, 10개 항목)
+    int currentPage = 1;
+    int pageSize = 10;
+
+    // 페이지 파라미터 가져오기 (URL 쿼리에서 "page" 값이 있으면 가져오고 없으면 1로 설정)
+    String pageParam = request.getParameter("page");
+    if (pageParam != null && !pageParam.isEmpty()) {
+        try {
+            currentPage = Integer.parseInt(pageParam);  // 페이지 번호를 정수로 변환
+        } catch (NumberFormatException e) {
+            currentPage = 1;  // 페이지 번호가 잘못된 경우 기본값으로 설정
+        }
+    }
+
+
+    List<Intro> introList = introDao.getIntroByPage(currentPage, pageSize);
+    int totalIntroCount = introDao.getTotalIntroCount();
+    int totalPages = (int) Math.ceil((double) totalIntroCount / pageSize);
+%>
 
 <!DOCTYPE html>
 <html>
@@ -125,19 +151,7 @@
         <h2>문의내역</h2>
         <br>
         <br>
-  <%
-Class.forName("org.mariadb.jdbc.Driver");
-try {
-	Connection conn = DriverManager.getConnection(
-			"jdbc:mariadb://localhost:3306/algo", "root", "maria");
-		
-		
-		//쿼리 실행
-		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery("select num, cust_name,email, phone, comp_name, data_type,coun_type, visit_path, time from intro_inq order by num desc");
-		{
-	
-%>      
+
       
         
       <title>게시판 리스트</title>
@@ -162,42 +176,39 @@ try {
                 </thead>
                
                 <tbody>
-                    <tr>
-            <td><%=rs.getInt("num") %></td>
-            <!--  <td style="text-align:left;"></td>-->
-			<td><%=rs.getString("cust_name") %></td>
-			<td><%=rs.getString("email") %></td>
-			<td><%=rs.getString("phone") %></td>
-			<td><%=rs.getString("comp_name") %></td>
-			<td><%=rs.getString("data_type") %></td>
-			<td><%=rs.getString("coun_type") %></td>
-			<td><%=rs.getString("visit_path") %></td>
-			<td><%=rs.getString("time") %></td>
-			
-        			</tr>
+               <%
+            if (introList != null && !introList.isEmpty()) {
+                for (Intro intro : introList) {
+        %>
+        <tr>
+            <td><%= intro.getNum() %></td>
+            <td><%= intro.getCust_name() %></td>
+            <td><%= intro.getEmail() %></td>
+            <td><%= intro.getPhone() %></td>
+            <td><%= intro.getComp_name() %></td>
+            <td><%= intro.getData_type() %></td>
+            <td><%= intro.getCoun_type() %></td>
+            <td><%= intro.getVisit_path() %></td>
+            <td><%= intro.getTime() %></td>
+        </tr>
+        <%
+                }
+            } else {
+        %>
+        <tr>
+            <td colspan="9">No data found.</td>
+        </tr>
+        <%
+            }
+        %>
                 </tbody>
+                
 
             </table>
             <hr/>
+           
         
-       <!-- 페이징 -->
-            <div class="col-sm-12 col-md-7">
-			<div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
-				<ul class="pagination">
-					<!-- Previous 시작 -->
-					<li class="paginate_button page-item previous <c:if test='${list.startPage<6 }'>disabled</c:if>" id="dataTable_previous"><a href="/lprod/list?currentPage=${list.startPage-5 }" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-					<!-- Previous 끝 -->
-					<!-- Page번호 시작 -->
-					<c:forEach var="pNo" begin="${list.startPage }" end="${list.endPage }" step="1">
-						<li class="paginate_button page-item  <c:if test='${param.currentPage eq pNo }'>active</c:if>"><a href="/lprod/list?currentPage=${pNo }" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">${pNo }</a></li>
-					</c:forEach>
-					<!-- Page번호 끝 -->
-					<!-- Next 시작 -->
-					<li class="paginate_button page-item next <c:if test='${list.endPage>=list.totalPages }'>disabled</c:if>" id="dataTable_next"><a href="/lprod/list?currentPage=${list.startPage+5 }" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
-					<!-- Next 끝 -->
-				</ul>
-			</div>
-			</div>
+
         </div>
       
       

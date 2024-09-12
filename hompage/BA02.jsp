@@ -125,57 +125,84 @@
   </div>
 
 
-<!-- contact section -->
-<section class="contact_section ">
-  <div class="container">
-    <div class="heading_container heading_center">
-    <br>
-      <h2>저희에게 <span> 문의하기</span></h2>
-    </div>
-    <div class="row justify-content-center"> <!-- 추가된 클래스 -->
-      <div class="col-md-6 px-0">
-        <div class="form_container">
-          <form action="" align="center">
-            <div class="form-row">
-              <div class="form-group col">
-                <input type="text" class="form-control" placeholder="성함" />
+ <!-- contact section -->
+  <section class="contact_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>문의하기</h2>
+      </div>
+      <div class="row justify-content-center"> <!-- 추가된 클래스 -->
+        <div class="col-md-6 px-0">
+          <div class="form_container">
+            <form action="" align="center">
+              <div class="form-row">
+                <div class="form-group col-lg-6">
+                  <input type="text" class="form-control" placeholder="성함" />
+                </div>
+                <div class="form-group col-lg-6">
+                    <input type="text" class="form-control" placeholder="email" />
+                </div>
               </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col-lg-6">
-                <input type="text" class="form-control" placeholder="휴대폰 번호" />
+              <div class="form-row">
+                <div class="form-group col-lg-6">
+                  <input type="text" class="form-control" placeholder="휴대폰 번호" />
+                </div>
+                <div class="form-group col-lg-6">
+                  <input type="text" class="form-control" placeholder="가관명(선택)" />
+                </div>
+                <div class="form-group col-lg-6">
+                  <select name="data_type" id="" class="form-control wide">
+                    <option >데이터 종류 (선택)</option>
+                    <option value="image">이미지</option>
+                    <option value="text">텍스트/문서</option>
+                    <option value="ect">기타</option>
+                  </select>
+                </div>
+                <div class="form-group col-lg-6">
+                  <select name="coun_type" id="" class="form-control wide">
+                    <option>상담유형(선택)</option>
+                    <option value="dataset">데이터 셋 구축</option>
+                    <option value="ai">AI 기획/컨설팅</option>
+                    <option value="visualization">분석 데이터 시각화</option>
+                    <option value="ect">기타</option>
+                  </select>
+                </div>
               </div>
-              <div class="form-group col-lg-6">
-                <select name="" id="" class="form-control wide">
-                  <option value="">Select Service</option>
-                  <option value="">Service 1</option>
-                  <option value="">Service 2</option>
-                  <option value="">Service 3</option>
-                </select>
+              <div class="form-row">
+                <div class="form-group col">
+                  <select name="visit_path" id="" class="form-control wide">
+                    <option>방문경로(선택)</option>
+                    <option value="recom">지인추천</option>
+                    <option value="news">언론 보도</option>
+                    <option value="offline">오프라인 행사</option>
+                    <option value="sns">SNS 광고</option>
+                    <option value="letter">뉴스레터</option>
+                    <option value="youtube">유투브</option>
+                    <option value="talk">카카오톡 오픈 채팅방</option>
+                    <option value="mail">메일</option>
+                    <option value="potal">포털사이트(연관검색어)</option>
+                    <option value="ect">기타</option>
+                  </select>
+                </div>
               </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col">
-                <input type="email" class="form-control" placeholder="이메일" />
+              <div class="form-row">
+                <div class="form-group col">
+                  <input type="text" class="message-box form-control" placeholder="문의사항" />
+                </div>
               </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group col">
-                <input type="text" class="message-box form-control" placeholder="의뢰사항" />
+              <div class="btn_box">
+                <button>
+                  전송
+                </button>
               </div>
-            </div>
-            <div class="btn_box">
-              <button>
-                전송
-              </button>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
-<!-- end contact section -->
+  </section>
+  <!-- end contact section -->
+
  
   <!-- footer section -->
   <footer class="footer_section">
