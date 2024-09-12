@@ -1,8 +1,6 @@
 package common;
 
 import java.io.IOException;
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -34,29 +32,14 @@ public class LoginController extends HttpServlet {
         EmpUser user = empUserDao.getEmpUserById(empId);
 
         // 사용자 정보가 존재하고 비밀번호가 일치하는지 확인
-        if (user != null && user.getHashedPassword().equals(hashPassword(password))) {
+        if (user != null && user.getPassword().equals(password)) {  // 평문으로 비교
             // 로그인 성공 시 세션 생성
             HttpSession session = request.getSession();
-            session.setAttribute("loginUser", user); // "loginUser"로 키 이름 수정
+            session.setAttribute("loginUser", user); // "loginUser"로 키 이름 설정
             response.sendRedirect("main.jsp"); // 메인 페이지로 리디렉션
         } else {
             // 로그인 실패 시 login.jsp로 리디렉션
             response.sendRedirect("login.jsp?error=Invalid credentials");
-        }
-    }
-
-    // 비밀번호 해시 메서드
-    private String hashPassword(String password) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256"); // SHA-256 알고리즘 사용
-            byte[] hash = md.digest(password.getBytes()); // 비밀번호 해싱
-            StringBuilder hexString = new StringBuilder();
-            for (byte b : hash) {
-                hexString.append(String.format("%02x", b));
-            }
-            return hexString.toString();
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException("SHA-256 algorithm not found. Please check your JDK installation.", e);
         }
     }
 }

@@ -1,11 +1,8 @@
 package common;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
 public class EmpUser {
     private String emp_id;
-    private String hashedPassword; // 비밀번호는 해시된 형태로 저장
+    private String password; // 비밀번호는 평문으로 저장
     private String emp_name;
     private String email;
     private String phone;
@@ -14,7 +11,7 @@ public class EmpUser {
 
     public EmpUser(String emp_id, String password, String emp_name, String email, String phone, String user_dept, String user_pos) {
         this.emp_id = emp_id;
-        this.hashedPassword = hashPassword(password); // 해시된 비밀번호 저장
+        this.password = password; // 평문 비밀번호 저장
         this.emp_name = emp_name;
         this.email = email;
         this.phone = phone;
@@ -22,21 +19,7 @@ public class EmpUser {
         this.user_pos = user_pos;
     }
 
-    // 비밀번호 해시 메서드
-    private String hashPassword(String password) {
-        try {
-            MessageDigest md = MessageDigest.getInstance("SHA-256");
-            byte[] hash = md.digest(password.getBytes());
-            StringBuilder hexString = new StringBuilder();
-            for (byte b : hash) {
-                hexString.append(String.format("%02x", b));
-            }
-            return hexString.toString();
-        } catch (NoSuchAlgorithmException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
+    // Getter 및 Setter 메소드들
     public String getEmp_id() {
         return emp_id;
     }
@@ -45,12 +28,12 @@ public class EmpUser {
         this.emp_id = emp_id;
     }
 
-    public String getHashedPassword() {
-        return hashedPassword;
+    public String getPassword() {
+        return password; // 해시화된 비밀번호가 아닌 평문 반환
     }
 
-    public void setHashedPassword(String password) {
-        this.hashedPassword = hashPassword(password);
+    public void setPassword(String password) {
+        this.password = password; // 평문 비밀번호 설정
     }
 
     public String getEmp_name() {

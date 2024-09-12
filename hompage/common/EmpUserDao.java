@@ -26,6 +26,26 @@ public class EmpUserDao {
         }
     }
 
+    // Update password method with empId and password parameters
+    public boolean updatePassword(String empId, String newPassword) {
+        String sql = "UPDATE emp_user SET password = ? WHERE emp_id = ?";
+
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, newPassword);  // 평문 비밀번호 사용
+            pstmt.setString(2, empId);
+
+            int rowsUpdated = pstmt.executeUpdate();
+            return rowsUpdated > 0;  // 업데이트된 행이 있으면 true 반환
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Failed to update password for user ID: " + empId, e);
+        }
+
+        return false;  // 오류가 발생하면 false 반환
+    }
+
     // Method to establish a connection to the database
     private Connection getConnection() throws SQLException {
         return dataSource.getConnection();
@@ -43,7 +63,7 @@ public class EmpUserDao {
                 if (rs.next()) {
                     user = new EmpUser(
                             rs.getString("emp_id"),
-                            rs.getString("password"),
+                            rs.getString("password"),  // password 필드 사용
                             rs.getString("emp_name"),
                             rs.getString("email"),
                             rs.getString("phone"),
