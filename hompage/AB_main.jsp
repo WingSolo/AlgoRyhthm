@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
     // 세션에서 user 객체 가져오기
-    Object user = session.getAttribute("user");
+    Object user = session.getAttribute("loginUser");
 %>
 
 
@@ -97,9 +97,11 @@
                   <a class="nav-link" href="A01.jsp">회사소개</a>
                 </li>
                 
+                <!-- 공지사항 링크-->
                 <li class="nav-item">
-                  <a class="nav-link" href="CA01.jsp">공지사항</a>
-                </li>                
+                    <a class="nav-link" href="CA01.jsp">공지사항</a> <!-- 비로그인 시 CA01.jsp로 이동 -->
+                </li>    
+                
                 
                 <li class="nav-item">
                   <a class="nav-link" href="AB_main.jsp">분석사례</a>
@@ -126,7 +128,7 @@
   </div>
 
 
-  <!-- portfolio section -->
+    <!-- portfolio section -->
 
   <section class="portfolio_section ">
     <div class="container">
@@ -135,54 +137,64 @@
           분석 사례
         </h2>
       </div>
-      <div class="carousel-wrap ">
+      <!-- <div class="carousel-wrap ">
         <div class="filter_box">
           <nav class="owl-filter-bar">
-            <a href="#" class="item active" data-owl-filter="*">All </a>
-            <a href="#" class="item" data-owl-filter=".decorative">열처리 </a>
-            <a href="#" class="item" data-owl-filter=".facade">주조 </a>
+            <a href="#" class="item active" data-owl-filter="*">All</a>
+            <a href="#" class="item" data-owl-filter=".decorative">열처리</a>
+            <a href="#" class="item" data-owl-filter=".decorative">주조 </a>
+
           </nav>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="owl-carousel portfolio_carousel">
       <div class="item decorative">
+        <div class = 'name_box'>
+        <h5 class = 'service_name'>품질보증</h5>
+      </div>
         <div class="box">
           <div class="img-box">
             <img src="images/p1.jpg" alt="" />
             <div class="btn_overlay">
-              <a href="" class="">
-                See More
+              <a href="AB03.jsp" class="">
+                자세히보기
               </a>
             </div>
           </div>
         </div>
       </div>
       <div class="item facade">
+        <div class = 'name_box'>
+        <h5 class = 'service_name'>공정최적화</h5>
+      </div>
         <div class="box">
           <div class="img-box">
             <img src="images/p2.jpg" alt="" />
             <div class="btn_overlay">
-              <a href="" class="">
-                See More
+              <a href="AB01.jsp" class="">
+                자세히보기
               </a>
             </div>
           </div>
         </div>
       </div>
       <div class="item perforated decorative">
+        <div class = 'name_box'>
+        <h5 class = 'service_name'>예지보전</h5>
+      </div>
         <div class="box">
           <div class="img-box">
             <img src="images/p3.jpg" alt="" />
             <div class="btn_overlay">
-              <a href="" class="">
-                See More
+              <a href="AB02.jsp" class="">
+                자세히보기
               </a>
             </div>
           </div>
         </div>
       </div>
-      <div class="item railing">
+      <!-- <div class="item railing">
         <div class="box">
           <div class="img-box">
             <img src="images/p4.jpg" alt="" />
@@ -193,8 +205,8 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </div> -->
+    <!-- </div> -->
   </section>
 
   <!-- end portfolio section -->
