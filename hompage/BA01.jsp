@@ -81,7 +81,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
                 <li class="nav-item active">
-                  <a class="nav-link" href="main.jsp"><span><img src="/images/logo.png" alt="logo" height="27px"></span></a>
+                  <a class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" height="27px"></span></a>
                 </li>
                 <li class="nav-item active">
                   <a class="nav-link" href="main.jsp">홈<span class="sr-only">(current)</span></a>
@@ -120,7 +120,7 @@
       <div class="row justify-content-center"> 
         <div class="col-md-13 px-0">
           <div class="form_container">
-            <form action="Analysis" method = 'post'>             
+            <form action="Analysis" method = 'post' enctype="multipart/form-data">             
               <div class = 'form-row'>
                     <input type="text" class="form-control" placeholder="email" required name = ana_email/>
                     <select name="sel_type" id="" class="form-control" name = 'ana_type'>
