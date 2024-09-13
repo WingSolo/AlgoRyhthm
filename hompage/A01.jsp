@@ -142,7 +142,7 @@
 						<p>
 							추후 기재
 						</p>
-						<a href="BA02.html">
+						<a href="BA02.jsp">
 							문의하기
 						</a>
 					</div>
