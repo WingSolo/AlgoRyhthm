@@ -81,25 +81,25 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
                 <li class="nav-item active">
-                  <a class="nav-link" href="main.html"><span><img src="/images/logo.png" alt="logo" height="27px"></span></a>
+                  <a class="nav-link" href="main.jsp"><span><img src="/images/logo.png" alt="logo" height="27px"></span></a>
                 </li>
                 <li class="nav-item active">
-                  <a class="nav-link" href="main.html">홈<span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="main.jsp">홈<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="A01.html">회사소개</a>
+                  <a class="nav-link" href="A01.jsp">회사소개</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="AB_main.html">분석사례</a>
+                  <a class="nav-link" href="AB_main.jsp">분석사례</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="BA01.html">분석</a>
+                    <a class="nav-link" href="BA01.jsp">분석</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="BA02.html">문의하기</a>
+                  <a class="nav-link" href="BA02.jsp">문의하기</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="CA01.html">공지사항</a>
+                  <a class="nav-link" href="CA01.jsp">공지사항</a>
                 </li>
               </ul>
             </div>
