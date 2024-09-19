@@ -3,6 +3,25 @@
     // 세션에서 user 객체 가져오기
     Object user = session.getAttribute("user");
 %>
+<%
+    // 서버에서 폼 처리 후 성공 여부를 설정
+    boolean success = false; // 이 값을 서버 로직에 맞게 설정
+    String message = "";
+    
+    // 예시: 폼 데이터가 정상적으로 처리되었는지 확인
+    if (request.getMethod().equalsIgnoreCase("POST")) {
+        // 여기에서 폼 데이터를 처리합니다.
+        // 폼 처리 로직 (예: DB 저장 등)
+        // 성공 여부에 따라 true 또는 false 설정
+        success = true; // 또는 실패시 false
+        
+        if (success) {
+            message = "전송 성공!";
+        } else {
+            message = "전송 실패. 다시 시도해주세요.";
+        }
+    }
+%>
 
 
 <!DOCTYPE html>
@@ -89,9 +108,6 @@
                 <li class="nav-item active">
                   <a class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" height="27px"></span></a>
                 </li>
-                <li class="nav-item active">
-                  <a class="nav-link" href="main.jsp">홈<span class="sr-only">(current)</span></a>
-                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="A01.jsp">회사소개</a>
                 </li>
@@ -134,68 +150,78 @@
       <div class="row justify-content-center"> <!-- 추가된 클래스 -->
         <div class="col-md-6 px-0">
           <div class="form_container">
-            <form action="" align="center">
+            <form action="" align="center" action="submitIntro" method="post">
               <div class="form-row">
-                <div class="form-group col-lg-6">
-                  <input type="text" class="form-control" placeholder="성함" />
-                </div>
-                <div class="form-group col-lg-6">
-                    <input type="text" class="form-control" placeholder="email" />
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-lg-6">
-                  <input type="text" class="form-control" placeholder="휴대폰 번호" />
-                </div>
-                <div class="form-group col-lg-6">
-                  <input type="text" class="form-control" placeholder="가관명(선택)" />
-                </div>
-                <div class="form-group col-lg-6">
-                  <select name="data_type" id="" class="form-control wide">
-                    <option >데이터 종류 (선택)</option>
-                    <option value="image">이미지</option>
-                    <option value="text">텍스트/문서</option>
-                    <option value="ect">기타</option>
-                  </select>
-                </div>
-                <div class="form-group col-lg-6">
-                  <select name="coun_type" id="" class="form-control wide">
-                    <option>상담유형(선택)</option>
-                    <option value="dataset">데이터 셋 구축</option>
-                    <option value="ai">AI 기획/컨설팅</option>
-                    <option value="visualization">분석 데이터 시각화</option>
-                    <option value="ect">기타</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col">
-                  <select name="visit_path" id="" class="form-control wide">
-                    <option>방문경로(선택)</option>
-                    <option value="recom">지인추천</option>
-                    <option value="news">언론 보도</option>
-                    <option value="offline">오프라인 행사</option>
-                    <option value="sns">SNS 광고</option>
-                    <option value="letter">뉴스레터</option>
-                    <option value="youtube">유투브</option>
-                    <option value="talk">카카오톡 오픈 채팅방</option>
-                    <option value="mail">메일</option>
-                    <option value="potal">포털사이트(연관검색어)</option>
-                    <option value="ect">기타</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col">
-                  <input type="text" class="message-box form-control" placeholder="문의사항" />
-                </div>
-              </div>
-              <div class="btn_box">
-                <button>
-                  전송
-                </button>
-              </div>
-            </form>
+        <div class="form-group col-lg-6">
+            <input type="text" class="form-control" name="name" placeholder="성함" required />
+        </div>
+        <div class="form-group col-lg-6">
+            <input type="email" class="form-control" name="email" placeholder="email" required />
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-lg-6">
+            <input type="text" class="form-control" name="phone" placeholder="휴대폰 번호" required />
+        </div>
+        <div class="form-group col-lg-6">
+            <input type="text" class="form-control" name="company" placeholder="가관명(선택)" />
+        </div>
+        <div class="form-group col-lg-6">
+            <select name="data_type" class="form-control wide" >
+                <option value="">데이터 종류 (선택)</option>
+                <option value="image">이미지</option>
+                <option value="text">텍스트/문서</option>
+                <option value="ect">기타</option>
+            </select>
+        </div>
+        <div class="form-group col-lg-6">
+            <select name="coun_type" class="form-control wide" >
+                <option value="">상담유형(선택)</option>
+                <option value="dataset">데이터 셋 구축</option>
+                <option value="ai">AI 기획/컨설팅</option>
+                <option value="visualization">분석 데이터 시각화</option>
+                <option value="ect">기타</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col">
+            <select name="visit_path" class="form-control wide" >
+                <option value="">방문경로(선택)</option>
+                <option value="recom">지인추천</option>
+                <option value="news">언론 보도</option>
+                <option value="offline">오프라인 행사</option>
+                <option value="sns">SNS 광고</option>
+                <option value="letter">뉴스레터</option>
+                <option value="youtube">유투브</option>
+                <option value="talk">카카오톡 오픈 채팅방</option>
+                <option value="mail">메일</option>
+                <option value="potal">포털사이트(연관검색어)</option>
+                <option value="ect">기타</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col">
+            <textarea name="content" class="message-box form-control" placeholder="문의사항" required></textarea>
+        </div>
+    </div>
+    <div class="btn_box">
+        <button type="submit">전송</button>
+    </div>
+</form>
+ <!-- 성공 또는 실패 여부에 따른 메시지 표시 -->
+    <script>
+        // 서버에서 전송 성공 여부에 따라 메시지를 출력
+        var success = '<%= success %>';
+        var message = '<%= message %>';
+
+        if (success === 'true') {
+            alert(message);
+        } else if (success === 'false' && message !== '') {
+            alert(message);
+        }
+    </script>
           </div>
         </div>
       </div>

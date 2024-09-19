@@ -50,6 +50,68 @@
   <meta name="author" content="" />
 
   <title>문의 내역</title>
+  <style>
+        .container01 {
+            width: 70%;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex; /* 왼쪽 메뉴와 오른쪽 콘텐츠를 나란히 배치 */
+            gap: 40px; /* 왼쪽 메뉴와 오른쪽 콘텐츠 간의 간격 */
+        }
+        .sidebar {
+            width: 30%; /* 왼쪽 메뉴의 넓이 */
+            padding: 20px;
+            background-color: #f9f9f9; /* 사이드바 섹션의 배경색을 약간 회색으로 설정 */
+        }
+         .content {
+            width: 70%; /* 오른쪽 콘텐츠의 넓이 */
+            text-align: center;
+            padding: 20px; /* 콘텐츠에 패딩 추가 */
+            background-color: #fff; /* 콘텐츠 섹션의 배경색을 흰색으로 설정 */
+        }
+        
+        .button-container {
+            margin-top: 20px;
+        }
+        input[type="password"] {
+            width: 60%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+        }
+        .menu-title {
+            font-size: 20px; /* 마이 메뉴 제목의 글자 크기 */
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+        .menu-item {
+            margin-bottom: 10px;
+        }
+        .menu-item a {
+            text-decoration: none; /* 링크 밑줄 제거 */
+            color: #000; /* 링크 색상 */
+        }
+        .error-message {
+            color: red; /* 오류 메시지 색상 */
+            margin-bottom: 15px;
+        }
+        body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* 페이지가 최소한 화면 높이를 차지하도록 설정 */
+}
+
+.footer_section {
+  margin-top: auto; /* 나머지 콘텐츠 아래에 footer가 자동으로 위치하도록 설정 */
+  width: 100%;
+  background-color: #f1f1f1; /* 배경색 추가 */
+  padding: 10px 0; /* 위아래 여백 */
+  text-align: center;
+}
+    </style>
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -75,32 +137,15 @@
     <header class="header_section">
       <div class="header_top">
         <div class="container-fluid header_top_container">
-          
           <div class="contact_nav">
-            <a href="A01.html">
-              <i class="fa fa-map-marker" aria-hidden="true"></i>
-              <span>
-                Location
-              </span>
-            </a>
-            <a href="BA02.html">
-              <i class="fa fa-phone" aria-hidden="true"></i>
-              <span>
-               전화번호 : 031-224-3636
-              </span>
-            </a>
-            <a href="BA02.html">
-              <i class="fa fa-envelope" aria-hidden="true"></i>
-              <span>
-                Algo@gmail.com
-              </span>
-            </a>
-            <a href="login.html">
-              <i class="fa fa-user" aria-hidden="true"></i>
-              <span>
-                  관리자
-              </span>
-              </a>
+            <a href="A01.jsp"><i class="fa fa-map-marker" aria-hidden="true"></i><span>Location</span></a>
+            <a href="BA02.jsp"><i class="fa fa-phone" aria-hidden="true"></i><span>전화번호 : 031-224-3636</span></a>
+            <a href="BA02.jsp"><i class="fa fa-envelope" aria-hidden="true"></i><span>Algo@gmail.com</span></a>
+            <% if (user != null) { %>
+              <a href="Logout"><i class="fa fa-sign-out" aria-hidden="true"></i><span>로그아웃</span></a>
+            <% } else { %>
+              <a href="login.jsp"><i class="fa fa-user" aria-hidden="true"></i><span>관리자</span></a>
+            <% } %>
           </div> 
         </div>
       </div>
@@ -111,29 +156,33 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
                 <li class="nav-item active">
-                  <a class="nav-link" href="main.html"><span><img src="/images/logo.png" alt="logo" height="27px"></span></a>
-                </li>
-                <li class="nav-item active">
-                  <a class="nav-link" href="main.html">홈<span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" height="27px"></span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="A01.html">회사소개</a>
+                  <a class="nav-link" href="A01.jsp">회사소개</a>
+                </li>
+                
+                <!-- 공지사항 링크-->
+                <li class="nav-item">
+                    <a class="nav-link" href="CA01.jsp">공지사항</a> <!-- 비로그인 시 CA01.jsp로 이동 -->
+                </li>                
+                  
+                
+                <li class="nav-item">
+                  <a class="nav-link" href="AB_main.jsp">분석사례</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="AB_main.html">분석사례</a>
+                    <a class="nav-link" href="BA01.jsp">분석</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="BA01.html">분석</a>
-                </li>
+                  <a class="nav-link" href="BA02.jsp">문의하기</a>
+                </li>                
+                <!-- Show "마이페이지" next to "공지사항" if the user is logged in -->
+                <% if (user != null) { %>
                 <li class="nav-item">
-                  <a class="nav-link" href="BA02.html">문의하기</a>
+                  <a class="nav-link" href="DA01.jsp">마이페이지</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="CA01.html">공지사항</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="EA01.html">마이페이지</a>
-                </li>
+                <% } %>
               </ul>
             </div>
           </nav>
@@ -142,11 +191,19 @@
     </header>
     <!-- end header section -->
   </div>
+    <div class="container01">
+        <!-- 왼쪽 메뉴 섹션 -->
+        <div class="sidebar">
+            <div class="menu-title">마이 메뉴</div>
+            <div class="menu-item"><a href="DA01.jsp">정보 수정</a></div>
+            <div class="menu-item"><a href="InquiryList.jsp">문의 내역</a></div>
+        </div>
+  
 
   <!-- service section -->
 
   <section class="service_section layout_padding">
-    <div class="container ">
+    <div class="content ">
       <div class="heading_container heading_center">
         <h2>문의내역</h2>
         <br>
@@ -167,41 +224,40 @@
                         <th>성함</th>
                         <th>이메일</th>
                         <th>핸드폰</th>
-                        <th>기관명</th>
+                        <th>기관명</th>
                         <th>데이터 종류</th>
                         <th>상담유형</th>
                         <th>방문경로</th>
                         <th>일시</th>
                     </tr>
                 </thead>
-               
+                <script>
+				    // 행을 클릭하면 해당 href 링크로 이동하는 함수
+				    function goToDetailPage(num) {
+				        window.location.href = "EA02.jsp?num=" + num;
+				    }
+				</script>
+				               
                 <tbody>
-               <%
-            if (introList != null && !introList.isEmpty()) {
-                for (Intro intro : introList) {
-        %>
-        <tr>
-            <td><%= intro.getNum() %></td>
-            <td><%= intro.getCust_name() %></td>
-            <td><%= intro.getEmail() %></td>
-            <td><%= intro.getPhone() %></td>
-            <td><%= intro.getComp_name() %></td>
-            <td><%= intro.getData_type() %></td>
-            <td><%= intro.getCoun_type() %></td>
-            <td><%= intro.getVisit_path() %></td>
-            <td><%= intro.getTime() %></td>
-        </tr>
-        <%
-                }
-            } else {
-        %>
-        <tr>
-            <td colspan="9">No data found.</td>
-        </tr>
-        <%
-            }
-        %>
-                </tbody>
+				    <% if (introList != null && !introList.isEmpty()) {
+			        for (Intro intro : introList) { %>
+			        <tr onclick="goToDetailPage(<%= intro.getNum() %>)" style="cursor: pointer;">
+			            <td><%= intro.getNum() %></td>
+			            <td><%= intro.getCust_name() %></td>
+			            <td><%= intro.getEmail() %></td>
+			            <td><%= intro.getPhone() %></td>
+			            <td><%= intro.getComp_name() %></td>
+			            <td><%= intro.getData_type() %></td>
+			            <td><%= intro.getCoun_type() %></td>
+			            <td><%= intro.getVisit_path() %></td>
+			            <td><%= intro.getTime() %></td>
+			        </tr>
+			    <% } } else { %>
+			        <tr>
+			            <td colspan="9">No data found.</td>
+			        </tr>
+			    <% } %>
+				</tbody>
                 
 
             </table>
@@ -209,24 +265,16 @@
            
         
 
-        </div>
+        	</div>
       
       
+    	</div>
     </div>
   </section>
-
+  
   <!-- end service section -->
 
-  <!-- footer section -->
-  <footer class="footer_section">
-    <div class="container">
-      <p>
-        &copy; <span id="displayYear"></span> All Rights Reserved By
-        <a href="main.html">AlgoRhythm</a>
-      </p>
-    </div>
-  </footer>
-  <!-- footer section -->
+
 
   <!-- jQery -->
   <script src="js/jquery-3.4.1.min.js"></script>

@@ -112,29 +112,32 @@ public class IntroDao {
         return count;
     }
  // 분석내역 추가 메서드
-    public void insertIntro(Intro intro) throws SQLException {
-        String sql = "INSERT INTO notice (cust_name, email, phone, comp_name, data_type, coun_type, visit_path, time, content) VALUES (?, ?, ?, ?, ?,?,?,?, ?)";
-
-        try (Connection conn = getConnection();
+    public int insertIntro(Intro intro) throws SQLException {
+    	String sql = "INSERT INTO intro_inq (cust_name, email, phone, comp_name, data_type, coun_type, visit_path, reg_date, content) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        int result = 0;
+    	try (Connection conn = getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
             pstmt.setString(1, intro.getCust_name());
             pstmt.setString(2, intro.getEmail());
             pstmt.setString(3, intro.getPhone());
-            pstmt.setString(5, intro.getComp_name());
-            pstmt.setString(6, intro.getData_type());
-            pstmt.setString(7, intro.getCoun_type());
-            pstmt.setString(8, intro.getVisit_path());
-            pstmt.setTimestamp(9, intro.getTime());
-            pstmt.setString(10, intro.getContent());
+            pstmt.setString(4, intro.getComp_name());
+            pstmt.setString(5, intro.getData_type());
+            pstmt.setString(6, intro.getCoun_type());
+            pstmt.setString(7, intro.getVisit_path());
+            pstmt.setTimestamp(8, intro.getTime());
+            pstmt.setString(9, intro.getContent());
 
-            pstmt.executeUpdate();
+            result = pstmt.executeUpdate();  // 변경된 부분: 실행 결과 반환
             logger.info("Notice inserted successfully.");
         } catch (SQLException e) {
             logger.log(Level.SEVERE, "Failed to insert notice", e);
             throw new SQLException("Failed to insert notice", e);
         }
-    }
+        	return result;  // 변경된 부분: 삽입 결과 반환
+    	}
+
 
  
 }
