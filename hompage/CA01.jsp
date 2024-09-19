@@ -1,38 +1,150 @@
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
 <%@ page import="common.Notice, common.NoticeDao" %>
 <%@ page import="java.util.List" %>
-<%@ page import="java.text.SimpleDateFormat" %>
+<%@ page import="common.EmpUser,common.EmpUserDao" %>
+
 <%
     // 세션에서 user 객체 가져오기
-    Object user = session.getAttribute("loginUser");
+    EmpUser loginUser = (EmpUser) session.getAttribute("loginUser");
 %>
 
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <title>공지사항</title>
-    <style>
-        .notice-container { width: 80%; margin: 0 auto; }
-        .notice-header { text-align: center; font-size: 24px; font-weight: bold; margin-top: 20px; }
-        .notice-subtitle { text-align: center; margin-bottom: 20px; }
-        .notice-item { border: 1px solid #ddd; padding: 15px; margin-bottom: 20px; }
-        .notice-title { font-size: 20px; font-weight: bold; margin-bottom: 10px; }
-        .notice-content { margin-top: 10px; }
-        .pagination { text-align: center; margin-top: 20px; }
-        .pagination a, .pagination span { margin: 0 5px; text-decoration: none; border: 1px solid #ddd; padding: 5px 10px; }
-        .pagination span { font-weight: bold; }
-        .write-btn { text-align: right; margin-top: 20px; margin-bottom: 20px; }
-    </style>
+  <title>공지사항</title>
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha256-mLBIhmBvigTFWPSCtvdu6a76T+3Xyt+K571hupeFLg4=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" />
   <link href="css/font-awesome.min.css" rel="stylesheet" />
   <link href="css/style.css" rel="stylesheet" />
   <link href="css/responsive.css" rel="stylesheet" />
+
+  <style>
+      body {
+          font-family: 'Poppins', sans-serif;
+          background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+          color: #333;
+      }
+      .notice-container {
+          width: 80%;
+          margin: 50px auto;
+          padding: 30px;
+          background: linear-gradient(135deg, #ffffff 0%, #f0f2f5 100%);
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+          border-radius: 10px;
+      }
+      .notice-header {
+          text-align: center;
+          font-size: 32px;
+          font-weight: 700;
+          margin-bottom: 30px;
+          color: #007bff;
+          position: relative;
+      }
+      .notice-header:before {
+          content: "📢";
+          font-size: 40px;
+          position: absolute;
+          left: -50px;
+      }
+      .notice-item {
+          border-bottom: 1px solid #ddd;
+          padding: 20px 0;
+          cursor: pointer;
+          position: relative;
+      }
+      .notice-title {
+          font-size: 18px;
+          font-weight: bold;
+          color: #007bff;
+      }
+      .notice-title:hover {
+          text-decoration: underline;
+          color: #0056b3;
+      }
+      .notice-date {
+          font-size: 14px;
+          color: #666;
+          float: right;
+      }
+      .notice-content {
+          display: none;
+          margin-top: 15px;
+          font-size: 16px;
+          color: #555;
+          position: relative;
+      }
+      .edit-button {
+          position: absolute;
+          right: 10px;
+          bottom: 10px;
+          padding: 8px 12px;
+          background-color: #007bff;
+          color: white;
+          text-decoration: none;
+          border-radius: 5px;
+          font-size: 14px;
+          transition: background-color 0.3s ease;
+      }
+      .edit-button:hover {
+          background-color: #0056b3;
+      }
+      .pagination {
+          text-align: center;
+          margin-top: 30px;
+      }
+      .pagination a, .pagination span {
+          margin: 0 5px;
+          padding: 8px 16px;
+          text-decoration: none;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+          font-size: 14px;
+      }
+      .pagination a:hover {
+          background-color: #007bff;
+          color: white;
+      }
+      .pagination span {
+          font-weight: bold;
+          color: #007bff;
+      }
+      /* 아이콘 스타일 */
+      .contact_nav a i {
+          margin-right: 8px;
+          font-size: 18px;
+          color: #007bff;
+      }
+      .contact_nav a:hover i {
+          color: #0056b3;
+      }
+      /* 그라데이션 효과 추가 */
+      .header_section {
+          background: linear-gradient(135deg, #007bff, #00d4ff);
+          padding: 10px 0;
+      }
+      .contact_nav a {
+          color: #fff;
+      }
+      .contact_nav a:hover {
+          color: #ffefba;
+      }
+  </style>
+  <script>
+      // JavaScript to toggle notice content
+      function toggleContent(id) {
+          var content = document.getElementById("content-" + id);
+          if (content.style.display === "none") {
+              content.style.display = "block";
+          } else {
+              content.style.display = "none";
+          }
+      }
+  </script>
 </head>
 
 <body class="sub_page">
@@ -45,7 +157,7 @@
             <a href="A01.jsp"><i class="fa fa-map-marker" aria-hidden="true"></i><span>Location</span></a>
             <a href="BA02.jsp"><i class="fa fa-phone" aria-hidden="true"></i><span>전화번호 : 031-224-3636</span></a>
             <a href="BA02.jsp"><i class="fa fa-envelope" aria-hidden="true"></i><span>Algo@gmail.com</span></a>
-            <% if (user != null) { %>
+            <% if (loginUser != null) { %>
               <a href="Logout"><i class="fa fa-sign-out" aria-hidden="true"></i><span>로그아웃</span></a>
             <% } else { %>
               <a href="login.jsp"><i class="fa fa-user" aria-hidden="true"></i><span>관리자</span></a>
@@ -54,38 +166,30 @@
         </div>
       </div>
   
-        <div class="header_bottom">
+      <div class="header_bottom">
         <div class="container-fluid">
-          <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <nav class="navbar navbar-expand-lg custom_nav-container">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
                 <li class="nav-item active">
                   <a class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" height="27px"></span></a>
                 </li>
-                <li class="nav-item active">
-                  <a class="nav-link" href="main.jsp">홈<span class="sr-only">(current)</span></a>
-                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="A01.jsp">회사소개</a>
                 </li>
-                
-                <!-- 공지사항 링크-->
                 <li class="nav-item">
-                    <a class="nav-link" href="CA01.jsp">공지사항</a> <!-- 비로그인 시 CA01.jsp로 이동 -->
-                </li>                
-                  
-                
+                  <a class="nav-link" href="CA01.jsp">공지사항</a>
+                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="AB_main.jsp">분석사례</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="BA01.jsp">분석</a>
+                  <a class="nav-link" href="BA01.jsp">분석</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="BA02.jsp">문의하기</a>
                 </li>                
-                <!-- Show "마이페이지" next to "공지사항" if the user is logged in -->
-                <% if (user != null) { %>
+                <% if (loginUser != null) { %>
                 <li class="nav-item">
                   <a class="nav-link" href="DA01.jsp">마이페이지</a>
                 </li>
@@ -99,63 +203,53 @@
     <!-- end header section -->
   </div>
   
-  
-  
-<div class="notice-container">
-    <!-- 공지사항 제목 -->
-    <div class="notice-header">공지사항</div>
-
-    <!-- 공지사항 설명 -->
-    <div class="notice-subtitle">알고리듬의 소식을 확인해보세요.</div>
+  <div class="notice-container">
+    <div class="notice-header">공지사항 📢</div>
 
     <% 
-        NoticeDao noticeDao = new NoticeDao();  // NoticeDao 객체 생성
+        NoticeDao noticeDao = new NoticeDao();
+        int pageSize = 5;
+        int currentPage = 1;
 
-        int pageSize = 5;  // 페이지당 공지사항 수
-        int currentPage = 1;  // 기본 페이지 번호 설정
-
-        // 현재 페이지 번호 가져오기 및 예외 처리
         String pageParam = request.getParameter("page");
         if (pageParam != null && !pageParam.isEmpty()) {
             try {
-                currentPage = Integer.parseInt(pageParam);  // 페이지 번호를 정수로 변환
+                currentPage = Integer.parseInt(pageParam);
             } catch (NumberFormatException e) {
-                currentPage = 1;  // 페이지 번호가 잘못된 경우 기본값으로 설정
+                currentPage = 1;
             }
         }
 
-        List<Notice> noticeList = noticeDao.getNoticesByPage(currentPage, pageSize);  // 해당 페이지의 공지사항 목록 가져오기
-        int totalNotices = noticeDao.getTotalNoticeCount();  // 전체 공지사항 수
-        int totalPages = (int) Math.ceil((double) totalNotices / pageSize);  // 전체 페이지 수 계산
+        List<Notice> noticeList = noticeDao.getNoticesByPage(currentPage, pageSize);
+        int totalNotices = noticeDao.getTotalNoticeCount();
+        int totalPages = (int) Math.ceil((double) totalNotices / pageSize);
+        int startIndex = (currentPage - 1) * pageSize + 1;  // 공지사항 번호 매기기
     %>
 
-    <!-- 공지사항 리스트 출력 -->
-    <% 
-        if (noticeList != null && !noticeList.isEmpty()) {
-            for (Notice notice : noticeList) { 
-    %>
-    <div class="notice-item">
-        <!-- 공지사항 제목 -->
-        <div class="notice-title"><a href="CA02.jsp?num=<%= notice.getNum() %>"><%= notice.getTitle() %></a></div>
+    <% if (noticeList != null && !noticeList.isEmpty()) { %>
+        <% for (int i = 0; i < noticeList.size(); i++) { 
+            Notice notice = noticeList.get(i); 
+        %>
+            <div class="notice-item" onclick="toggleContent('<%= notice.getNum() %>')">
+                <div class="notice-title">
+                    <%= startIndex + i %>. <%= notice.getTitle() %>
+                    <span class="notice-date"><%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(notice.getCreatedAt()) %></span>
+                </div>
+                <div class="notice-content" id="content-<%= notice.getNum() %>">
+                    <%= notice.getContent() %>
 
-        <!-- 공지사항 내용 -->
-        <div class="notice-content"><%= notice.getContent() %></div>
-    </div>
-    <% 
-            }
-        } else { 
-    %>
-    <p>공지사항이 없습니다.</p>
-    <% 
-        } 
-    %>
+                    <% if (loginUser != null) { %>
+                        <!-- 로그인한 사용자만 편집 버튼이 보이도록 처리 -->
+                        <a href="CA02.jsp?num=<%= notice.getNum() %>" class="edit-button">🖊️ 편집</a>
+                    <% } %>
 
-    <!-- 작성 버튼 -->
-    <div class="write-btn">
-        <a href="CA03.jsp">작성</a>
-    </div>
+                </div>
+            </div>
+        <% } %>
+    <% } else { %>
+        <p>공지사항이 없습니다.</p>
+    <% } %>
 
-    <!-- 페이징 처리 -->
     <div class="pagination">
         <% for (int i = 1; i <= totalPages; i++) { %>
             <% if (i == currentPage) { %>
@@ -165,8 +259,8 @@
             <% } %>
         <% } %>
     </div>
-</div>
-
+  </div>
+  
   <!-- footer section -->
   <footer class="footer_section">
     <div class="container">
@@ -175,11 +269,11 @@
   </footer>
   
   <script src="js/jquery-3.4.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
   <script src="js/bootstrap.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <script src="https://huynhhuynh.github.io/owlcarousel2-filter/dist/owlcarousel2-filter.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js" integrity="sha256-Zr3vByTlMGQhvMfgkQ5BtWRSKBGa2QlspKYJnkjZTmo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
   <script src="js/custom.js"></script>
 </body>
 </html>

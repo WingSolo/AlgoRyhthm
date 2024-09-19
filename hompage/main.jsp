@@ -89,9 +89,7 @@
                 <li class="nav-item active">
                   <a class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" height="27px"></span></a>
                 </li>
-                <li class="nav-item active">
-                  <a class="nav-link" href="main.jsp">홈<span class="sr-only">(current)</span></a>
-                </li>
+
                 <li class="nav-item">
                   <a class="nav-link" href="A01.jsp">회사소개</a>
                 </li>
