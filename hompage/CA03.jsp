@@ -145,6 +145,20 @@
         .header_section {
             background: linear-gradient(135deg, #007bff, #00d4ff);
         }
+                        /* footer 고정 및 상하 여백을 줄이는 스타일 */
+ 		 .footer_section {
+     		 position: fixed;
+    		  bottom: 0;
+    		  left: 0;
+    		  width: 100%;
+    		  background-color: #ffffff; /* 배경색 */
+    		  color: blue; /* 텍스트 색상 */
+    		  text-align: center;
+    		  padding: 5px 0; /* 상하 패딩을 작게 설정 */
+    		  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* 살짝 그림자 효과 */
+    		  z-index: 1000; /* 푸터가 다른 요소 위에 표시되도록 설정 */
+    		  }
+        
     </style>
 </head>
 
@@ -159,7 +173,7 @@
                         <a href="BA02.jsp"><i class="fa fa-phone" aria-hidden="true"></i><span>전화번호 : 031-224-3636</span></a>
                         <a href="BA02.jsp"><i class="fa fa-envelope" aria-hidden="true"></i><span>Algo@gmail.com</span></a>
                         <% if (loginUser != null) { %>
-                            <a href="Logout"><i class="fa fa-sign-out" aria-hidden="true"></i><span>로그아웃</span></a>
+                            <a href="logout.jsp"><i class="fa fa-sign-out" aria-hidden="true"></i><span>로그아웃</span></a>
                         <% } else { %>
                             <a href="login.jsp"><i class="fa fa-user" aria-hidden="true"></i><span>관리자</span></a>
                         <% } %>

@@ -4,7 +4,7 @@
 <%@ page import="java.text.SimpleDateFormat" %>
 <%
     // 세션에서 user 객체 가져오기
-    Object user = session.getAttribute("loginUser");
+    Object loginUser = session.getAttribute("loginUser");
 %>
 
 <!DOCTYPE html>
@@ -13,16 +13,14 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>회원 정보 수정 전 비밀번호 확인</title>
-  
-  <!-- Bootstrap Core CSS -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-  <!-- Font Awesome for Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <!-- Custom styles -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" />
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
   <link href="css/style.css" rel="stylesheet" />
-  <!-- Responsive styles -->
   <link href="css/responsive.css" rel="stylesheet" />
+  <title>회원 정보 수정 전 비밀번호 확인</title>
   
 <style>
     /* 기존 스타일 유지 */
@@ -102,24 +100,39 @@
         margin-bottom: 15px;
         font-size: 14px;
     }
+    
+                /* footer 고정 및 상하 여백을 줄이는 스타일 */
+ 		 .footer_section {
+     		 position: fixed;
+    		  bottom: 0;
+    		  left: 0;
+    		  width: 100%;
+    		  background-color: #ffffff; /* 배경색 */
+    		  color: blue; /* 텍스트 색상 */
+    		  text-align: center;
+    		  padding: 5px 0; /* 상하 패딩을 작게 설정 */
+    		  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* 살짝 그림자 효과 */
+    		  z-index: 1000; /* 푸터가 다른 요소 위에 표시되도록 설정 */
+    		  }
+ 
 </style>
 
 </head>
 
 <body class="sub_page">
   <div class="hero_area">
-    <!-- Header Section -->
+    <!-- header section starts -->
     <header class="header_section">
       <div class="header_top">
         <div class="container-fluid header_top_container">
           <div class="contact_nav">
-            <a href="A01.jsp"><i class="fa fa-map-marker" aria-hidden="true"></i><span> Location</span></a>
-            <a href="BA02.jsp"><i class="fa fa-phone" aria-hidden="true"></i><span> 전화번호: 031-224-3636</span></a>
-            <a href="BA02.jsp"><i class="fa fa-envelope" aria-hidden="true"></i><span> Algo@gmail.com</span></a>
-            <% if (user != null) { %>
-              <a href="Logout"><i class="fa fa-sign-out" aria-hidden="true"></i><span> 로그아웃</span></a>
+            <a href="A01.jsp"><i class="fa fa-map-marker" aria-hidden="true"></i><span>Location</span></a>
+            <a href="BA02.jsp"><i class="fa fa-phone" aria-hidden="true"></i><span>전화번호 : 031-224-3636</span></a>
+            <a href="BA02.jsp"><i class="fa fa-envelope" aria-hidden="true"></i><span>Algo@gmail.com</span></a>
+            <% if (loginUser != null) { %>
+              <a href="logout.jsp"><i class="fa fa-sign-out" aria-hidden="true"></i><span>로그아웃</span></a>
             <% } else { %>
-              <a href="login.jsp"><i class="fa fa-user" aria-hidden="true"></i><span> 관리자</span></a>
+              <a href="login.jsp"><i class="fa fa-user" aria-hidden="true"></i><span>관리자</span></a>
             <% } %>
           </div> 
         </div>
@@ -147,7 +160,7 @@
                 <li class="nav-item">
                   <a class="nav-link" href="BA02.jsp">문의하기</a>
                 </li>
-                <% if (user != null) { %>
+                <% if (loginUser != null) { %>
                   <li class="nav-item">
                     <a class="nav-link" href="DA01.jsp">마이페이지</a>
                   </li>

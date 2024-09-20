@@ -43,28 +43,15 @@
           font-weight: 700;
           margin-bottom: 30px;
           color: #007bff;
-          position: relative;
-      }
-      .notice-header:before {
-          content: "📢";
-          font-size: 40px;
-          position: absolute;
-          left: -50px;
       }
       .notice-item {
           border-bottom: 1px solid #ddd;
           padding: 20px 0;
-          cursor: pointer;
-          position: relative;
       }
       .notice-title {
           font-size: 18px;
           font-weight: bold;
           color: #007bff;
-      }
-      .notice-title:hover {
-          text-decoration: underline;
-          color: #0056b3;
       }
       .notice-date {
           font-size: 14px;
@@ -76,18 +63,14 @@
           margin-top: 15px;
           font-size: 16px;
           color: #555;
-          position: relative;
       }
       .edit-button {
-          position: absolute;
-          right: 10px;
-          bottom: 10px;
-          padding: 8px 12px;
           background-color: #007bff;
           color: white;
           text-decoration: none;
           border-radius: 5px;
-          font-size: 14px;
+          padding: 10px 20px;
+          font-size: 16px;
           transition: background-color 0.3s ease;
       }
       .edit-button:hover {
@@ -113,26 +96,28 @@
           font-weight: bold;
           color: #007bff;
       }
-      /* 아이콘 스타일 */
-      .contact_nav a i {
-          margin-right: 8px;
-          font-size: 18px;
-          color: #007bff;
+      /* 중앙에 배치할 스타일 */
+      .center-button {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          margin-top: 20px;
       }
-      .contact_nav a:hover i {
-          color: #0056b3;
-      }
-      /* 그라데이션 효과 추가 */
-      .header_section {
-          background: linear-gradient(135deg, #007bff, #00d4ff);
-          padding: 10px 0;
-      }
-      .contact_nav a {
-          color: #fff;
-      }
-      .contact_nav a:hover {
-          color: #ffefba;
-      }
+      
+        /* footer 고정 및 상하 여백을 줄이는 스타일 */
+ 	 .footer_section {
+     	 position: fixed;
+    	  bottom: 0;
+    	  left: 0;
+    	  width: 100%;
+     	 background-color: #ffffff; /* 배경색 */
+    	  color: blue; /* 텍스트 색상 */
+    	  text-align: center;
+     	 padding: 5px 0; /* 상하 패딩을 작게 설정 */
+     	 box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* 살짝 그림자 효과 */
+    	  z-index: 1000; /* 푸터가 다른 요소 위에 표시되도록 설정 */
+	  }
+      
   </style>
   <script>
       // JavaScript to toggle notice content
@@ -158,7 +143,7 @@
             <a href="BA02.jsp"><i class="fa fa-phone" aria-hidden="true"></i><span>전화번호 : 031-224-3636</span></a>
             <a href="BA02.jsp"><i class="fa fa-envelope" aria-hidden="true"></i><span>Algo@gmail.com</span></a>
             <% if (loginUser != null) { %>
-              <a href="Logout"><i class="fa fa-sign-out" aria-hidden="true"></i><span>로그아웃</span></a>
+              <a href="logout.jsp"><i class="fa fa-sign-out" aria-hidden="true"></i><span>로그아웃</span></a>
             <% } else { %>
               <a href="login.jsp"><i class="fa fa-user" aria-hidden="true"></i><span>관리자</span></a>
             <% } %>
@@ -248,6 +233,13 @@
         <% } %>
     <% } else { %>
         <p>공지사항이 없습니다.</p>
+        
+        <% if (loginUser != null) { %>
+            <!-- 공지사항이 없을 때 작성 버튼 추가 -->
+            <div class="center-button">
+                <a href="CA03.jsp" class="edit-button">공지 작성</a>
+            </div>
+        <% } %>
     <% } %>
 
     <div class="pagination">
