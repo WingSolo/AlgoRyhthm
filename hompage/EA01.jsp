@@ -51,67 +51,23 @@
 
   <title>문의 내역</title>
   <style>
-        .container01 {
-            width: 70%;
-            margin: 0 auto;
-            padding: 20px;
-            display: flex; /* 왼쪽 메뉴와 오른쪽 콘텐츠를 나란히 배치 */
-            gap: 40px; /* 왼쪽 메뉴와 오른쪽 콘텐츠 간의 간격 */
-        }
-        .sidebar {
-            width: 30%; /* 왼쪽 메뉴의 넓이 */
-            padding: 20px;
-            background-color: #f9f9f9; /* 사이드바 섹션의 배경색을 약간 회색으로 설정 */
-        }
-         .content {
-            width: 70%; /* 오른쪽 콘텐츠의 넓이 */
-            text-align: center;
-            padding: 20px; /* 콘텐츠에 패딩 추가 */
-            background-color: #fff; /* 콘텐츠 섹션의 배경색을 흰색으로 설정 */
-        }
-        
-        .button-container {
-            margin-top: 20px;
-        }
-        input[type="password"] {
-            width: 60%;
-            padding: 10px;
-            margin: 10px 0;
-        }
-        button {
-            padding: 10px 20px;
-            margin: 5px;
-        }
-        .menu-title {
-            font-size: 20px; /* 마이 메뉴 제목의 글자 크기 */
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        .menu-item {
-            margin-bottom: 10px;
-        }
-        .menu-item a {
-            text-decoration: none; /* 링크 밑줄 제거 */
-            color: #000; /* 링크 색상 */
-        }
-        .error-message {
-            color: red; /* 오류 메시지 색상 */
-            margin-bottom: 15px;
-        }
-        body {
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* 페이지가 최소한 화면 높이를 차지하도록 설정 */
-}
-
-.footer_section {
-  margin-top: auto; /* 나머지 콘텐츠 아래에 footer가 자동으로 위치하도록 설정 */
-  width: 100%;
-  background-color: #f1f1f1; /* 배경색 추가 */
-  padding: 10px 0; /* 위아래 여백 */
-  text-align: center;
-}
-    </style>
+        /* 기존 스타일 유지 */
+    .container01 {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between; /* 양쪽에 균형 맞추기 */
+        gap: 20px;
+    }
+    .sidebar {
+        width: 30%;
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-radius: 10px; /* 둥근 모서리 */
+    }
+   
+</style>
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -191,15 +147,19 @@
     </header>
     <!-- end header section -->
   </div>
-    <div class="container01">
-        <!-- 왼쪽 메뉴 섹션 -->
-        <div class="sidebar">
-            <div class="menu-title">마이 메뉴</div>
-            <div class="menu-item"><a href="DA01.jsp">정보 수정</a></div>
-            <div class="menu-item"><a href="InquiryList.jsp">문의 내역</a></div>
-        </div>
   
-
+    <div class="container01">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <div class="menu-title">마이 메뉴</div>
+      <div class="menu-item">
+        <a href="DA01.jsp"><i class="fa fa-user-edit"></i> 정보 수정</a>
+      </div>
+      <div class="menu-item">
+        <a href="DA01.jsp"><i class="fa fa-envelope"></i> 문의 내역</a>
+      </div>
+    </div>
+    
   <!-- service section -->
 
   <section class="service_section layout_padding">
@@ -214,7 +174,7 @@
       <title>게시판 리스트</title>
         <link rel ="stylesheet" href="/test/css/bootstrap.css">
     </head>
-    <body>
+
         <div class = "container">
             <table class = "table table-hover">
                 <thead>

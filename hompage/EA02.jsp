@@ -13,60 +13,24 @@
 <!DOCTYPE html>
 <html>
 <head>   <title>공지사항 확인</title>
-    <style>
-        .notice-container { width: 80%; margin: 0 auto; }
-        .notice-header { text-align: center; font-size: 24px; font-weight: bold; margin-top: 20px; }
-        .notice-subtitle { text-align: center; margin-bottom: 20px; }
-        .notice-content { margin: 20px 0; }
-        .button-group { text-align: center; margin-top: 20px; }
-        .button-group a { margin: 0 10px; text-decoration: none; padding: 8px 16px; border: 1px solid #ddd; }
-        .container01 {
-            width: 70%;
-            margin: 0 auto;
-            padding: 20px;
-            display: flex; /* 왼쪽 메뉴와 오른쪽 콘텐츠를 나란히 배치 */
-            gap: 40px; /* 왼쪽 메뉴와 오른쪽 콘텐츠 간의 간격 */
-        }
-        .sidebar {
-            width: 30%; /* 왼쪽 메뉴의 넓이 */
-            padding: 20px;
-            background-color: #f9f9f9; /* 사이드바 섹션의 배경색을 약간 회색으로 설정 */
-        }
-        .content {
-            width: 70%; /* 오른쪽 콘텐츠의 넓이 */
-            text-align: center;
-            padding: 20px; /* 콘텐츠에 패딩 추가 */
-            background-color: #fff; /* 콘텐츠 섹션의 배경색을 흰색으로 설정 */
-        }
-        .button-container {
-            margin-top: 20px;
-        }
-        input[type="password"] {
-            width: 60%;
-            padding: 10px;
-            margin: 10px 0;
-        }
-        button {
-            padding: 10px 20px;
-            margin: 5px;
-        }
-        .menu-title {
-            font-size: 20px; /* 마이 메뉴 제목의 글자 크기 */
-            font-weight: bold;
-            margin-bottom: 15px;
-        }
-        .menu-item {
-            margin-bottom: 10px;
-        }
-        .menu-item a {
-            text-decoration: none; /* 링크 밑줄 제거 */
-            color: #000; /* 링크 색상 */
-        }
-        .error-message {
-            color: red; /* 오류 메시지 색상 */
-            margin-bottom: 15px;
-        }
-    </style>
+  <style>
+        /* 기존 스타일 유지 */
+    .container01 {
+        max-width: 1000px;
+        margin: 40px auto;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between; /* 양쪽에 균형 맞추기 */
+        gap: 20px;
+    }
+    .sidebar {
+        width: 30%;
+        background-color: #f0f0f0;
+        padding: 20px;
+        border-radius: 10px; /* 둥근 모서리 */
+    }
+   
+</style>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
