@@ -90,18 +90,14 @@
                 <li class="nav-item active">
                   <a class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" height="27px"></span></a>
                 </li>
-                <li class="nav-item active">
-                  <a class="nav-link" href="main.jsp">홈<span class="sr-only">(current)</span></a>
-                </li>
                 <li class="nav-item">
                   <a class="nav-link" href="A01.jsp">회사소개</a>
                 </li>
                 
                 <!-- 공지사항 링크-->
                 <li class="nav-item">
-                    <a class="nav-link" href="CA01.jsp">공지사항</a> <!-- 비로그인 시 CA01.jsp로 이동 -->
-                </li>    
-                
+                    <a class="nav-link" href="CA01.jsp">공지사항</a>
+                </li>             
                 
                 <li class="nav-item">
                   <a class="nav-link" href="AB_main.jsp">분석사례</a>
