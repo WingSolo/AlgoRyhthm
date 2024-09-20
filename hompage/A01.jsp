@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%
     // 세션에서 user 객체 가져오기
-    Object user = session.getAttribute("loginUser");
+    Object loginUser = session.getAttribute("loginUser");
 %>
 
 
@@ -38,6 +38,23 @@
   <link href="css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
+  
+<style >
+	.footer_section {
+  		position: fixed; /* 화면 하단에 고정 */
+  		bottom: 0;
+  		left: 0;
+  		width: 100%;
+  		color: blue; /* 텍스트 색상 */
+  		text-align: center;
+  		padding: 5px 0; /* 상하 패딩을 작게 설정 */
+ 		box-shadow: none; /* 그림자 효과 제거 */
+  		background-color: transparent; /* 배경색을 없앰 */
+  		z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
+		}
+
+</style>  
+  
 </head>
 
 <body class="sub_page">
@@ -67,8 +84,8 @@
               </span>
             </a>
             <!-- Display "로그아웃" if the user is logged in, otherwise "관리자" -->
-            <% if (user != null) { %>
-              <a href="Logout">
+            <% if (loginUser != null) { %>
+              <a href="logout.jsp">
                 <i class="fa fa-sign-out" aria-hidden="true"></i>
                 <span>로그아웃</span>
               </a>
@@ -110,7 +127,7 @@
                   <a class="nav-link" href="BA02.jsp">문의하기</a>
                 </li>                
                 <!-- Show "마이페이지" next to "공지사항" if the user is logged in -->
-                <% if (user != null) { %>
+                <% if (loginUser != null) { %>
                 <li class="nav-item">
                   <a class="nav-link" href="DA01.jsp">마이페이지</a>
                 </li>

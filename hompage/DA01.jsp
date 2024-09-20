@@ -25,28 +25,29 @@
 <style>
     /* 기존 스타일 유지 */
     .container01 {
-        max-width: 900px;
-        margin: 40px auto;
+        max-width: 1600px;
+        margin: 30px auto;
         padding: 20px;
         display: flex;
-        justify-content: space-between; /* 양쪽에 균형 맞추기 */
-        gap: 40px;
+        justify-content: flex-start; /* 양쪽에 균형 맞추기 */
+        gap: 250px;
     }
+    /* 사이드바 */
     .sidebar {
-        width: 30%;
-        background-color: #f0f0f0;
+        width: 15%;
+        background: linear-gradient(135deg, #f9f9f9, #d0e1ff); /* 그라데이션 추가 */
         padding: 20px;
-        border-radius: 10px; /* 둥근 모서리 */
-    }
-    .content {
-        width: 65%;
-        background: linear-gradient(135deg, #007bff, #00c6ff); /* 그라데이션 추가 */
-        padding: 40px;
-        text-align: center;
         border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
-        color: white; /* 텍스트 색상 변경 */
     }
+	.content {
+    	width: 45%; /* 기존 65%에서 50%로 축소 */
+   		background: linear-gradient(135deg, #007bff, #00c6ff); /* 그라데이션 추가 */
+    	padding: 40px;
+    	text-align: center;
+    	border-radius: 10px;
+    	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    	color: white; /* 텍스트 색상 변경 */
+}
     h2 {
         font-size: 24px;
         font-weight: bold;
@@ -180,7 +181,7 @@
         <a href="DA01.jsp">✏️ 정보 수정</a>
       </div>
       <div class="menu-item">
-        <a href="DA01.jsp"><i class="fa fa-envelope"></i> 문의 내역</a>
+        <a href="EA01.jsp"><i class="fa fa-envelope"></i> 문의 내역</a>
       </div>
     </div>
 

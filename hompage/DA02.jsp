@@ -3,16 +3,16 @@
 <%@ page session="true" %> <!-- 세션 활성화 -->
 
 <%
-    // 로그인된 사용자 정보 가져오기
-    EmpUser loginUser = (EmpUser) session.getAttribute("loginUser");
-    if (loginUser == null) { // 로그인이 안 된 상태일 경우
-        response.sendRedirect("login.jsp"); // 로그인 페이지로 리디렉션
-        return;
-    }
+// 로그인된 사용자 정보 가져오기
+EmpUser loginUser = (EmpUser) session.getAttribute("loginUser");
+if (loginUser == null) { // 로그인이 안 된 상태일 경우
+    response.sendRedirect("login.jsp"); // 로그인 페이지로 리디렉션
+    return;
+}
 
-    // 사용자 정보를 DB에서 불러오기
-    EmpUserDao userDao = new EmpUserDao();
-    EmpUser userInfo = userDao.getEmpUserById(loginUser.getEmp_id());
+// 사용자 정보를 DB에서 불러오기
+EmpUserDao userDao = new EmpUserDao();
+EmpUser userInfo = userDao.getEmpUserById(loginUser.getEmp_id());
 %>
 
 <!DOCTYPE html>
@@ -33,17 +33,18 @@
 <style>
     /* 전체 컨테이너 */
     .container01 {
-        max-width: 900px;
-        margin: 40px auto;
+        max-width: 1600px;
+        margin: 25px auto;
         padding: 20px;
         display: flex;
         justify-content: space-between;
-        gap: 40px;
+        gap: 20px;
+        height: auto;
     }
 
     /* 사이드바 */
     .sidebar {
-        width: 25%;
+        width: 15%;
         background: linear-gradient(135deg, #f9f9f9, #d0e1ff); /* 그라데이션 추가 */
         padding: 20px;
         border-radius: 10px;
@@ -80,16 +81,18 @@
     .content {
         width: 70%;
         background: linear-gradient(135deg, #007bff, #00c6ff); /* 그라데이션 추가 */
-        padding: 40px;
+        padding: 30px;
         border-radius: 10px;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         color: white;
+        max-height: 76vh;
+  
     }
 
     .content h2 {
         font-size: 24px;
         font-weight: bold;
-        margin-bottom: 20px;
+        margin-bottom: 18px;
         color: #ffffff;
     }
 
@@ -215,7 +218,7 @@
     <div class="sidebar">
       <div class="menu-title">마이페이지</div>
       <div class="menu-item">
-        <a href="DA02.jsp">✏️ 정보 수정</a>
+        <a href="DA01.jsp">✏️ 정보 수정</a>
       </div>
       <div class="menu-item">
         <a href="EA01.jsp"><i class="fa fa-envelope"></i> 문의 내역</a>
