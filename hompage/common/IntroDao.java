@@ -113,7 +113,7 @@ public class IntroDao {
     }
  // 분석내역 추가 메서드
     public int insertIntro(Intro intro) throws SQLException {
-    	String sql = "INSERT INTO intro_inq (cust_name, email, phone, comp_name, data_type, coun_type, visit_path, reg_date, content) "
+    	String sql = "INSERT INTO intro_inq (cust_name, email, phone, comp_name, data_type, coun_type, visit_path, time, content) "
                 + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         int result = 0;
     	try (Connection conn = getConnection();
