@@ -28,138 +28,137 @@
     <link href="css/style.css" rel="stylesheet" />
     <link href="css/responsive.css" rel="stylesheet" />
 
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-        }
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #ffffff; /* 전체 배경을 흰색으로 설정 */
+    }
 
-        .form-container {
-            width: 60%;
-            margin: 50px auto;
-            padding: 30px;
-            background-color: #fff;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
+    .form-container {
+        width: 60%;
+        margin: 50px auto;
+        padding: 30px;
+        background: linear-gradient(135deg, #ffffff 0%, #f0f2f5 100%); /* 창에 그라데이션 적용 */
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
 
-        .form-container h2 {
-            text-align: center;
-            font-size: 28px;
-            margin-bottom: 30px;
-            font-weight: 600;
-            color: #333;
-            position: relative;
-        }
+    .form-container h2 {
+        text-align: center;
+        font-size: 28px;
+        margin-bottom: 30px;
+        font-weight: 600;
+        color: #333;
+        position: relative;
+    }
 
-        .form-container h2::before {
-            content: "📝";
-            position: absolute;
-            left: -40px;
-            font-size: 32px;
-        }
+    .form-container h2::before {
+        content: "📝";
+        position: absolute;
+        left: -40px;
+        font-size: 32px;
+    }
 
-        .form-group {
-            margin-bottom: 20px;
-        }
+    .form-group {
+        margin-bottom: 20px;
+    }
 
-        label {
-            font-weight: bold;
-            margin-bottom: 8px;
-            display: block;
-            color: #007bff;
-        }
+    label {
+        font-weight: bold;
+        margin-bottom: 8px;
+        display: block;
+        color: #007bff;
+    }
 
-        input[type="text"],
-        textarea {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid #ced4da;
-            border-radius: 10px;
-            font-size: 16px;
-            color: #495057;
-            background-color: #f9fafb;
-            transition: border-color 0.3s ease;
-        }
+    input[type="text"],
+    textarea {
+        width: 100%;
+        padding: 15px;
+        border: 1px solid #ced4da;
+        border-radius: 10px;
+        font-size: 16px;
+        color: #495057;
+        background-color: #f9fafb;
+        transition: border-color 0.3s ease;
+    }
 
-        input[type="text"]:focus,
-        textarea:focus {
-            border-color: #007bff;
-            outline: none;
-            box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
-        }
+    input[type="text"]:focus,
+    textarea:focus {
+        border-color: #007bff;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+    }
 
-        textarea {
-            height: 200px;
-        }
+    textarea {
+        height: 200px;
+    }
 
-        .submit-btn {
-            text-align: right;
-            margin-top: 30px;
-        }
+    .submit-btn {
+        text-align: right;
+        margin-top: 30px;
+    }
 
-        .submit-btn button {
-            background-color: #28a745;
-            color: white;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
+    .submit-btn button {
+        background-color: #28a745;
+        color: white;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 8px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
 
-        .submit-btn button:hover {
-            background-color: #218838;
-        }
+    .submit-btn button:hover {
+        background-color: #218838;
+    }
 
-        .submit-btn a {
-            background-color: #6c757d;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            margin-left: 10px;
-            transition: background-color 0.3s ease;
-            display: inline-block;
-        }
+    .submit-btn a {
+        background-color: #6c757d;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        text-decoration: none;
+        margin-left: 10px;
+        transition: background-color 0.3s ease;
+        display: inline-block;
+    }
 
-        .submit-btn a:hover {
-            background-color: #5a6268;
-        }
+    .submit-btn a:hover {
+        background-color: #5a6268;
+    }
 
-        /* Custom styles for the page */
-        .container-fluid.header_top_container {
-            padding: 10px 0;
-        }
+    .container-fluid.header_top_container {
+        padding: 10px 0;
+    }
 
-        .contact_nav a {
-            color: #fff;
-            margin-right: 15px;
-        }
+    .contact_nav a {
+        color: #fff;
+        margin-right: 15px;
+    }
 
-        .contact_nav a:hover {
-            color: #ffefba;
-        }
+    .contact_nav a:hover {
+        color: #ffefba;
+    }
 
-        .header_section {
-            background: linear-gradient(135deg, #007bff, #00d4ff);
-        }
-                        /* footer 고정 및 상하 여백을 줄이는 스타일 */
- 		 .footer_section {
-     		 position: fixed;
-    		  bottom: 0;
-    		  left: 0;
-    		  width: 100%;
-    		  background-color: #ffffff; /* 배경색 */
-    		  color: blue; /* 텍스트 색상 */
-    		  text-align: center;
-    		  padding: 5px 0; /* 상하 패딩을 작게 설정 */
-    		  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* 살짝 그림자 효과 */
-    		  z-index: 1000; /* 푸터가 다른 요소 위에 표시되도록 설정 */
-    		  }
-        
-    </style>
+    .header_section {
+        background: linear-gradient(135deg, #007bff, #00d4ff);
+    }
+
+	.footer_section {
+  		position: fixed; /* 화면 하단에 고정 */
+  		bottom: 0;
+  		left: 0;
+  		width: 100%;
+  		color: blue; /* 텍스트 색상 */
+  		text-align: center;
+  		padding: 5px 0; /* 상하 패딩을 작게 설정 */
+ 		box-shadow: none; /* 그림자 효과 제거 */
+  		background-color: transparent; /* 배경색을 없앰 */
+  		z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
+		}
+</style>
+
 </head>
 
 <body class="sub_page">

@@ -1,8 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<%@ page import="common.EmpUser,common.EmpUserDao" %>
 
 <%
     // 세션에서 user 객체 가져오기
-    Object user = session.getAttribute("loginUser");
+    EmpUser loginUser = (EmpUser) session.getAttribute("loginUser");
 %>
 
 <!DOCTYPE html>
@@ -11,7 +12,7 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>관리자 로그인</title>
+  <title>로그인</title>
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
@@ -23,50 +24,46 @@
   <!-- Custom CSS for more modern design -->
   <style>
     body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-      color: #333;
-    }
+    	font-family: 'Poppins', sans-serif;
+   		background: #ffffff; /* 바탕화면을 흰색으로 변경 */
+    	color: #333;
+  	}
 
-    .contact_nav a {
-      font-weight: 600;
-      color: #fff;
-    }
+  	.login_form {
+    	background: linear-gradient(135deg, #ffffff 0%, #f1f1f1 100%); /* 로그인 창에 흰색 그라디언트 적용 */
+    	padding: 30px;
+    	border-radius: 10px;
+    	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    	text-align: center;
+  	}
 
-    .login_form {
-      background-color: #ffffff;
-      padding: 30px;
-      border-radius: 10px;
-      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-      text-align: center;
-    }
+  	.form-control {
+    	border-radius: 10px;
+    	border: 2px solid #ced4da;
+    	padding: 12px 20px;
+    	font-size: 16px;
+  		}
 
-    .form-control {
-      border-radius: 10px;
-      border: 2px solid #ced4da;
-      padding: 12px 20px;
-      font-size: 16px;
-    }
+  	.form-group {
+    	margin-bottom: 20px;
+  	}
 
-    .form-group {
-      margin-bottom: 20px;
-    }
+  	.btn {
+    	background: linear-gradient(135deg, #007bff 0%, #00d4ff 100%);
+    	color: white;
+    	padding: 12px 25px;
+    	border-radius: 30px;
+    	border: none;
+    	font-size: 16px;
+    	width: 100%;
+    	transition: background-color 0.3s ease;
+    	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+  	}
 
-    .btn {
-      background: linear-gradient(135deg, #007bff 0%, #00d4ff 100%);
-      color: white;
-      padding: 12px 25px;
-      border-radius: 30px;
-      border: none;
-      font-size: 16px;
-      width: 100%;
-      transition: background-color 0.3s ease;
-      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
-    }
+  	.btn:hover {
+    	background: linear-gradient(135deg, #0056b3 0%, #009cff 100%);
+  	}
 
-    .btn:hover {
-      background: linear-gradient(135deg, #0056b3 0%, #009cff 100%);
-    }
 
     .heading_container h2 {
       font-size: 36px;
@@ -99,17 +96,6 @@
       text-decoration: underline;
     }
 
-    footer {
-      background-color: #007bff;
-      padding: 20px 0;
-      text-align: center;
-      color: white;
-    }
-
-    footer p {
-      margin: 0;
-      font-size: 14px;
-    }
 
     .contact_nav a i {
       margin-right: 8px;
@@ -146,19 +132,19 @@
       box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
     }
     
-                        /* footer 고정 및 상하 여백을 줄이는 스타일 */
- 		 .footer_section {
-     		 position: fixed;
-    		  bottom: 0;
-    		  left: 0;
-    		  width: 100%;
-    		  background-color: #ffffff; /* 배경색 */
-    		  color: blue; /* 텍스트 색상 */
-    		  text-align: center;
-    		  padding: 5px 0; /* 상하 패딩을 작게 설정 */
-    		  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* 살짝 그림자 효과 */
-    		  z-index: 1000; /* 푸터가 다른 요소 위에 표시되도록 설정 */
-    		  }
+	.footer_section {
+  		position: fixed; /* 화면 하단에 고정 */
+  		bottom: 0;
+  		left: 0;
+  		width: 100%;
+  		color: blue; /* 텍스트 색상 */
+  		text-align: center;
+  		padding: 5px 0; /* 상하 패딩을 작게 설정 */
+ 		box-shadow: none; /* 그림자 효과 제거 */
+  		background-color: transparent; /* 배경색을 없앰 */
+  		z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
+		}
+
 
   </style>
 </head>
@@ -173,7 +159,7 @@
             <a href="A01.jsp"><i class="fa fa-map-marker" aria-hidden="true"></i><span>Location</span></a>
             <a href="BA02.jsp"><i class="fa fa-phone" aria-hidden="true"></i><span>전화번호 : 031-224-3636</span></a>
             <a href="BA02.jsp"><i class="fa fa-envelope" aria-hidden="true"></i><span>Algo@gmail.com</span></a>
-            <% if (user != null) { %>
+            <% if (loginUser != null) { %>
               <a href="logout.jsp"><i class="fa fa-sign-out" aria-hidden="true"></i><span>로그아웃</span></a>
             <% } else { %>
               <a href="login.jsp"><i class="fa fa-user" aria-hidden="true"></i><span>관리자</span></a>
@@ -205,7 +191,7 @@
                 <li class="nav-item">
                   <a class="nav-link" href="BA02.jsp">문의하기</a>
                 </li>                
-                <% if (user != null) { %>
+                <% if (loginUser != null) { %>
                 <li class="nav-item">
                   <a class="nav-link" href="DA01.jsp">마이페이지</a>
                 </li>
@@ -223,7 +209,7 @@
   <section class="contact_section layout_padding">
     <div class="container">
       <div class="heading_container heading_center">
-        <h2>관리자 <span>로그인</span></h2>
+        <h2> 관리자 <span>로그인</span></h2>
       </div>
       <div class="row">
         <div class="col-md-6 offset-md-3">
@@ -241,9 +227,7 @@
               <div class="form-group">
                 <a href="#">🔑 비밀번호 찾기</a>
               </div>
-              <c:if test="${not empty param.error}">
-                <p style="color: red;">${param.error}</p>
-              </c:if>
+
             </form>
           </div>
         </div>
@@ -254,9 +238,13 @@
   <!-- footer section -->
   <footer class="footer_section">
     <div class="container">
-      <p>&copy; <span id="displayYear"></span> All Rights Reserved By <a href="main.jsp">AlgoRhythm</a></p>
+      <p>
+        &copy; <span id="displayYear"></span> All Rights Reserved By
+        <a href="main.html">AlgoRhythm</a>
+      </p>
     </div>
   </footer>
+  <!-- footer section -->
   
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>

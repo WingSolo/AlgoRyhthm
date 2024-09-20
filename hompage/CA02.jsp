@@ -66,128 +66,125 @@
   <link href="css/style.css" rel="stylesheet" />
   <link href="css/responsive.css" rel="stylesheet" />
 
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-        }
-        .form-container {
-            width: 70%;
-            margin: 50px auto;
-            padding: 30px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            font-size: 28px;
-            font-weight: bold;
-            color: #333;
-            text-align: center;
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        h2:before {
-            content: "✏️";
-            font-size: 24px;
-            margin-right: 10px;
-        }
-        .form-group {
-            margin-bottom: 20px;
-        }
-        label {
-            font-weight: bold;
-            margin-bottom: 5px;
-            display: block;
-            color: #007bff;
-        }
-        input[type="text"], textarea {
-            width: 100%;
-            padding: 15px;
-            border: 1px solid #ced4da;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        textarea {
-            height: 300px;
-        }
-        .submit-btn {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .submit-btn button {
-            background-color: #28a745;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-        .submit-btn button:hover {
-            background-color: #218838;
-        }
-        .button-group {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 20px;
-        }
-        .button-group a {
-            background-color: #007bff;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            text-decoration: none;
-            transition: background-color 0.3s ease;
-            text-align: center;
-            width: 22%; /* 버튼 너비 조정 */
-        }
-        .button-group a:hover {
-            background-color: #0056b3;
-        }
-        .button-group a:first-child:before {
-            content: "❌";
-            margin-right: 5px;
-        }
-        .button-group a:nth-child(2):before {
-            content: "📝";
-            margin-right: 5px;
-        }
-        .button-group a:last-child:before {
-            content: "📋";
-            margin-right: 5px;
-        }
-        .header_section {
-            background: linear-gradient(135deg, #007bff, #00d4ff);
-            padding: 10px 0;
-        }
-        .contact_nav a {
-            color: #fff;
-        }
-        .contact_nav a:hover {
-            color: #ffefba;
-        }
-        
-                /* footer 고정 및 상하 여백을 줄이는 스타일 */
- 		 .footer_section {
-     		 position: fixed;
-    		  bottom: 0;
-    		  left: 0;
-    		  width: 100%;
-    		  background-color: #ffffff; /* 배경색 */
-    		  color: blue; /* 텍스트 색상 */
-    		  text-align: center;
-    		  padding: 5px 0; /* 상하 패딩을 작게 설정 */
-    		  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* 살짝 그림자 효과 */
-    		  z-index: 1000; /* 푸터가 다른 요소 위에 표시되도록 설정 */
-    		  }
-        
-    </style>
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #ffffff; /* 전체 배경을 완전 흰색으로 설정 */
+        color: #333;
+    }
+    
+    .form-container {
+        width: 70%;
+        margin: 50px auto;
+        padding: 30px;
+        background: linear-gradient(135deg, #ffffff 0%, #f0f2f5 100%); /* 창에 그라디언트 적용 */
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h2 {
+        font-size: 28px;
+        font-weight: bold;
+        color: #333;
+        text-align: center;
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    h2:before {
+        content: "✏️";
+        font-size: 24px;
+        margin-right: 10px;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+        color: #007bff;
+    }
+
+    input[type="text"], textarea {
+        width: 100%;
+        padding: 15px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    textarea {
+        height: 300px;
+    }
+
+    .button-group {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .button-group button, .button-group a {
+        background-color: #007bff;
+        color: white;
+        padding: 8px 15px; /* 버튼 크기 줄이기 */
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        margin: 0 5px; /* 버튼 간격 조정 */
+    }
+
+    .button-group button:hover, .button-group a:hover {
+        background-color: #0056b3;
+    }
+
+    .submit-btn button {
+        background-color: #28a745;
+        color: white;
+        padding: 8px 15px;
+        border: none;
+        border-radius: 5px;
+        font-size: 14px;
+        cursor: pointer;
+        margin-right: 10px; /* 간격 추가 */
+    }
+
+    .submit-btn button:hover {
+        background-color: #218838;
+    }
+
+    .header_section {
+        background: linear-gradient(135deg, #007bff, #00d4ff);
+        padding: 10px 0;
+    }
+
+    .contact_nav a {
+        color: #fff;
+    }
+
+    .contact_nav a:hover {
+        color: #ffefba;
+    }
+
+	.footer_section {
+  		position: fixed; /* 화면 하단에 고정 */
+  		bottom: 0;
+  		left: 0;
+  		width: 100%;
+  		color: blue; /* 텍스트 색상 */
+  		text-align: center;
+  		padding: 5px 0; /* 상하 패딩을 작게 설정 */
+ 		box-shadow: none; /* 그림자 효과 제거 */
+  		background-color: transparent; /* 배경색을 없앰 */
+  		z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
+		}
+
+</style>
 
 </head>
 
@@ -260,17 +257,14 @@
                 <label for="content">내용:</label>
                 <textarea id="content" name="content" rows="5" required><%= notice.getContent() %></textarea>
             </div>
-            <div class="submit-btn">
+            <div class="button-group">
                 <button type="submit">수정 완료</button>
+                <a href="CA05.jsp?num=<%= notice.getNum() %>">삭제</a>
+                <a href="CA01.jsp">목록으로</a>
             </div>
         </form>
-
-        <div class="button-group">
-            <a href="CA05.jsp?num=<%= notice.getNum() %>">삭제</a>
-            <a href="CA03.jsp">작성</a> <!-- 작성 버튼이 CA03.jsp로 이동 -->
-            <a href="CA01.jsp">목록으로</a>
-        </div>
     </div>
+
   <!-- footer section -->
   <footer class="footer_section">
     <div class="container">

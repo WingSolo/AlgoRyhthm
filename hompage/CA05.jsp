@@ -66,110 +66,111 @@
     <link href="css/style.css" rel="stylesheet" />
     
     <!-- 그라데이션 스타일 및 이모티콘 추가 -->
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-            color: #333;
-        }
+<style>
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #ffffff; /* 전체 배경을 흰색으로 설정 */
+        color: #333;
+    }
 
-        .message-container {
-            width: 60%;
-            margin: 80px auto;
-            text-align: center;
-            padding: 30px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
+    .message-container {
+        width: 60%;
+        margin: 80px auto;
+        text-align: center;
+        padding: 30px;
+        background: linear-gradient(135deg, #ffffff 0%, #f0f2f5 100%); /* 창에 그라데이션 적용 */
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
 
-        .message-container h2 {
-            font-size: 28px;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-        }
+    .message-container h2 {
+        font-size: 28px;
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 20px;
+        position: relative;
+        display: inline-block;
+    }
 
-        .message-container h2::before {
-            content: "❌";
-            position: absolute;
-            left: -50px;
-            font-size: 32px;
-        }
+    .message-container h2::before {
+        content: "❌";
+        position: absolute;
+        left: -50px;
+        font-size: 32px;
+    }
 
-        .message-container p {
-            font-size: 18px;
-            color: #555;
-            margin-bottom: 30px;
-        }
+    .message-container p {
+        font-size: 18px;
+        color: #555;
+        margin-bottom: 30px;
+    }
 
-        .button-group {
-            margin-top: 20px;
-            display: flex;
-            justify-content: center;
-        }
+    .button-group {
+        margin-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
 
-        .button-group a {
-            text-decoration: none;
-            padding: 10px 30px;
-            font-size: 16px;
-            border-radius: 8px;
-            margin: 0 10px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-        }
+    .button-group a {
+        text-decoration: none;
+        padding: 10px 30px;
+        font-size: 16px;
+        border-radius: 8px;
+        margin: 0 10px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-        .button-group a.delete-btn {
-            background-color: #dc3545;
-            color: white;
-            border: 1px solid #dc3545;
-        }
+    .button-group a.delete-btn {
+        background-color: #dc3545;
+        color: white;
+        border: 1px solid #dc3545;
+    }
 
-        .button-group a.cancel-btn {
-            background-color: #6c757d;
-            color: white;
-            border: 1px solid #6c757d;
-        }
+    .button-group a.cancel-btn {
+        background-color: #6c757d;
+        color: white;
+        border: 1px solid #6c757d;
+    }
 
-        .button-group a i {
-            margin-right: 8px;
-        }
+    .button-group a i {
+        margin-right: 8px;
+    }
 
-        .button-group a:hover {
-            opacity: 0.9;
-        }
+    .button-group a:hover {
+        opacity: 0.9;
+    }
 
-        /* 헤더 스타일 */
-        .header_section {
-            background: linear-gradient(135deg, #007bff, #00d4ff);
-            padding: 10px 0;
-        }
+    /* 헤더 스타일 */
+    .header_section {
+        background: linear-gradient(135deg, #007bff, #00d4ff);
+        padding: 10px 0;
+    }
 
-        .contact_nav a {
-            color: #fff;
-            margin-right: 15px;
-        }
+    .contact_nav a {
+        color: #fff;
+        margin-right: 15px;
+    }
 
-        .contact_nav a:hover {
-            color: #ffefba;
-        }
-                /* footer 고정 및 상하 여백을 줄이는 스타일 */
- 		 .footer_section {
-     		 position: fixed;
-    		  bottom: 0;
-    		  left: 0;
-    		  width: 100%;
-    		  background-color: #ffffff; /* 배경색 */
-    		  color: blue; /* 텍스트 색상 */
-    		  text-align: center;
-    		  padding: 5px 0; /* 상하 패딩을 작게 설정 */
-    		  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* 살짝 그림자 효과 */
-    		  z-index: 1000; /* 푸터가 다른 요소 위에 표시되도록 설정 */
-    		  }
-    </style>
+    .contact_nav a:hover {
+        color: #ffefba;
+    }
+
+	.footer_section {
+  		position: fixed; /* 화면 하단에 고정 */
+  		bottom: 0;
+  		left: 0;
+  		width: 100%;
+  		color: blue; /* 텍스트 색상 */
+  		text-align: center;
+  		padding: 5px 0; /* 상하 패딩을 작게 설정 */
+ 		box-shadow: none; /* 그림자 효과 제거 */
+  		background-color: transparent; /* 배경색을 없앰 */
+  		z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
+		}
+</style>
+
 </head>
 
 <body class="sub_page">

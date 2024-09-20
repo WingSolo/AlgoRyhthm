@@ -101,19 +101,18 @@
         font-size: 14px;
     }
     
-                /* footer 고정 및 상하 여백을 줄이는 스타일 */
- 		 .footer_section {
-     		 position: fixed;
-    		  bottom: 0;
-    		  left: 0;
-    		  width: 100%;
-    		  background-color: #ffffff; /* 배경색 */
-    		  color: blue; /* 텍스트 색상 */
-    		  text-align: center;
-    		  padding: 5px 0; /* 상하 패딩을 작게 설정 */
-    		  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1); /* 살짝 그림자 효과 */
-    		  z-index: 1000; /* 푸터가 다른 요소 위에 표시되도록 설정 */
-    		  }
+	.footer_section {
+  		position: fixed; /* 화면 하단에 고정 */
+  		bottom: 0;
+  		left: 0;
+  		width: 100%;
+  		color: blue; /* 텍스트 색상 */
+  		text-align: center;
+  		padding: 5px 0; /* 상하 패딩을 작게 설정 */
+ 		box-shadow: none; /* 그림자 효과 제거 */
+  		background-color: transparent; /* 배경색을 없앰 */
+  		z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
+		}
  
 </style>
 
@@ -178,7 +177,7 @@
     <div class="sidebar">
       <div class="menu-title">마이 메뉴</div>
       <div class="menu-item">
-        <a href="DA01.jsp"><i class="fa fa-user-edit"></i> 정보 수정</a>
+        <a href="DA01.jsp">✏️ 정보 수정</a>
       </div>
       <div class="menu-item">
         <a href="DA01.jsp"><i class="fa fa-envelope"></i> 문의 내역</a>
