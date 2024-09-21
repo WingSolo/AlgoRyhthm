@@ -56,19 +56,8 @@
       font-size: 18px;
       font-weight: bold;
       color: #007bff;
-  }
-
-  .notice-date {
-      font-size: 14px;
-      color: #666;
-      float: right;
-  }
-
-  .notice-content {
-      display: none;
-      margin-top: 15px;
-      font-size: 16px;
-      color: #555;
+      cursor: pointer; /* 커서를 손 모양으로 */
+      text-decoration: none;
   }
 
   .notice-title:hover {
@@ -76,18 +65,10 @@
       border-radius: 5px;
   }
 
-  .edit-button {
-      background-color: #007bff;
-      color: white;
-      text-decoration: none;
-      border-radius: 5px;
-      padding: 10px 20px;
-      font-size: 16px;
-      transition: background-color 0.3s ease;
-  }
-
-  .edit-button:hover {
-      background-color: #0056b3;
+  .notice-date {
+      font-size: 14px;
+      color: #666;
+      float: right;
   }
 
   .pagination {
@@ -122,32 +103,40 @@
       margin-top: 20px;
   }
   
-	.footer_section {
-  		position: fixed; /* 화면 하단에 고정 */
-  		bottom: 0;
-  		left: 0;
-  		width: 100%;
-  		color: blue; /* 텍스트 색상 */
-  		text-align: center;
-  		padding: 5px 0; /* 상하 패딩을 작게 설정 */
- 		box-shadow: none; /* 그림자 효과 제거 */
-  		background-color: transparent; /* 배경색을 없앰 */
-  		z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
-		}
+  /* 공지 작성 버튼 스타일 */
+  .edit-button {
+      background-color: #28a745;
+      color: white;
+      padding: 12px 25px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px; /* 버튼을 둥글게 */
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+  }
 
+  .edit-button:hover {
+      background-color: #218838; /* 호버 시 더 진한 초록색 */
+      transform: scale(1.05); /* 버튼을 약간 키움 */
+  }
+  
+  .footer_section {
+      position: fixed; /* 화면 하단에 고정 */
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      color: blue; /* 텍스트 색상 */
+      text-align: center;
+      padding: 5px 0; /* 상하 패딩을 작게 설정 */
+      box-shadow: none; /* 그림자 효과 제거 */
+      background-color: transparent; /* 배경색을 없앰 */
+      z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
+  }
 </style>
 
-  <script>
-      // JavaScript to toggle notice content
-      function toggleContent(id) {
-          var content = document.getElementById("content-" + id);
-          if (content.style.display === "none") {
-              content.style.display = "block";
-          } else {
-              content.style.display = "none";
-          }
-      }
-  </script>
 </head>
 
 <body class="sub_page">
@@ -233,20 +222,12 @@
         <% for (int i = 0; i < noticeList.size(); i++) { 
             Notice notice = noticeList.get(i); 
         %>
-            <div class="notice-item" onclick="toggleContent('<%= notice.getNum() %>')">
-                <div class="notice-title">
+            <div class="notice-item">
+                <!-- 제목을 클릭하면 CA02.jsp로 이동하도록 설정 -->
+                <a href="CA02.jsp?num=<%= notice.getNum() %>" class="notice-title">
                     <%= startIndex + i %>. <%= notice.getTitle() %>
-                    <span class="notice-date"><%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(notice.getCreatedAt()) %></span>
-                </div>
-                <div class="notice-content" id="content-<%= notice.getNum() %>">
-                    <%= notice.getContent() %>&nbsp;&nbsp;&nbsp;
-
-                    <% if (loginUser != null) { %>
-                        <!-- 로그인한 사용자만 편집 버튼이 보이도록 처리 -->
-                        <a href="CA02.jsp?num=<%= notice.getNum() %>" class="edit-button">🖊️ 편집</a>
-                    <% } %>
-
-                </div>
+                </a>
+                <span class="notice-date"><%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(notice.getCreatedAt()) %></span>
             </div>
         <% } %>
     <% } else { %>

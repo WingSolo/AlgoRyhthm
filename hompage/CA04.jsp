@@ -5,6 +5,11 @@
 <%
     // 세션에서 user 객체 가져오기
     EmpUser loginUser = (EmpUser) session.getAttribute("loginUser");
+    
+    if (loginUser == null) { // 로그인이 안 된 상태일 경우 로그인 페이지로 이동
+        response.sendRedirect("login.jsp");
+        return;
+    }
 
     // 공지사항 번호 가져오기
     String numStr = request.getParameter("num");
@@ -20,6 +25,13 @@
 
             if (notice == null) {
                 out.println("<p>해당 번호의 공지사항이 존재하지 않습니다.</p>");
+                out.println("<a href='CA01.jsp'>목록으로 돌아가기</a>");
+                return;
+            }
+
+            // 수정 권한 확인 (공지사항 작성자만 수정 가능)
+            if (!notice.getEmpId().equals(loginUser.getEmp_id())) {
+                out.println("<p>수정 권한이 없습니다.</p>");
                 out.println("<a href='CA01.jsp'>목록으로 돌아가기</a>");
                 return;
             }
@@ -45,7 +57,7 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>공지사항 확인</title>
+  <title>공지사항 수정</title>
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
@@ -82,7 +94,7 @@
     }
 
     h2:before {
-        content: "🔍";
+        content: "✏️";
         font-size: 24px;
         margin-right: 10px;
     }
@@ -111,24 +123,23 @@
     }
 
     .button-group {
-        display: flex;
-        justify-content: center; /* 중앙 정렬 */
-        gap: 10px; /* 버튼 사이 간격 추가 */
+        text-align: center;
         margin-top: 20px;
     }
 
-    .button-group a {
+    .button-group button, .button-group a {
         background-color: #007bff;
         color: white;
-        padding: 8px 15px;
+        padding: 8px 15px; /* 버튼 크기 줄이기 */
         border: none;
         border-radius: 5px;
         font-size: 14px;
         text-decoration: none;
         transition: background-color 0.3s ease;
+        margin: 0 5px; /* 버튼 간격 조정 */
     }
 
-    .button-group a:hover {
+    .button-group button:hover, .button-group a:hover {
         background-color: #0056b3;
     }
 
@@ -160,18 +171,18 @@
         color: #ffefba;
     }
 
-    .footer_section {
-        position: fixed; /* 화면 하단에 고정 */
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        color: blue; /* 텍스트 색상 */
-        text-align: center;
-        padding: 5px 0; /* 상하 패딩을 작게 설정 */
-        box-shadow: none; /* 그림자 효과 제거 */
-        background-color: transparent; /* 배경색을 없앰 */
-        z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
-    }
+	.footer_section {
+  		position: fixed; /* 화면 하단에 고정 */
+  		bottom: 0;
+  		left: 0;
+  		width: 100%;
+  		color: blue; /* 텍스트 색상 */
+  		text-align: center;
+  		padding: 5px 0; /* 상하 패딩을 작게 설정 */
+ 		box-shadow: none; /* 그림자 효과 제거 */
+  		background-color: transparent; /* 배경색을 없앰 */
+  		z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
+		}
 
 </style>
 
@@ -235,21 +246,23 @@
   </div>
   
     <div class="form-container">
-        <h2>공지사항 확인</h2>
-        <div class="form-group">
-            <label for="title">제목:</label>
-            <input type="text" id="title" name="title" value="<%= notice.getTitle() %>" readonly>
-        </div>
-        <div class="form-group">
-            <label for="content">내용:</label>
-            <textarea id="content" name="content" rows="5" readonly><%= notice.getContent() %></textarea>
-        </div>
-        <div class="button-group">
-            <% if (loginUser != null && notice.getEmpId().equals(loginUser.getEmp_id())) { %> <!-- 로그인한 사용자에게만 편집 버튼 보이기 -->
-                <a href="CA04.jsp?num=<%= notice.getNum() %>" class="btn btn-primary">편집</a>
-            <% } %>
-            <a href="CA01.jsp" class="btn btn-secondary">목록으로</a> <!-- 목록으로 버튼 -->
-        </div>
+        <h2>공지사항 수정</h2>
+        <form action="UpdateNoticeServlet" method="post">
+            <input type="hidden" name="num" value="<%= notice.getNum() %>">
+            <div class="form-group">
+                <label for="title">제목:</label>
+                <input type="text" id="title" name="title" value="<%= notice.getTitle() %>" required>
+            </div>
+            <div class="form-group">
+                <label for="content">내용:</label>
+                <textarea id="content" name="content" rows="5" required><%= notice.getContent() %></textarea>
+            </div>
+            <div class="button-group">
+                <button type="submit">수정 완료</button>
+                <a href="CA05.jsp?num=<%= notice.getNum() %>">삭제</a>
+                <a href="CA01.jsp">목록으로</a>
+            </div>
+        </form>
     </div>
 
   <!-- footer section -->
