@@ -38,6 +38,9 @@
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
   
+  <!-- java script -->
+  <script type="text/javascript" src="/js/custom.js"></script>
+  
   <style>
   
 	.footer_section {
@@ -151,18 +154,18 @@
           <div class="form_container">
             <form action="Analysis" method = 'post' enctype="multipart/form-data">             
               <div class = 'form-row'>
-                    <input type="text" class="form-control" placeholder="email" required name = ana_email/> <!-- 이메일 입력 -->
-                    <select name="sel_type" id="" class="form-control" name = 'ana_type'> <!-- 분석타입 선택 -->
+                    <input type="text" class="form-control" placeholder="email" required name = 'ana_email'/> <!-- 이메일 입력 -->
+                    <select id="" class="form-control" required name = 'ana_type'> <!-- 분석타입 선택 -->
                       <option >분석 종류 (선택)</option>
-                      <option value="text1">공정최적화</option>
-                      <option value="text2">예지보전</option>
-                      <option value="text3">품질보증</option>
+                      <option value="공정최적화">공정최적화</option>
+                      <option value="예지보전">예지보전</option>
+                      <option value="품질보증">품질보증</option>
                     </select>
                 </div>
                 <div class = 'data-upload'>
-                      <input class = 'upload-name' value="첨부파일" placeholder = '첨부파일' disabled = 'disabled'>
+                      <input class = 'upload-name' value="첨부파일" disabled = 'disabled'>
                       <label for = 'file'>파일찾기</label>
-                      <input type = 'file' id = 'file' accept=".csv" name = 'ana_data'/> <!-- 데이터 첨부 -->
+                      <input type = 'file' id = 'file' class = 'upload-hidden' accept=".csv" name = 'ana_data' required/> <!-- 데이터 첨부 -->
                 </div>
                   <div class="btn_box">
                     <button class = 'ana_btn'>

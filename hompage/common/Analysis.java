@@ -43,7 +43,7 @@ public class Analysis extends HttpServlet {
 		
 //		request.setCharacterEncoding("UTF-8");
 		
-		String savePath = "C:/Users/mit106/Documents/savepath";
+		String savePath = "C:\\Users\\jungf\\OneDrive\\바탕 화면\\Study\\workspace";
 		int sizeLimit = 1024*1024*15;
 		
 		MultipartRequest mr = new MultipartRequest(request, savePath, sizeLimit, "UTF-8", new DefaultFileRenamePolicy());
@@ -55,7 +55,7 @@ public class Analysis extends HttpServlet {
 		
 		AnaDo AnaDo = new AnaDo();
 		AnaDo.setAna_email(ana_email);
-		AnaDo.setAna_sel(ana_type);
+		AnaDo.setAna_type(ana_type);
 		AnaDo.setAna_data(ana_data); // 파일 이름
 		AnaDo.setAna_path(ana_data_path); //경로 + 파일 이름
 		

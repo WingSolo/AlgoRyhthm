@@ -20,7 +20,7 @@ public class AnalysisDao {
     public void db_upload(AnaDo AnaDo) throws SQLException {
 		Connection connection = null;
 //		String result = null;
-		ResultSet rs = null;
+//		ResultSet rs = null;
 		try {
 			Class.forName(driver);
 			connection = DriverManager.getConnection(DB_URL1, DB_USER, DB_PASSWORD);
@@ -36,9 +36,10 @@ public class AnalysisDao {
 		}
 		
 		PreparedStatement stmt = connection.prepareStatement
-				("INSERT INTO analysis_data (ana_data, ana_path) VALUES (?, ?)");
-		stmt.setString(1, AnaDo.getAna_data());
-		stmt.setString(2, AnaDo.getAna_path());
+				("INSERT INTO analysis (email, type, file_path) VALUES (?, ?, ?)");
+		stmt.setString(1, AnaDo.getAna_email());
+		stmt.setString(2, AnaDo.getAna_type());
+		stmt.setString(3, AnaDo.getAna_path());
 		System.out.println("db 업로드 성공");	
 		stmt.execute();
 //		if(rs.next()) {

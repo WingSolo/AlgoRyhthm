@@ -2,7 +2,7 @@ package common;
 
 public class AnaDo {
 	private String ana_email;
-	private String ana_sel;
+	private String ana_type;
 	private String ana_data;
 	private String ana_path;
 	
@@ -12,11 +12,11 @@ public class AnaDo {
 	public void setAna_email(String ana_email) {
 		this.ana_email = ana_email;
 	}
-	public String getAna_sel() {
-		return ana_sel;
+	public String getAna_type() {
+		return ana_type;
 	}
-	public void setAna_sel(String ana_sel) {
-		this.ana_sel = ana_sel;
+	public void setAna_type(String ana_type) {
+		this.ana_type = ana_type;
 	}
 	public String getAna_data() {
 		return ana_data;
