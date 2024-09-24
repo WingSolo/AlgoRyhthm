@@ -196,7 +196,7 @@
   </div>
   
   <div class="notice-container">
-    <div class="notice-header">공지사항 📢</div>
+    <div class="notice-header">공지사항</div>
 
     <% 
         NoticeDao noticeDao = new NoticeDao();
