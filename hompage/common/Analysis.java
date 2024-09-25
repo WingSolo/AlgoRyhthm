@@ -2,11 +2,14 @@ package common;
 
 import java.io.IOException;
 
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.*;
+import javax.servlet.http.*;
 
 import java.io.File;
 import java.sql.*;
@@ -43,7 +46,8 @@ public class Analysis extends HttpServlet {
 		
 //		request.setCharacterEncoding("UTF-8");
 		
-		String savePath = "C:\\Users\\jungf\\OneDrive\\바탕 화면\\Study\\workspace";
+		// db에 email, type, path 업로드
+		String savePath = "C:\\savepath";
 		int sizeLimit = 1024*1024*15;
 		
 		MultipartRequest mr = new MultipartRequest(request, savePath, sizeLimit, "UTF-8", new DefaultFileRenamePolicy());
@@ -61,12 +65,61 @@ public class Analysis extends HttpServlet {
 		
 		try{
 			AnaDao.db_upload(AnaDo);
+			
 		}
 		catch(SQLException e) {
 			System.out.println("업로드 실패");
 			e.printStackTrace();
 			}
 		
+		// 분석 실행
+		File batFile = new File("C:\\python\\Ana_bat.bat");
+        ProcessBuilder processBuilder = new ProcessBuilder(batFile.getAbsolutePath());
+        processBuilder.directory(new File("C:\\python\\"));
+
+        try {
+            Process process = processBuilder.start();
+
+            new Thread(() -> {
+                try (var reader = new java.io.BufferedReader(new java.io.InputStreamReader(process.getInputStream()))) {
+                    String line;
+                    while ((line = reader.readLine()) != null) {
+                        System.out.println(line);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }).start();
+
+            int exitCode = process.waitFor();
+            System.out.println("Process exited with code: " + exitCode);
+        } catch (IOException | InterruptedException e) {
+            e.printStackTrace();
+        }
+        
+        
+        // 결과 불러오기 및 출력
+          try{
+          	  String result = AnaDao.db_download(AnaDo);
+          	  String email = AnaDo.getAna_email();
+    		  System.out.println(result);		
+    		  request.setAttribute("result", result);
+    		  request.setAttribute("email", email);
+    		  ServletContext app = this.getServletContext();
+    		  RequestDispatcher dispatcher = app.getRequestDispatcher("/BA03.jsp");
+    		  try {
+    			  dispatcher.forward(request, response);
+    		  } catch (ServletException e) {
+    			  System.out.println(e);
+    		  }
+    		  
+		  }
+		  catch(SQLException e) {
+			  System.out.println("업로드 실패");
+			  e.printStackTrace();
+			  }
+	}
+}   
 		
 		
 
@@ -108,5 +161,3 @@ public class Analysis extends HttpServlet {
 //        } catch (IOException | InterruptedException e) {
 //            e.printStackTrace();
 //        }		
-	}
-}

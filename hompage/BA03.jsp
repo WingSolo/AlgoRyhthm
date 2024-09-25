@@ -5,7 +5,6 @@
 %>
 
 
-
 <!DOCTYPE html>
 <html>
 
@@ -20,7 +19,7 @@
   <meta name="description" content="" />
   <meta name="author" content="" />
 
-  <title>분석사례</title>
+  <title>분석하기</title>
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -35,13 +34,16 @@
   <link href="css/font-awesome.min.css" rel="stylesheet" />
 
   <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet" />
+  <link href="css/style.css?after" rel="stylesheet"/>
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
   
+  <!-- java script -->
+  <script type="text/javascript" src="/js/custom.js"></script>
+  
   <style>
-  	
-  	.footer_section {
+  
+	.footer_section {
   		position: bottom; /* 화면 하단에 고정 */
   		bottom: 0;
   		left: 0;
@@ -52,7 +54,7 @@
  		box-shadow: none; /* 그림자 효과 제거 */
   		background-color: transparent; /* 배경색을 없앰 */
   		z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
-		}
+		}  
   
   </style>
 </head>
@@ -65,19 +67,19 @@
         <div class="container-fluid header_top_container">
           
           <div class="contact_nav">
-            <a href="A01.jsp">
+            <a href="A01.html">
               <i class="fa fa-map-marker" aria-hidden="true"></i>
               <span>
                 Location
               </span>
             </a>
-            <a href="BA02.jsp">
+            <a href="BA02.html">
               <i class="fa fa-phone" aria-hidden="true"></i>
               <span>
                 전화번호 : 031-224-3636
               </span>
             </a>
-            <a href="BA02.jsp">
+            <a href="BA02.html">
               <i class="fa fa-envelope" aria-hidden="true"></i>
               <span>
                 Algo@gmail.com
@@ -141,37 +143,41 @@
   </div>
 
 
-	<!-- ana_detail section -->
+  <!-- ana section -->
+  <section class="ana_section layout_padding">
+    <div class="container">
+      <div class="heading_container heading_center">
+        <h2>분석 결과</h2>
+      </div>
+      <div class="row justify-content-center"> 
+        <div class="col-md-13 px-0">
+          <div class="form_container">
+            <form method = 'post' enctype="multipart/form-data" id = "analysis">             
+                  <div class="form-row">
+                    <div class="col-md-14">
+                      
+                      <input type="text" class="ana-email" value="email : <%=request.getAttribute("email")%>" name = "ana_email" disabled/>
+                      <input type="text" class="ana-result" value="result : <%=request.getAttribute("result")%>" name = "ana_result" disabled/>
+                    </div>
+                  </div>
+                  <div class="btn_box">
+                    <button class = 'email_btn' onclick = "javascript : form.action='Email_send';">
+                      메일 전송
+                    </button>
+                    <button class = 'email_btn' onclick = "location.href = 'BA02.jsp'">
+                      문의하기
+                    </button>
+                  </div>
+            </form>
+        
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- end ana section -->
 
-	<section class="portfolio_section layout_padding">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 ">
-					<div class="detail-box">
-						<div class="heading_container">
-							<br>
-							<h2>열처리: 품질보증</h2>
-						</div>
-						<p>
-							추후 기재
-						</p>
-					</div>
-				</div>
-				<div class='object-box'>
-					<div class="img-box">
-						<img src="./images/jj_qc.png" alt="분석 이미지" />
-					</div>
-				</div>
-			</div>
-		</div>
-		</div>
-	</section>
-	<!-- end ana_detail section -->
-
-
-
-
-
+ 
   <!-- footer section -->
   <footer class="footer_section">
     <div class="container">
@@ -182,7 +188,6 @@
     </div>
   </footer>
   <!-- footer section -->
-
 
   <!-- jQery -->
   <script src="js/jquery-3.4.1.min.js"></script>
@@ -198,10 +203,23 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js" integrity="sha256-Zr3vByTlMGQhvMfgkQ5BtWRSKBGa2QlspKYJnkjZTmo=" crossorigin="anonymous"></script>
   <!-- custom js -->
   <script src="js/custom.js"></script>
-  <!-- Google Map -->
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCh39n5U-4IoWpsVGUHWdqB6puEkhRLdmI&callback=myMap"></script>
-  <!-- End Google Map -->
+  <script type = text/javascript>
+  $(document).ready(function(){
+      var fileTarget = $('.data-upload .upload-hidden');
 
+      fileTarget.on('change', function(){
+          if(window.FileReader){
+              var filename = $(this)[0].files[0].name;
+          }
+          else{
+              var filename = $(this).val().split('/').pop().split('\\').pop();
+          }
+
+          $(this).siblings('.upload-name').val(filename);
+      });
+  });
+  </script>
+  <!-- fileupload js -->
 </body>
 
 </html>

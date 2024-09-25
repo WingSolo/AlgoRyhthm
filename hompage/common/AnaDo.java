@@ -5,6 +5,7 @@ public class AnaDo {
 	private String ana_type;
 	private String ana_data;
 	private String ana_path;
+	private String ana_result;
 	
 	public String getAna_email() {
 		return ana_email;
@@ -29,6 +30,12 @@ public class AnaDo {
 	}
 	public void setAna_path(String ana_path) {
 		this.ana_path = ana_path;
+	}
+	public String getAna_result() {
+		return ana_result;
+	}
+	public void setAna_result(String ana_reuslt) {
+		this.ana_result = ana_result;
 	}
 
 

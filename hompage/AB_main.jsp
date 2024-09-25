@@ -41,7 +41,7 @@
   
   <style>
 	.footer_section {
-  		position: fixed; /* 화면 하단에 고정 */
+  		position: bottom; /* 화면 하단에 고정 */
   		bottom: 0;
   		left: 0;
   		width: 100%;

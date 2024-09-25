@@ -34,7 +34,7 @@
   <link href="css/font-awesome.min.css" rel="stylesheet" />
 
   <!-- Custom styles for this template -->
-  <link href="css/style.css" rel="stylesheet" />
+  <link href="css/style.css?after" rel="stylesheet"/>
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
   
@@ -44,7 +44,7 @@
   <style>
   
 	.footer_section {
-  		position: fixed; /* 화면 하단에 고정 */
+  		position: bottom; /* 화면 하단에 고정 */
   		bottom: 0;
   		left: 0;
   		width: 100%;
@@ -147,12 +147,12 @@
   <section class="ana_section layout_padding">
     <div class="container">
       <div class="heading_container heading_center">
-        <h2>분석하기</h2>
+        <h2>분석</h2>
       </div>
       <div class="row justify-content-center"> 
         <div class="col-md-13 px-0">
           <div class="form_container">
-            <form action="Analysis" method = 'post' enctype="multipart/form-data">             
+            <form method = 'post' enctype="multipart/form-data" id = "analysis">             
               <div class = 'form-row'>
                     <input type="text" class="form-control" placeholder="email" required name = 'ana_email'/> <!-- 이메일 입력 -->
                     <select id="" class="form-control" required name = 'ana_type'> <!-- 분석타입 선택 -->
@@ -168,14 +168,12 @@
                       <input type = 'file' id = 'file' class = 'upload-hidden' accept=".csv" name = 'ana_data' required/> <!-- 데이터 첨부 -->
                 </div>
                   <div class="btn_box">
-                    <button class = 'ana_btn'>
+                    <button class = 'ana_btn' onclick = "javascript : form.action='Analysis';">
                       분석하기
                     </button>
-                  </div>
-                  <div class="form-row">
-                    <div class="col-md-14">
-                      <input type="text" class="ana-result" placeholder="분석결과" disabled/>
-                    </div>
+                    <button class = 'email_btn' onclick = "location.href = 'BA02.jsp'">
+                      문의하기
+                    </button>
                   </div>
             </form>
           </div>
@@ -211,9 +209,23 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js" integrity="sha256-Zr3vByTlMGQhvMfgkQ5BtWRSKBGa2QlspKYJnkjZTmo=" crossorigin="anonymous"></script>
   <!-- custom js -->
   <script src="js/custom.js"></script>
+  <script type = text/javascript>
+  $(document).ready(function(){
+      var fileTarget = $('.data-upload .upload-hidden');
 
-  <!-- End Google Map -->
+      fileTarget.on('change', function(){
+          if(window.FileReader){
+              var filename = $(this)[0].files[0].name;
+          }
+          else{
+              var filename = $(this).val().split('/').pop().split('\\').pop();
+          }
 
+          $(this).siblings('.upload-name').val(filename);
+      });
+  });
+  </script>
+  <!-- fileupload js -->
 </body>
 
 </html>
