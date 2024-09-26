@@ -53,7 +53,7 @@ CREATE TABLE `notice` (
 	`content` VARCHAR(1000) NOT NULL,
 	`emp_id` VARCHAR(20) NOT NULL,
 	`emp_name` VARCHAR(50) NOT NULL,
-	`created_at` TIMESTAMP NOT NULL DEFAULT '',
+	`created_at` TIMESTAMP NOT NULL DEFAULT ' ',
 	PRIMARY KEY (`num`),
 	INDEX `fk_emp_user` (`emp_id`),
 	CONSTRAINT `fk_emp_user` FOREIGN KEY (`emp_id`) REFERENCES `emp_user` (`emp_id`)

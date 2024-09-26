@@ -574,11 +574,18 @@ a:focus {
   height: 100%;
 }
 
+/* ana_detail section */
+
 .portfolio_section {
   background-color: #003471;
   color: #ffffff;
   padding-top: 45px;
-  padding-bottom: 45px;
+  padding-bottom: 130px;
+}
+
+.portfolio_section .row {
+  display: flex;
+  justify-content: center;
 }
 
 .portfolio_section .heading_container {
@@ -686,6 +693,197 @@ a:focus {
 .portfolio_section .name_box{
   text-align: center;
 }
+
+/*20240925 추가 부분*/
+/* .portfolio_section .contant_box{
+  display:inline-flexbox;
+  align-items: center;
+} */
+
+.portfolio_section .empty_box{
+  /* background-color: #6d6d6d; */
+  background: rgba(#003471);
+  height:30px;
+  text-align: left;
+  align-items:flex-end;
+  top: 50%;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 23px;
+  line-height: 30px;
+  margin-top: 60px;
+  margin-bottom: 20px;
+}
+
+.portfolio_section .content_cat{
+  /* background-color: #6d6d6d; */
+  background: rgba(255, 255, 255);
+  height: 100px;
+  text-align: left;
+  align-items:flex-end;
+  top: 50%;
+  border-radius: 10px;
+  color: #000000;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  box-shadow: 10px, 10px, 10px, black;
+}
+
+.portfolio_section .content_detail{
+  /* background-color: #6d6d6d; */
+  background: rgba(255, 255, 255);
+  height:auto;
+  text-align: left;
+  top: 50%;
+  border-radius: 10px;
+  color: #000000;
+  margin-bottom: 10px;
+  padding-left: 20px;
+  box-shadow: 10px, 10px, 10px, black;
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.portfolio_section .content_detail2{
+  /* background-color: #6d6d6d; */
+  background: rgba(255, 255, 255);
+  height:auto;
+  text-align: left;
+  top: 50%;
+  border-radius: 10px;
+  color: #000000;
+  margin-bottom: 10px;
+
+  box-shadow: 10px, 10px, 10px, black;
+  padding-top: 20px;
+  padding-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portfolio_section .p1{
+  font-size: 23px;
+  font-weight: bold;
+  line-height: 25px;
+}
+
+.portfolio_section .p2{
+  font-size: 15px;
+  line-height: 35px;
+  color: #7a7979;
+}
+.portfolio_section .content_detail .p1{
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 25px;
+}
+
+.portfolio_section .content_detail .p2{
+  font-size: 14px;
+  line-height: 20px;
+  color: #7a7979;
+}
+
+.portfolio_section .content_cat .content_cat_1{
+  height: 60px;
+  width: 450px;
+  display: inline-block;
+  border-right: #000000 solid 0.5px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.portfolio_section .content_cat .content_cat_2{
+  height: 60px;
+  width: 220px;
+  display: inline-block;
+  border-right: #000000 solid 0.5px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.portfolio_section .content_cat .content_cat_3{
+  height: 60px;
+  width: 220px;
+  display: inline-block;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 20px;
+}
+
+.portfolio_section .content_detail .sel1{
+  height: 17px;
+  width: 220px;
+  display: inline-block;
+  border-right: #000000 solid 0.5px;
+  text-align: left;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 5px;
+}
+
+.portfolio_section .content_detail .sel2{
+  height: 17px;
+  width: 220px;
+  display: inline-block;
+  text-align: left;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 5px;
+}
+
+.portfolio_section .content_detail2 .sel3{
+  height: 100px;
+  width: 450px;
+  display: inline-block;
+  text-align: left;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  margin-right: 5px;
+  border: rgb(210, 208, 208) solid;
+  border-radius: 10px;
+  padding-top: 12px;
+  padding-left: 15px;
+  margin-left: 20px;
+}
+
+.portfolio_section .content_detail .sel1 .p1{
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 17px;
+}
+
+.portfolio_section .content_detail .sel2 .p2{
+  font-size: 17px;
+  line-height: 17px;
+  color: #7a7979;
+}
+
+.portfolio_section .content_detail2 .sel3 .p1{
+  font-size: 17px;
+  font-weight: bold;
+  line-height: 40px;
+  color: #787878;
+}
+
+.portfolio_section .content_detail2 .sel3 .p2{
+  font-size: 14px;
+  line-height: 0px;
+  color: #7a7979;
+}
+
+.portfolio_section .content_detail .object-box{
+  display: inline-block;
+  margin: 0 auto;
+
+}
+
+
 
 /* .portfolio_section .portfolio_carousel .owl-nav {
   display: -webkit-box;

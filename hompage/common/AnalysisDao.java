@@ -97,7 +97,7 @@ public class AnalysisDao {
 			rs = stmt.executeQuery();
 			
 		if(rs.next()) {
-			result = rs.getString("result");
+			result = rs.getString("email");
 		}
 		return result;
 		}

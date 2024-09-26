@@ -4,8 +4,6 @@
     Object loginUser = session.getAttribute("loginUser");
 %>
 
-
-
 <!DOCTYPE html>
 <html>
 
@@ -39,8 +37,9 @@
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
   
-<style>
-	.footer_section {
+  <style>
+  	
+  	.footer_section {
   		position: bottom; /* 화면 하단에 고정 */
   		bottom: 0;
   		left: 0;
@@ -52,7 +51,8 @@
   		background-color: transparent; /* 배경색을 없앰 */
   		z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
 		}
-</style>  
+  
+  </style>
 </head>
 
 <body class="sub_page">
@@ -103,7 +103,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
                 <li class="nav-item active">
-                  <a class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" height="27px"></span></a>
+                  <a class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" width = "77px"height="37px"></span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="A01.jsp">회사소개</a>
@@ -139,32 +139,131 @@
   </div>
 
 
-<!-- ana_detail section -->
+	<!-- ana_detail section -->
 
 	<section class="portfolio_section layout_padding">
 		<div class="container">
 			<div class="row">
-				<div class="col-md-6 ">
+				<div class="col-md-10 ">
 					<div class="detail-box">
-						<div class="heading_container">
+						<div class="heading_container heading_center">
 							<br>
-							<h2>열처리: 공정최적화</h2>
+							<h2>열처리 : 공정최적화</h2>
 						</div>
-						<p>
-							추후 기재
+            <div class = "content_cat">
+            <div class = "content_cat_1">
+              <p class="p1">
+							  주요 키워드
 						</p>
-					</div>
-				</div>
-				<div class='object-box'>
-					<div class="img-box">
-						<img src="./images/jj_qc.png" alt="분석 이미지" />
-					</div>
+              <p class = "p2">
+                AI 학습데이터, 텍스트 데이터 
+              </p>
+            </div>
+            <div class = "content_cat_2">
+              <p class="p1">
+							  주제
+						  </p>
+              <p class = "p2">
+                열처리 : 품질보증 
+              </p>
+            </div>
+            <div class = "content_cat_3">
+              <p class="p1">
+							  데이터 종류
+						  </p>
+              <p class = "p2">
+                텍스트
+              </p>
+            </div>
+          </div>
+          
+          <div class="empty_box">
+            <p>데이터 개요</p>
+          </div>
+          <div class="content_detail">	
+            <p class="p1">소개</p>
+            <p class="p2">소개 텍스트</p>
+          </div>
+          <div class="content_detail">	
+            <p class="p1">구축 목적</p>
+            <p class="p2">구축 목적 텍스트</p>
+          </div>
+          <div class="empty_box">
+            <p>메타데이터 구조표</p>
+          </div>
+          <div class="content_detail">	
+            <div class="sel1">
+              <p class="p1">데이터 영역</p>
+            </div>
+            <div class="sel2">
+              <p class="p2">내용</p>
+            </div>
+            <div class="sel1">
+              <p class="p1">데이터 유형</p>
+            </div>
+            <div class="sel2">
+              <p class="p2">내용</p>
+            </div>
+            <div class="sel1">
+              <p class="p1">데이터 형식</p>
+            </div>
+            <div class="sel2">
+              <p class="p2">내용</p>
+            </div>
+            <div class="sel1">
+              <p class="p1">데이터 출처</p>
+            </div>
+            <div class="sel2">
+              <p class="p2">내용</p>
+            </div>
+            <div class="sel1">
+              <p class="p1">라벨링 유형</p>
+            </div>
+            <div class="sel2">
+              <p class="p2">내용</p>
+            </div>
+            <div class="sel1">
+              <p class="p1">라벨링 형식</p>
+            </div>
+            <div class="sel2">
+              <p class="p2">내용</p>
+            </div>
+          </div>
+          
+          <div class="empty_box">
+            <p>데이터 분석</p>
+          </div>
+          <div class="content_detail2">	
+            <div class='object-box'>
+              <!-- <div class="img-box"> -->
+                <img src="./images/jj_qc.png" alt="분석 이미지" />
+              <!-- </div> -->
+            </div>
+            <div style="display: inline-block; width: 450px; margin-right: 30px;">
+            <div class="sel3">
+              <p class="p1">데이터 구조</p>
+              <p class="p2">데이터 구조 텍스트</p>
+            </div>
+            <div class="sel3">
+              <p class="p1">분석 모델</p>
+              <p class="p2">분석 모델 텍스트</p>
+            </div>
+            <div class="sel3">
+              <p class="p1">모델 성능</p>
+              <p class="p2">모델 성능 텍스트</p>
+            </div>
+          </div>
+          </div>
+
+        </div>
 				</div>
 			</div>
 		</div>
 		</div>
 	</section>
 	<!-- end ana_detail section -->
+
+
 
 
 
