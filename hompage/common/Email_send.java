@@ -75,7 +75,12 @@ public class Email_send extends HttpServlet {
         try{
         	
         	String ana_email = AnaDao.send_email();
-        	String ana_result = AnaDao.send_result();
+        	String ana_date = AnaDao.send_date();
+        	String ana_accuracy = AnaDao.send_accuracy();
+        	String ana_f1 = AnaDao.send_f1();
+        	String ana_precision = AnaDao.send_precision();
+        	String ana_recall = AnaDao.send_recall();
+        	       	
         	//편지보낸시간
             msg.setSentDate(new Date());
             InternetAddress from = new InternetAddress() ;
@@ -88,11 +93,18 @@ public class Email_send extends HttpServlet {
             // 이메일 제목
             msg.setSubject("Algorhythnm_분석 결과", "UTF-8");
             // 이메일 내용
-            msg.setText(ana_result, "UTF-8");
+            msg.setText(
+            		"Accuracy score : " + ana_accuracy + "<br/>" +
+            		"F1 score : " + ana_f1 + "<br/>" +
+            		"Precision score : " + ana_precision + "<br/>" +
+            		"Recall score : " + ana_recall + "<br/>" + "<br/>" +
+            		"Analysis date : " + ana_date, "UTF-8");
+            
             // 이메일 헤더
             msg.setHeader("content-Type", "text/html");
             //메일보내기
             javax.mail.Transport.send(msg, msg.getAllRecipients());
+            response.sendRedirect("BA01.jsp");
              
         }catch (AddressException addr_e) {
             addr_e.printStackTrace();
