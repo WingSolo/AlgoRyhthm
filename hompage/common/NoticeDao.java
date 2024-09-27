@@ -167,5 +167,32 @@ public class NoticeDao {
             throw new SQLException("Failed to insert notice", e);
         }
     }
+    // 최근 공지사항 가져오기 메서드
+    public List<Notice> getRecentNotices(int limit) {
+        List<Notice> noticeList = new ArrayList<>();
+        String sql = "SELECT num, title, created_at FROM notice ORDER BY created_at DESC LIMIT ?";
 
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1, limit);
+
+            try (ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    Notice notice = new Notice(
+                            rs.getInt("num"),
+                            rs.getString("title"),
+                            null, // content는 가져오지 않음
+                            null, // emp_id는 가져오지 않음
+                            null, // emp_name은 가져오지 않음
+                            rs.getTimestamp("created_at")
+                    );
+                    noticeList.add(notice);
+                }
+            }
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Failed to retrieve recent notices", e);
+        }
+        return noticeList;
+    }
 }
