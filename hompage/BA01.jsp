@@ -169,10 +169,10 @@
                       <input type = 'file' id = 'file' class = 'upload-hidden' accept=".csv" name = 'ana_data' required/> <!-- 데이터 첨부 -->
                 </div>
                   <div class="btn_box">
-                    <button class = 'ana_btn' onclick = "javascript : form.action='Analysis';">
+                    <button class = 'ana_btn' style = "margin-top : 10px; margin-right : 20px" onclick = "javascript : form.action='Analysis';">
                       분석하기
                     </button>
-                    <button class = 'email_btn' onclick = "location.href = 'BA02.jsp'">
+                    <button class = 'email_btn' style = "margin-top : 10px" onclick = "location.href = 'BA02.jsp'">
                       문의하기
                     </button>
                   </div>

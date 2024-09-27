@@ -100,11 +100,31 @@ public class Analysis extends HttpServlet {
         
         // 결과 불러오기 및 출력
           try{
-          	  String result = AnaDao.db_download(AnaDo);
+        	  String date = AnaDao.db_date(AnaDo);
+        	  String accuracy = AnaDao.db_accuracy(AnaDo);
+          	  String f1 = AnaDao.db_f1(AnaDo);
+          	  String precision = AnaDao.db_precision(AnaDo);
+          	  String recall = AnaDao.db_recall(AnaDo);
+          	  
           	  String email = AnaDo.getAna_email();
-    		  System.out.println(result);		
-    		  request.setAttribute("result", result);
+          	  
+          	  // 결과 파라미터 출력
+    		  System.out.println(date);
+          	  System.out.println(accuracy);
+    		  System.out.println(f1);
+    		  System.out.println(precision);
+    		  System.out.println(recall);
+    		  
+    		  // 결과 파라미터 set
+    		  request.setAttribute("date", date);
+    		  request.setAttribute("accuracy", accuracy);
+    		  request.setAttribute("f1", f1);
+    		  request.setAttribute("precision", precision);
+    		  request.setAttribute("recall", recall);
+    		  
+    		  // email 파라미터 set
     		  request.setAttribute("email", email);
+    		  
     		  ServletContext app = this.getServletContext();
     		  RequestDispatcher dispatcher = app.getRequestDispatcher("/BA03.jsp");
     		  try {
