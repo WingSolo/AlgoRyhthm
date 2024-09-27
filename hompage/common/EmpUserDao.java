@@ -78,4 +78,53 @@ public class EmpUserDao {
         }
         return user;
     }
+    // Find user by empId and email
+    public EmpUser findUserByEmpIdAndEmail(String empId, String email) {
+        String sql = "SELECT * FROM emp_user WHERE emp_id = ? AND email = ?";
+        EmpUser user = null;
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, empId);
+            pstmt.setString(2, email);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    user = new EmpUser(
+                            rs.getString("emp_id"),
+                            rs.getString("password"),  // 비밀번호 포함
+                            rs.getString("emp_name"),
+                            rs.getString("email"),
+                            rs.getString("phone"),
+                            rs.getString("user_dept"),
+                            rs.getString("user_pos")
+                    );
+                    logger.info("User found by empId and email: " + empId);
+                }
+            }
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Failed to find user by empId and email", e);
+        }
+        return user;
+    }
+
+    // Another update password method (possibly for alternative usage)
+    public boolean updatePassword02(String empId, String newPassword) {
+        String sql = "UPDATE emp_user SET password = ? WHERE emp_id = ?";
+
+        try (Connection conn = getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1, newPassword);  // 평문 비밀번호 사용
+            pstmt.setString(2, empId);
+
+            int rowsUpdated = pstmt.executeUpdate();
+            return rowsUpdated > 0;
+
+        } catch (SQLException e) {
+            logger.log(Level.SEVERE, "Failed to update password (02) for user ID: " + empId, e);
+        }
+
+        return false;
+    }
+    
 }

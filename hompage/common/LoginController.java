@@ -35,10 +35,11 @@ public class LoginController extends HttpServlet {
         if (user != null && user.getPassword().equals(password)) {  // 평문으로 비교
             // 로그인 성공 시 세션 생성
             HttpSession session = request.getSession();
-            session.setAttribute("loginUser", user); // "loginUser"로 키 이름 설정
+            session.setAttribute("loginUser", user); // "loginUser"로 세션에 사용자 정보 저장
+            session.setMaxInactiveInterval(30 * 60); // 세션 타임아웃 30분 설정
             response.sendRedirect("main.jsp"); // 메인 페이지로 리디렉션
         } else {
-            // 로그인 실패 시 login.jsp로 리디렉션
+            // 로그인 실패 시 login.jsp로 리디렉션하며 에러 메시지 전달
             response.sendRedirect("login.jsp?error=Invalid credentials");
         }
     }
