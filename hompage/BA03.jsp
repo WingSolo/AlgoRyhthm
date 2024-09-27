@@ -148,11 +148,11 @@
   <section class="ana_section layout_padding">
     <div class="container">
       <div class="heading_container heading_center">
-        <h2>분석 결과</h2>
+        <h2 style="color: white; font-weight: bold;">분석 결과</h2>
       </div>
       <div class="row justify-content-center"> 
         <div class="col-md-13 px-0">
-          <div class="form_container">
+          <div class="form_container" style="background-color: rgb(255, 255, 255, 0.3); border-radius: 3px;">
             <form method = 'post' enctype="multipart/form-data" id = "analysis">             
                   <div class="form-row">
                     <div class="col-md-14">

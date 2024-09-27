@@ -488,6 +488,106 @@ a:focus {
   color: #ffffff;
 }
 
+/* about_section start */
+.about_section{
+  background-color:#003471;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.about_section .heading_container{
+  align-items: center;
+  text-align: center;
+  padding-bottom: 60px;
+}
+
+
+.about_section h2{
+  color: white;
+  font-size: 40px;
+}
+
+.about_section .content_image{
+  align-items: center;
+  text-align: center;
+  padding-bottom: 40px;
+}
+
+.about_section .content_text{
+  padding-top: 30px;
+  text-align: center;
+  color: white;
+}
+
+.about_section .content_text h5{
+  letter-spacing: 10px;
+  font-weight: bold;
+}
+
+.about_section .work{
+  width: 1200px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+}
+
+.about_section .work .work_box{
+  width: 300px;
+  padding-right: 100px;
+  
+  text-align: center;
+  align-items: center;
+}
+
+.about_section .work .work_header{
+  background-color: white;
+  width:200px;
+  height: 50px;
+  line-height: 50px;
+  border: white solid 1px;
+  border-radius: 5px;
+  color: #000000;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  margin: auto;
+  margin-top: 40px;
+}
+
+.about_section .empty_box{
+  width: 1000px;
+  color: white;
+  font-weight: bold;
+  font-size: 30px;
+  text-align: left;
+  padding-top: 100px;
+  padding-bottom: 30px;
+}
+
+.about_section .work .work_detail_box{
+  
+  margin-top: 20px;
+  margin-bottom: 80px;
+  height: 150px;
+}
+
+.about_section .work .work_detail{
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 200%;
+}
+
+.about_section .work .work_detail2{
+  color: white;
+  font-size: 16px;
+  
+  line-height: 150%;
+}
+
 .about_section .row {
   -webkit-box-align: top;
       -ms-flex-align: top;
@@ -506,7 +606,7 @@ a:focus {
   /* margin-top: 15px; */
 }
 
-.about_section .detail-box a {
+.about_section .contact {
   display: inline-block;
   padding: 10px 35px;
   background-color: #da7426;
@@ -515,17 +615,18 @@ a:focus {
   -webkit-transition: all .3s;
   transition: all .3s;
   border: 1px solid #da7426;
-  margin-top: 15px;
+  
 }
 
-.about_section .detail-box a:hover {
-  background-color: transparent;
+.about_section .contact:hover {
   color: #da7426;
+  background-color: white;
 }
 
 .about_section .object-box {
-  height : 830px;
+  height : 400px;
   width : 400px;
+  margin : 30px;
 }
 
 .about_section .img-box {
@@ -573,6 +674,12 @@ a:focus {
 .about_section .map_container .map #googleMap {
   height: 100%;
 }
+
+.about_section .work .work_detail_box2{
+  padding-top: 20px;
+  height: 400px;
+}
+/* about_section end */
 
 /* ana_detail section */
 
@@ -1121,6 +1228,8 @@ a:focus {
 
 .ana_section {
   position: relative;
+  background-color: #003471;
+  padding-bottom: 200px;
 }
 
 .ana_section .heading_container {
@@ -1189,7 +1298,7 @@ a:focus {
   vertical-align: middle;
   border: 1px solid #dddddd;
   width: 60%;
-  color: #999999;
+  color: rgb(89, 88, 88);
   margin-bottom: 15px;
   margin-left: -5px;
 }
