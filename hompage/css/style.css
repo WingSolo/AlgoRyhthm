@@ -1357,6 +1357,22 @@ a:focus {
   margin-right: 10px;
 }
 
+.ana_section .form_container .btn_box .contact_btn {
+  height:50px;
+  border: none;
+  text-transform: uppercase;
+  display: inline-block;
+  padding: 0px;
+  background-color: #da7426;
+  color: #ffffff;
+  border-radius: 0px;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  border: 1px solid #da7426;
+  margin-left: -5px;
+  margin-right: 10px;
+}
+
 .ana_section .form_container .btn_box button:hover {
   background-color: transparent;
   background-color: #ffffff;
@@ -1371,7 +1387,7 @@ a:focus {
   width: 100%;
   margin-top: 15px;
   margin-left: -5px;
-  margin-bottom: 15px;
+  margin-bottom: 35px;
   padding-left : 2% ;
 }
 
@@ -1379,12 +1395,31 @@ a:focus {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  height: 300px;
+  height: 60px;
   width: 100%;
-  margin-top: 15px;
+  margin-top: 0px;
   margin-left: -5px;
-  margin-bottom: 15px;
+  margin-bottom: 0px;
   padding-left : 2% ;
+}
+
+.ana_section .email_btn a{
+  color: white;
+}
+.ana_section .email_btn a:hover{
+  color:#da7426;
+}
+
+.ana_section .contact_btn a{
+  color: white;
+  display: block;
+  width: 180px;
+  height: 50px;
+  line-height: 50px;
+}
+.ana_section .contact_btn a:hover{
+  color:#da7426;
+  transition: all, .3s;
 }
 
 /* ana_section 종료 */

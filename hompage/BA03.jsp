@@ -156,17 +156,21 @@
             <form method = 'post' enctype="multipart/form-data" id = "analysis">             
                   <div class="form-row">
                     <div class="col-md-14">
-                      
-                      <input type="text" class="ana-email" value="email : <%=request.getAttribute("email")%>" name = "ana_email" disabled/>
-                      <input type="text" class="ana-result" value="result : <%=request.getAttribute("result")%>" name = "ana_result" disabled/>
+                      <input type="text" class="ana-email" value="email   :   <%=request.getAttribute("email")%>" name = "ana_email" disabled/>
+                      <input type="text" class="ana-result" value="Date   :   <%=request.getAttribute("date")%>" name = "ana_result" disabled/>
+                      <input type="text" class="ana-result" value="Accuracy score   :   <%=request.getAttribute("accuracy")%>" name = "ana_result" disabled/>
+                      <input type="text" class="ana-result" value="F1 score   :   <%=request.getAttribute("f1")%>" name = "ana_result" disabled/>
+                      <input type="text" class="ana-result" value="Precision score   :   <%=request.getAttribute("precision")%>" name = "ana_result" disabled/>
+                      <input type="text" class="ana-result" value="Recall score   :   <%=request.getAttribute("recall")%>" name = "ana_result" disabled/>
                     </div>
                   </div>
                   <div class="btn_box">
-                    <button class = 'email_btn' onclick = "javascript : form.action='Email_send';">
+                    <button class = 'email_btn' style = "margin-top : 35px; margin-right : 20px" onclick = "javascript : form.action='Email_send';">
                       메일 전송
                     </button>
-                    <button class = 'email_btn' onclick = "location.href = 'BA02.jsp'">
-                      문의하기
+                    <!-- <button class = 'email_btn' style = "margin-top : 35px" onclick = "location.href = 'BA02.jsp'"> -->
+                    <button class = 'contact_btn' style = "margin-top : 35px">
+                      <a href = "BA02.jsp">문의하기</a>
                     </button>
                   </div>
             </form>

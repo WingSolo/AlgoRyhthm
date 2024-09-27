@@ -4,8 +4,6 @@
     Object loginUser = session.getAttribute("loginUser");
 %>
 
-
-
 <!DOCTYPE html>
 <html>
 
@@ -145,41 +143,81 @@
 <!-- about section -->
 
 	<section class="about_section layout_padding">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 ">
-					<div class="detail-box">
+            
+            <!-- header -->
 						<div class="heading_container">
 							<br>
-							<h2>AlgoRhythm <span> 추후 기재</span></h2>
+							<h2>A L G O R H Y T H N M</h2>
 						</div>
-						<p>
-							추후 기재
-						</p>
-						<a href="BA02.jsp">
-							문의하기
-						</a>
-					</div>
-				</div>
-				<div class='object-box'>
-					<div class="img-box">
-						<img src="./images/about-img.png" alt="회사소개" />
-					</div>
-
-					<div class="map_container">
-						<div class="map">
-							<div id="googleMap"><iframe
-									src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.8285395758935!2d127.05558188916838!3d37.245781361841814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b4577c52730e5%3A0xc81558c592577761!2z66ed7Y-s7Jet7IS87YOA7ZSE65287J6Q!5e0!3m2!1sko!2skr!4v1724628930044!5m2!1sko!2skr"
-									width="600" height="370" style="border:0;" allowfullscreen="" loading="lazy"
-									referrerpolicy="no-referrer-when-downgrade"></iframe></div>
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-		</div>
-	</section>
+            
+            <!-- symbol -->
+						<div class="content_image">
+              <img src="./images/logo_about.png" />
+            </div>
+            
+            <!-- content -->
+            <div class="content_text">
+              <h5>ALGORHYTHNM은</h5>
+              <h5>알고리즘과 리듬을 합친 단어입니다</h5>
+            </div>
+            <div class="content_text">
+              <h5>즐긴다는 마음으로 분석에 임하여</h5>
+              <h5>최상의 결과를 전달드리겠습니다</h5>
+            </div>
+            <div class="work">
+              <div class="empty_box">
+                The Data Analysis Company
+              </div>
+            </div>
+            <div class="work">
+              <div class="work_box">
+                <div class="work_header">
+                  AI Solution
+                </div>
+                <div class="work_detail_box">
+                  <p class="work_detail">데이터를 제공받아 분석</p>
+                  <p class="work_detail">AI 모델을 통한 예측</p>
+                  <a href="BA02.jsp" class="contact">
+                    문의하기
+                  </a>
+                </div>
+                <div class="work_header">
+                  분석 모델
+                </div>
+                <div class="work_detail_box">
+                  <p class="work_detail">기존 분석모델 제공</p>
+                  <a href="BA01.jsp" class="contact">
+                    분석하기
+                  </a>
+                </div>
+              </div>
+              <div class = "work_image">
+                <img src="./images/about_work.png" />
+              </div>
+            </div>
+            <div class="work">
+              <div class="empty_box">
+                찾아오시는 길
+              </div>
+            </div>        
+            <div class="work" style="text-align: left; align-items: left; justify-content: left; width: 1000px;">
+              <div class='object-box'>
+                <div class="map_container">
+                  <div class="map">
+                    <div id="googleMap"><iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2245.8285395758935!2d127.05558188916838!3d37.245781361841814!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357b4577c52730e5%3A0xc81558c592577761!2z66ed7Y-s7Jet7IS87YOA7ZSE65287J6Q!5e0!3m2!1sko!2skr!4v1724628930044!5m2!1sko!2skr"
+                        width="600" height="370" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="work_detail_box2">
+                <p class="work_detail2">업체명 &nbsp;: &nbsp;ALGORHYTHNM</p>
+                <p class="work_detail2">주소 &nbsp;: &nbsp;경기도 &nbsp;수원시 &nbsp;영통구 &nbsp;영통동 &nbsp;977-4 </p>
+              </div>
+            </div>
+            </section>
 	<!-- end about section -->
 
 
