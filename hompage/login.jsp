@@ -9,6 +9,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -26,14 +27,14 @@
     body {
     	font-family: 'Poppins', sans-serif;
    		background: #ffffff; /* 바탕화면을 흰색으로 변경 */
-    	color: #333;
+    	color: #003366; /* 글자 색상 군청색 */
   	}
 
   	.login_form {
-    	background: linear-gradient(135deg, #ffffff 0%, #f1f1f1 100%); /* 로그인 창에 흰색 그라디언트 적용 */
+    	background: #ffffff; /* 로그인 창 바탕 흰색 */
     	padding: 30px;
     	border-radius: 10px;
-    	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    	box-shadow: none; /* 그림자 제거 */
     	text-align: center;
   	}
 
@@ -49,7 +50,7 @@
   	}
 
   	.btn {
-    	background: linear-gradient(135deg, #007bff 0%, #00d4ff 100%);
+    	background-color: #003366; /* 버튼 색깔 군청색 */
     	color: white;
     	padding: 12px 25px;
     	border-radius: 30px;
@@ -57,18 +58,17 @@
     	font-size: 16px;
     	width: 100%;
     	transition: background-color 0.3s ease;
-    	box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    	box-shadow: none; /* 그림자 제거 */
   	}
 
   	.btn:hover {
-    	background: linear-gradient(135deg, #0056b3 0%, #009cff 100%);
+    	background-color: #002244; /* 버튼 호버 시 더 진한 군청색 */
   	}
-
 
     .heading_container h2 {
       font-size: 36px;
       font-weight: 700;
-      color: #333;
+      color: #003366; /* 제목 글자 색상 군청색 */
       position: relative;
       display: inline-block;
     }
@@ -83,11 +83,11 @@
     }
 
     .heading_container span {
-      color: #007bff;
+      color: #003366; /* 강조된 텍스트 군청색 */
     }
 
     .login_form a {
-      color: #007bff;
+      color: #003366; /* 링크 글자색 군청색 */
       text-decoration: none;
       font-weight: 600;
     }
@@ -95,7 +95,6 @@
     .login_form a:hover {
       text-decoration: underline;
     }
-
 
     .contact_nav a i {
       margin-right: 8px;
@@ -105,7 +104,7 @@
 
     /* header style improvement */
     .header_section {
-      background: linear-gradient(135deg, #007bff 0%, #00d4ff 100%);
+      background: linear-gradient(135deg, #003366, #0056b3); /* 헤더 그라데이션 */
       padding: 10px 0;
     }
 
@@ -128,8 +127,8 @@
     }
 
     .form-control:focus {
-      border-color: #007bff;
-      box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+      border-color: #003366; /* 포커스 시 테두리 군청색 */
+      box-shadow: 0 0 5px rgba(0, 51, 102, 0.5);
     }
     
 	.footer_section {
@@ -143,9 +142,7 @@
  		box-shadow: none; /* 그림자 효과 제거 */
   		background-color: transparent; /* 배경색을 없앰 */
   		z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
-		}
-
-
+	}
   </style>
 </head>
 
@@ -209,7 +206,7 @@
   <section class="contact_section layout_padding">
     <div class="container">
       <div class="heading_container heading_center">
-        <h2> 관리자 <span>로그인</span></h2>
+        <h2>&nbsp;&nbsp; 관리자 <span> 로그인</span></h2>
       </div>
       <div class="row">
         <div class="col-md-6 offset-md-3">
@@ -225,7 +222,7 @@
                 <button type="submit" class="btn">🔐 로그인</button>
               </div>
               <div class="form-group">
-                <a href="#">🔑 비밀번호 찾기</a>
+                <a href="findPassword.jsp">🔑 비밀번호 찾기</a>
               </div>
 
             </form>

@@ -69,23 +69,24 @@
 <style>
     body {
         font-family: 'Poppins', sans-serif;
-        background-color: #ffffff; /* 전체 배경을 완전 흰색으로 설정 */
-        color: #333;
+        background-color: #ffffff; /* 전체 배경을 흰색으로 설정 */
+        color: #003366; /* 글자 색상 군청색 */
     }
     
     .form-container {
         width: 70%;
         margin: 50px auto;
         padding: 30px;
-        background: linear-gradient(135deg, #ffffff 0%, #f0f2f5 100%); /* 창에 그라디언트 적용 */
+        background-color: #ffffff; /* 창 바탕을 흰색으로 설정 */
         border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ced4da; /* 테두리 추가 */
+        box-shadow: none; /* 그림자 제거 */
     }
 
     h2 {
         font-size: 28px;
         font-weight: bold;
-        color: #333;
+        color: #003366; /* 제목 색상 군청색 */
         text-align: center;
         margin-bottom: 30px;
         display: flex;
@@ -107,7 +108,7 @@
         font-weight: bold;
         margin-bottom: 5px;
         display: block;
-        color: #007bff;
+        color: #003366; /* 레이블 글자 색상 군청색 */
     }
 
     input[type="text"], textarea {
@@ -128,38 +129,23 @@
     }
 
     .button-group button, .button-group a {
-        background-color: #007bff;
-        color: white;
-        padding: 8px 15px; /* 버튼 크기 줄이기 */
-        border: none;
-        border-radius: 5px;
-        font-size: 14px;
-        text-decoration: none;
-        transition: background-color 0.3s ease;
-        margin: 0 5px; /* 버튼 간격 조정 */
-    }
-
-    .button-group button:hover, .button-group a:hover {
-        background-color: #0056b3;
-    }
-
-    .submit-btn button {
-        background-color: #28a745;
+        background-color: #003366; /* 버튼 색깔 군청색 */
         color: white;
         padding: 8px 15px;
         border: none;
         border-radius: 5px;
         font-size: 14px;
-        cursor: pointer;
-        margin-right: 10px; /* 간격 추가 */
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+        margin: 0 5px;
     }
 
-    .submit-btn button:hover {
-        background-color: #218838;
+    .button-group button:hover, .button-group a:hover {
+        background-color: #002244; /* 호버 시 더 진한 군청색 */
     }
 
     .header_section {
-        background: linear-gradient(135deg, #007bff, #00d4ff);
+        background: linear-gradient(135deg, #003366, #0056b3); /* 헤더 그라데이션 */
         padding: 10px 0;
     }
 
@@ -182,7 +168,7 @@
  		box-shadow: none; /* 그림자 효과 제거 */
   		background-color: transparent; /* 배경색을 없앰 */
   		z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
-		}
+	}
 
 </style>
 
@@ -209,7 +195,7 @@
   
       <div class="header_bottom">
         <div class="container-fluid">
-          <nav class="navbar navbar-expand-lg custom_nav-container ">
+          <nav class="navbar navbar-expand-lg custom_nav-container">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
                 <li class="nav-item active">

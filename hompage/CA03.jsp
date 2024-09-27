@@ -38,9 +38,10 @@
         width: 60%;
         margin: 50px auto;
         padding: 30px;
-        background: linear-gradient(135deg, #ffffff 0%, #f0f2f5 100%); /* 창에 그라데이션 적용 */
+        background-color: #ffffff; /* 창 바탕을 흰색으로 설정 */
         border-radius: 15px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ced4da; /* 테두리 추가 */
+        box-shadow: none; /* 그림자 제거 */
     }
 
     .form-container h2 {
@@ -48,7 +49,7 @@
         font-size: 28px;
         margin-bottom: 30px;
         font-weight: 600;
-        color: #333;
+        color: #003366; /* 글자 색상 군청색 */
         position: relative;
     }
 
@@ -67,7 +68,7 @@
         font-weight: bold;
         margin-bottom: 8px;
         display: block;
-        color: #007bff;
+        color: #003366; /* 레이블 글자 색상 군청색 */
     }
 
     input[type="text"],
@@ -84,9 +85,9 @@
 
     input[type="text"]:focus,
     textarea:focus {
-        border-color: #007bff;
+        border-color: #003366; /* 포커스 시 군청색 테두리 */
         outline: none;
-        box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+        box-shadow: 0 0 5px rgba(0, 51, 102, 0.25); /* 포커스 시 그림자 */
     }
 
     textarea {
@@ -99,7 +100,7 @@
     }
 
     .submit-btn button {
-        background-color: #28a745;
+        background-color: #003366; /* 버튼 색깔 군청색 */
         color: white;
         padding: 12px 25px;
         border: none;
@@ -110,11 +111,11 @@
     }
 
     .submit-btn button:hover {
-        background-color: #218838;
+        background-color: #002244; /* 호버 시 더 진한 군청색 */
     }
 
     .submit-btn a {
-        background-color: #6c757d;
+        background-color: #003366; /* "목록으로" 버튼 색깔 군청색 */
         color: white;
         padding: 12px 20px;
         border-radius: 8px;
@@ -125,7 +126,7 @@
     }
 
     .submit-btn a:hover {
-        background-color: #5a6268;
+        background-color: #002244; /* "목록으로" 버튼 호버 시 더 진한 군청색 */
     }
 
     .container-fluid.header_top_container {
@@ -142,7 +143,7 @@
     }
 
     .header_section {
-        background: linear-gradient(135deg, #007bff, #00d4ff);
+        background: linear-gradient(135deg, #003366, #0056b3); /* 헤더 그라데이션 */
     }
 
 	.footer_section {
@@ -156,7 +157,7 @@
  		box-shadow: none; /* 그림자 효과 제거 */
   		background-color: transparent; /* 배경색을 없앰 */
   		z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
-		}
+	}
 </style>
 
 </head>

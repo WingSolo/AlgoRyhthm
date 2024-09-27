@@ -58,22 +58,23 @@
     body {
         font-family: 'Poppins', sans-serif;
         background-color: #ffffff; /* 전체 배경을 완전 흰색으로 설정 */
-        color: #333;
+        color: #003366; /* 글자 색상 군청색 */
     }
     
     .form-container {
         width: 70%;
         margin: 50px auto;
         padding: 30px;
-        background: linear-gradient(135deg, #ffffff 0%, #f0f2f5 100%); /* 창에 그라디언트 적용 */
+        background-color: #ffffff; /* 창 바탕을 흰색으로 설정 */
         border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ced4da; /* 흰 배경에 테두리 추가 */
+        box-shadow: none; /* 그림자 제거 */
     }
 
     h2 {
         font-size: 28px;
         font-weight: bold;
-        color: #333;
+        color: #003366; /* 제목 글자색 군청색 */
         text-align: center;
         margin-bottom: 30px;
         display: flex;
@@ -95,7 +96,7 @@
         font-weight: bold;
         margin-bottom: 5px;
         display: block;
-        color: #007bff;
+        color: #003366; /* 레이블 글자 색상 군청색 */
     }
 
     input[type="text"], textarea {
@@ -118,7 +119,7 @@
     }
 
     .button-group a {
-        background-color: #007bff;
+        background-color: #003366; /* 버튼 색깔 군청색 */
         color: white;
         padding: 8px 15px;
         border: none;
@@ -129,11 +130,11 @@
     }
 
     .button-group a:hover {
-        background-color: #0056b3;
+        background-color: #002244; /* 호버 시 더 진한 군청색 */
     }
 
     .submit-btn button {
-        background-color: #28a745;
+        background-color: #003366; /* 버튼 색깔 군청색 */
         color: white;
         padding: 8px 15px;
         border: none;
@@ -144,11 +145,11 @@
     }
 
     .submit-btn button:hover {
-        background-color: #218838;
+        background-color: #002244; /* 호버 시 더 진한 군청색 */
     }
 
     .header_section {
-        background: linear-gradient(135deg, #007bff, #00d4ff);
+        background: linear-gradient(135deg, #003366, #0056b3); /* 헤더 그라데이션 */
         padding: 10px 0;
     }
 

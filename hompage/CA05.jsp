@@ -70,7 +70,7 @@
     body {
         font-family: 'Poppins', sans-serif;
         background-color: #ffffff; /* 전체 배경을 흰색으로 설정 */
-        color: #333;
+        color: #003366; /* 글자 색상 군청색 */
     }
 
     .message-container {
@@ -78,15 +78,16 @@
         margin: 80px auto;
         text-align: center;
         padding: 30px;
-        background: linear-gradient(135deg, #ffffff 0%, #f0f2f5 100%); /* 창에 그라데이션 적용 */
+        background-color: #ffffff; /* 창 바탕을 흰색으로 설정 */
         border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        border: 1px solid #ced4da; /* 테두리 추가 */
+        box-shadow: none; /* 그림자 제거 */
     }
 
     .message-container h2 {
         font-size: 28px;
         font-weight: 600;
-        color: #333;
+        color: #003366; /* 제목 색상 군청색 */
         margin-bottom: 20px;
         position: relative;
         display: inline-block;
@@ -101,7 +102,7 @@
 
     .message-container p {
         font-size: 18px;
-        color: #555;
+        color: #003366; /* 본문 색상 군청색 */
         margin-bottom: 30px;
     }
 
@@ -120,18 +121,10 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-    }
-
-    .button-group a.delete-btn {
-        background-color: #dc3545;
+        background-color: #003366; /* 버튼 색깔 군청색 */
         color: white;
-        border: 1px solid #dc3545;
-    }
-
-    .button-group a.cancel-btn {
-        background-color: #6c757d;
-        color: white;
-        border: 1px solid #6c757d;
+        border: 1px solid #003366;
+        transition: background-color 0.3s ease;
     }
 
     .button-group a i {
@@ -139,12 +132,12 @@
     }
 
     .button-group a:hover {
-        opacity: 0.9;
+        background-color: #002244; /* 버튼 호버 시 더 진한 군청색 */
     }
 
     /* 헤더 스타일 */
     .header_section {
-        background: linear-gradient(135deg, #007bff, #00d4ff);
+        background: linear-gradient(135deg, #003366, #0056b3);
         padding: 10px 0;
     }
 
@@ -168,7 +161,7 @@
  		box-shadow: none; /* 그림자 효과 제거 */
   		background-color: transparent; /* 배경색을 없앰 */
   		z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
-		}
+	}
 </style>
 
 </head>

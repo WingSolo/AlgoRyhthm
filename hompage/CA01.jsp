@@ -26,25 +26,40 @@
 <style>
   body {
       font-family: 'Poppins', sans-serif;
-      background-color: #ffffff; /* 전체 배경을 완전 흰색으로 설정 */
+      background-color: #f8f9fa; /* 페이지 배경을 밝은 회색으로 설정 */
       color: #333;
+      font-size: 14px; /* 폰트 크기 축소 */
   }
-  
+
+  /* 공지사항 컨테이너 */
   .notice-container {
       width: 80%;
       margin: 50px auto;
       padding: 30px;
-      background: linear-gradient(135deg, #ffffff 0%, #f0f2f5 100%); /* 공지사항 창에 그라데이션 적용 */
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-      border-radius: 10px;
+      background-color: #ffffff; /* 본문 전체 흰색 배경 */
+      border-radius: 10px; /* 테두리 둥글게 */
+      color: #333; /* 본문 텍스트 색상 */
+      border: 1px solid #ddd; /* 테두리 추가 */
   }
 
+  /* 공지사항 제목 라인 */
   .notice-header {
-      text-align: center;
-      font-size: 32px;
+      display: flex;
+      justify-content: center; /* 중앙 정렬 */
+      align-items: center; /* 세로 중앙 정렬 */
+      font-size: 28px; /* 제목 폰트 크기 축소 */
       font-weight: 700;
       margin-bottom: 30px;
-      color: #007bff;
+      padding: 20px;
+      color: #003366; /* 제목 텍스트 색상 */
+      background-color: #ffffff; /* 제목 부분 흰색 배경 */
+      border-radius: 5px; /* 제목 배경에 둥근 모서리 */
+  }
+
+  /* 이모티콘 스타일 */
+  .notice-header .emoji {
+      margin-right: 10px; /* 이모티콘과 텍스트 간격 */
+      font-size: 36px; /* 이모티콘 크기 */
   }
 
   .notice-item {
@@ -53,21 +68,22 @@
   }
 
   .notice-title {
-      font-size: 18px;
+      font-size: 16px; /* 공지 제목 폰트 크기 축소 */
       font-weight: bold;
-      color: #007bff;
-      cursor: pointer; /* 커서를 손 모양으로 */
+      color: #003366; /* 제목 글씨는 군청색 */
+      cursor: pointer;
       text-decoration: none;
   }
 
   .notice-title:hover {
-      background-color: #f0f2f5; /* 로그인 시 제목에 하이라이트 효과 */
+      background-color: #f0f2f5;
       border-radius: 5px;
+      color: #003366; /* 호버 시 배경을 회색, 글씨는 군청색 유지 */
   }
 
   .notice-date {
-      font-size: 14px;
-      color: #666;
+      font-size: 12px; /* 날짜 폰트 크기 축소 */
+      color: #666; /* 날짜 색상 */
       float: right;
   }
 
@@ -82,17 +98,18 @@
       text-decoration: none;
       border: 1px solid #ddd;
       border-radius: 5px;
-      font-size: 14px;
+      font-size: 12px; /* 페이지네이션 폰트 크기 축소 */
+      color: #333; /* 페이지네이션 기본 글씨 색상 */
   }
 
   .pagination a:hover {
       background-color: #007bff;
-      color: white;
+      color: white; /* 페이지네이션 호버 시 배경 파란색, 글씨 흰색 */
   }
 
   .pagination span {
       font-weight: bold;
-      color: #007bff;
+      color: #007bff; /* 현재 페이지 강조 색상 */
   }
 
   /* 중앙에 배치할 스타일 */
@@ -102,38 +119,24 @@
       align-items: center;
       margin-top: 20px;
   }
-  
+
   /* 공지 작성 버튼 스타일 */
   .edit-button {
-      background-color: #28a745;
-      color: white;
+      background-color: #003366; /* 버튼은 군청색 */
+      color: #ffffff; /* 버튼 텍스트는 흰색 */
       padding: 12px 25px;
       font-size: 16px;
       font-weight: bold;
       border: none;
-      border-radius: 50px; /* 버튼을 둥글게 */
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* 그림자 추가 */
+      border-radius: 50px; /* 버튼 둥글게 */
       transition: background-color 0.3s ease, transform 0.3s ease;
       text-decoration: none;
       display: inline-block;
   }
 
   .edit-button:hover {
-      background-color: #218838; /* 호버 시 더 진한 초록색 */
-      transform: scale(1.05); /* 버튼을 약간 키움 */
-  }
-  
-  .footer_section {
-      position: fixed; /* 화면 하단에 고정 */
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      color: blue; /* 텍스트 색상 */
-      text-align: center;
-      padding: 5px 0; /* 상하 패딩을 작게 설정 */
-      box-shadow: none; /* 그림자 효과 제거 */
-      background-color: transparent; /* 배경색을 없앰 */
-      z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
+      background-color: #002244; /* 호버 시 버튼 색상 더 진하게 변경 */
+      transform: scale(1.05);
   }
 </style>
 
@@ -196,11 +199,14 @@
   </div>
   
   <div class="notice-container">
-    <div class="notice-header">공지사항</div>
+	<div class="notice-header">
+    	<span class="emoji">📋</span> <!-- 이모티콘을 클립보드 모양으로 변경 -->
+    	<span>공지사항</span>
+	</div>
 
     <% 
         NoticeDao noticeDao = new NoticeDao();
-        int pageSize = 5;
+        int pageSize = 10;  // 페이지당 표시할 공지사항 개수 10으로 증가
         int currentPage = 1;
 
         String pageParam = request.getParameter("page");
