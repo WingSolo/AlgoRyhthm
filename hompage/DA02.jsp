@@ -21,7 +21,7 @@ EmpUser userInfo = userDao.getEmpUserById(loginUser.getEmp_id());
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <title>공지사항</title>
+  <title>회원 정보 수정</title>
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
@@ -37,24 +37,24 @@ EmpUser userInfo = userDao.getEmpUserById(loginUser.getEmp_id());
         margin: 25px auto;
         padding: 20px;
         display: flex;
-        justify-content: space-between;
-        gap: 20px;
-        height: auto;
+        justify-content: center; /* 우측 창을 가운데 정렬 */
+        gap: 0; /* 좌측 창과 우측 창 사이의 간격 제거 */
     }
 
     /* 사이드바 */
     .sidebar {
         width: 15%;
-        background: linear-gradient(135deg, #f9f9f9, #d0e1ff); /* 그라데이션 추가 */
+        background: #ffffff; /* 창 배경 흰색 */
         padding: 20px;
         border-radius: 10px;
+        color: #003366; /* 글자 색 군청색 */
     }
 
     .menu-title {
         font-size: 20px;
         font-weight: bold;
         margin-bottom: 20px;
-        color: #007bff;
+        color: #003366; /* 메뉴 제목 글자 색 군청색 */
     }
 
     .menu-item {
@@ -64,13 +64,13 @@ EmpUser userInfo = userDao.getEmpUserById(loginUser.getEmp_id());
 
     .menu-item a {
         text-decoration: none;
-        color: #007bff;
+        color: #003366; /* 메뉴 링크 글자색 군청색 */
         display: flex;
         align-items: center;
     }
 
     .menu-item a:hover {
-        color: #0056b3;
+        color: #002244; /* 링크 호버 시 더 어두운 군청색 */
     }
 
     .menu-item i {
@@ -79,21 +79,19 @@ EmpUser userInfo = userDao.getEmpUserById(loginUser.getEmp_id());
 
     /* 콘텐츠 섹션 */
     .content {
-        width: 70%;
-        background: linear-gradient(135deg, #007bff, #00c6ff); /* 그라데이션 추가 */
+        width: 50%;
+        background: #ffffff; /* 창 배경 흰색 */
         padding: 30px;
         border-radius: 10px;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        color: white;
-        max-height: 76vh;
-  
+        color: #003366; /* 글자 색 군청색 */
+        margin-left: 0;
     }
 
     .content h2 {
         font-size: 24px;
         font-weight: bold;
         margin-bottom: 18px;
-        color: #ffffff;
+        color: #003366; /* 제목 글자 색 군청색 */
     }
 
     .form-group {
@@ -105,7 +103,7 @@ EmpUser userInfo = userDao.getEmpUserById(loginUser.getEmp_id());
         display: block;
         margin-bottom: 5px;
         font-weight: bold;
-        color: white;
+        color: #003366; /* 라벨 글자 색 군청색 */
     }
 
     .form-group input {
@@ -124,37 +122,37 @@ EmpUser userInfo = userDao.getEmpUserById(loginUser.getEmp_id());
         padding: 10px 20px;
         border: none;
         border-radius: 5px;
-        background-color: #ffffff;
-        color: #007bff;
+        background-color: #003366; /* 버튼 색상 군청색 */
+        color: white;
         cursor: pointer;
         margin-right: 10px;
     }
 
     button:hover {
-        background-color: #e0e0e0;
+        background-color: #002244; /* 버튼 호버 시 더 어두운 색 */
     }
 
     button[type="button"] {
-        background-color: #ffffff;
+        background-color: #003366; /* 취소 버튼 색상 군청색 */
+        color: white;
     }
 
     button[type="button"]:hover {
-        background-color: #e0e0e0;
+        background-color: #002244; /* 취소 버튼 호버 시 더 어두운 색 */
     }
     
-	.footer_section {
-  		position: fixed; /* 화면 하단에 고정 */
-  		bottom: 0;
-  		left: 0;
-  		width: 100%;
-  		color: blue; /* 텍스트 색상 */
-  		text-align: center;
-  		padding: 5px 0; /* 상하 패딩을 작게 설정 */
- 		box-shadow: none; /* 그림자 효과 제거 */
-  		background-color: transparent; /* 배경색을 없앰 */
-  		z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
-		}
-    
+    .footer_section {
+        position: fixed; /* 화면 하단에 고정 */
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        color: blue; /* 텍스트 색상 */
+        text-align: center;
+        padding: 5px 0; /* 상하 패딩을 작게 설정 */
+        box-shadow: none; /* 그림자 효과 제거 */
+        background-color: transparent; /* 배경색을 없앰 */
+        z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
+    }
 </style>
 
 </head>
@@ -216,12 +214,12 @@ EmpUser userInfo = userDao.getEmpUserById(loginUser.getEmp_id());
   <div class="container01">
     <!-- Sidebar -->
     <div class="sidebar">
-      <div class="menu-title">마이페이지</div>
+      <div class="menu-title">마이 메뉴</div>
       <div class="menu-item">
-        <a href="DA01.jsp">✏️ 정보 수정</a>
+        <a href="DA01.jsp">정보 수정</a>
       </div>
       <div class="menu-item">
-        <a href="EA01.jsp"><i class="fa fa-envelope"></i> 문의 내역</a>
+        <a href="EA01.jsp">문의 내역</a>
       </div>
     </div>
 
@@ -262,7 +260,7 @@ EmpUser userInfo = userDao.getEmpUserById(loginUser.getEmp_id());
 
         <div class="button-container01">
           <button type="submit">회원정보 수정</button>
-          <button type="button" onclick="location.href='Main.jsp'">취소</button>
+          <button type="button" onclick="location.href='main.jsp'">취소</button>
         </div>
       </form>
     </div>

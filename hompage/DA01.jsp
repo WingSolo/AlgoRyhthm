@@ -8,6 +8,7 @@
 %>
 
 <!DOCTYPE html>
+
 <html>
 <head>
   <meta charset="utf-8" />
@@ -23,36 +24,38 @@
   <title>회원 정보 수정 전 비밀번호 확인</title>
   
 <style>
-    /* 기존 스타일 유지 */
     .container01 {
-        max-width: 1600px;
+        max-width: 1200px;
         margin: 30px auto;
         padding: 20px;
         display: flex;
-        justify-content: flex-start; /* 양쪽에 균형 맞추기 */
-        gap: 250px;
+        justify-content: center; /* 우측 창을 중앙에 정렬 */
+        gap: 0; /* 좌측 창과 우측 창 사이의 간격을 제거 */
     }
     /* 사이드바 */
     .sidebar {
         width: 15%;
-        background: linear-gradient(135deg, #f9f9f9, #d0e1ff); /* 그라데이션 추가 */
+        background: #ffffff; /* 창 배경 흰색 */
         padding: 20px;
         border-radius: 10px;
+        color: #003366; /* 글자 색 군청색 */
+        margin-right: 0; /* 우측 창과 밀착시키기 위해 여백 제거 */
     }
-	.content {
-    	width: 45%; /* 기존 65%에서 50%로 축소 */
-   		background: linear-gradient(135deg, #007bff, #00c6ff); /* 그라데이션 추가 */
-    	padding: 40px;
-    	text-align: center;
-    	border-radius: 10px;
-    	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
-    	color: white; /* 텍스트 색상 변경 */
-}
+    /* 메인 콘텐츠 창 */
+    .content {
+        width: 50%;
+        background: #ffffff; /* 창 배경 흰색 */
+        padding: 40px;
+        text-align: center;
+        border-radius: 10px;
+        color: #003366; /* 텍스트 색상 군청색 */
+        margin-left: 0; /* 좌측 여백 최소화 */
+    }
     h2 {
         font-size: 24px;
         font-weight: bold;
         margin-bottom: 20px;
-        color: #ffffff;
+        color: #003366; /* 제목 색상 군청색 */
     }
     .button-container {
         margin-top: 20px;
@@ -68,12 +71,12 @@
         padding: 10px 20px;
         border: none;
         border-radius: 5px;
-        background-color: #ffffff;
-        color: #007bff;
+        background-color: #003366; /* 버튼 색상 군청색 */
+        color: white;
         cursor: pointer;
     }
     button:hover {
-        background-color: #e0e0e0;
+        background-color: #002244; /* 버튼 호버 시 더 어두운 색 */
     }
     .menu-title {
         font-size: 18px;
@@ -86,12 +89,12 @@
     }
     .menu-item a {
         text-decoration: none;
-        color: #007bff;
+        color: #003366; /* 메뉴 링크 색상 군청색 */
         display: flex;
         align-items: center;
     }
     .menu-item a:hover {
-        color: #0056b3;
+        color: #002244; /* 호버 시 더 어두운 색 */
     }
     .menu-item i {
         margin-right: 10px;
@@ -101,20 +104,18 @@
         margin-bottom: 15px;
         font-size: 14px;
     }
-    
-	.footer_section {
-  		position: fixed; /* 화면 하단에 고정 */
-  		bottom: 0;
-  		left: 0;
-  		width: 100%;
-  		color: blue; /* 텍스트 색상 */
-  		text-align: center;
-  		padding: 5px 0; /* 상하 패딩을 작게 설정 */
- 		box-shadow: none; /* 그림자 효과 제거 */
-  		background-color: transparent; /* 배경색을 없앰 */
-  		z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
-		}
- 
+    .footer_section {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        color: blue;
+        text-align: center;
+        padding: 5px 0;
+        box-shadow: none;
+        background-color: transparent;
+        z-index: 1000;
+    }
 </style>
 
 </head>
@@ -178,10 +179,10 @@
     <div class="sidebar">
       <div class="menu-title">마이 메뉴</div>
       <div class="menu-item">
-        <a href="DA01.jsp">✏️ 정보 수정</a>
+        <a href="DA01.jsp">정보 수정</a>
       </div>
       <div class="menu-item">
-        <a href="EA01.jsp"><i class="fa fa-envelope"></i> 문의 내역</a>
+        <a href="EA01.jsp"> 문의 내역</a>
       </div>
     </div>
 
