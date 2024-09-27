@@ -62,6 +62,7 @@ public class SendPassword extends HttpServlet {
         props.put("mail.smtp.starttls.enable", "true");         // TLS 사용
         props.put("mail.smtp.host", "smtp.naver.com");          // 네이버 SMTP 서버
         props.put("mail.smtp.port", "587");                     // SMTP 포트 (TLS)
+        props.put("mail.smtp.ssl.protocols", "TLSv1.2");  
 
         // 이메일 전송을 위한 세션 설정
         Session session = Session.getInstance(props, new javax.mail.Authenticator() {
