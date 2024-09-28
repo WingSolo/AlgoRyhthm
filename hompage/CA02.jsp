@@ -77,15 +77,6 @@
         color: #003366; /* 제목 글자색 군청색 */
         text-align: center;
         margin-bottom: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    h2:before {
-        content: "🔍";
-        font-size: 24px;
-        margin-right: 10px;
     }
 
     .form-group {
@@ -119,22 +110,25 @@
     }
 
     .button-group a {
-        background-color: #003366; /* 버튼 색깔 군청색 */
+        background-color: #FF6600; /* 버튼 색깔 주황색 */
         color: white;
         padding: 8px 15px;
         border: none;
         border-radius: 5px;
         font-size: 14px;
         text-decoration: none;
-        transition: background-color 0.3s ease;
+        transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
     }
 
     .button-group a:hover {
-        background-color: #002244; /* 호버 시 더 진한 군청색 */
+        background-color: transparent; /* 호버 시 배경 투명 */
+        color: #FF6600; /* 호버 시 글자색 주황색 */
+        transform: scale(1.05); /* 호버 시 크기 확대 */
+        border: 2px solid #FF6600; /* 호버 시 주황색 테두리 추가 */
     }
 
     .submit-btn button {
-        background-color: #003366; /* 버튼 색깔 군청색 */
+        background-color: #FF6600; /* 버튼 색깔 주황색 */
         color: white;
         padding: 8px 15px;
         border: none;
@@ -145,7 +139,10 @@
     }
 
     .submit-btn button:hover {
-        background-color: #002244; /* 호버 시 더 진한 군청색 */
+        background-color: transparent; /* 호버 시 배경 투명 */
+        color: #FF6600; /* 호버 시 글자색 주황색 */
+        transform: scale(1.05); /* 호버 시 크기 확대 */
+        border: 2px solid #FF6600; /* 호버 시 주황색 테두리 추가 */
     }
 
     .header_section {
@@ -162,7 +159,7 @@
     }
 
     .footer_section {
-        position: fixed; /* 화면 하단에 고정 */
+        position: bottom; /* 화면 하단에 고정 */
         bottom: 0;
         left: 0;
         width: 100%;
@@ -171,7 +168,7 @@
         padding: 5px 0; /* 상하 패딩을 작게 설정 */
         box-shadow: none; /* 그림자 효과 제거 */
         background-color: transparent; /* 배경색을 없앰 */
-        z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
+        z-index: 0; /* 다른 요소 위에 표시되도록 설정 */
     }
 
 </style>
@@ -203,7 +200,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
                 <li class="nav-item active">
-                  <a class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" height="27px"></span></a>
+                  <a class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" width = "77px"height="37px"></span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="A01.jsp">회사소개</a>
@@ -218,9 +215,11 @@
                 <li class="nav-item">
                   <a class="nav-link" href="BA01.jsp">분석</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="BA02.jsp">문의하기</a>
-                </li>                
+				<li class="nav-item">
+  					<% if (loginUser == null) { %>
+    					<a class="nav-link" href="BA02.jsp">문의하기</a>
+  					<% } %>
+				</li>
                 <% if (loginUser != null) { %>
                 <li class="nav-item">
                   <a class="nav-link" href="DA01.jsp">마이페이지</a>

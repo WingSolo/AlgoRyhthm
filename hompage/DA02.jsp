@@ -122,27 +122,34 @@ EmpUser userInfo = userDao.getEmpUserById(loginUser.getEmp_id());
         padding: 10px 20px;
         border: none;
         border-radius: 5px;
-        background-color: #003366; /* 버튼 색상 군청색 */
+        background-color: #ff8000; /* 버튼 배경 주황색 */
         color: white;
         cursor: pointer;
         margin-right: 10px;
+        transition: all 0.3s ease; /* 호버 시 부드럽게 변화 */
     }
 
     button:hover {
-        background-color: #002244; /* 버튼 호버 시 더 어두운 색 */
+        background-color: transparent; /* 버튼 배경을 투명하게 변경 */
+        color: #ff8000; /* 글자색을 주황색으로 변경 */
+        border: 2px solid #ff8000; /* 테두리 주황색 */
+        transform: scale(1.05); /* 버튼 크기 살짝 증가 */
     }
 
     button[type="button"] {
-        background-color: #003366; /* 취소 버튼 색상 군청색 */
+        background-color: #ff8000; /* 취소 버튼 배경 주황색 */
         color: white;
     }
 
     button[type="button"]:hover {
-        background-color: #002244; /* 취소 버튼 호버 시 더 어두운 색 */
+        background-color: transparent;
+        color: #ff8000;
+        border: 2px solid #ff8000;
+        transform: scale(1.05);
     }
-    
+
     .footer_section {
-        position: fixed; /* 화면 하단에 고정 */
+        position: bottom; /* 화면 하단에 고정 */
         bottom: 0;
         left: 0;
         width: 100%;
@@ -151,7 +158,7 @@ EmpUser userInfo = userDao.getEmpUserById(loginUser.getEmp_id());
         padding: 5px 0; /* 상하 패딩을 작게 설정 */
         box-shadow: none; /* 그림자 효과 제거 */
         background-color: transparent; /* 배경색을 없앰 */
-        z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
+        z-index: 0; /* 다른 요소 위에 표시되도록 설정 */
     }
 </style>
 
@@ -181,7 +188,7 @@ EmpUser userInfo = userDao.getEmpUserById(loginUser.getEmp_id());
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="main.jsp"><img src="images/logo.png" alt="logo" height="27px"></a>
+                  <a class="nav-link" href="main.jsp"><img src="images/logo.png" alt="logo" width = "77px"height="37px"></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="A01.jsp">회사소개</a>
@@ -195,9 +202,11 @@ EmpUser userInfo = userDao.getEmpUserById(loginUser.getEmp_id());
                 <li class="nav-item">
                   <a class="nav-link" href="BA01.jsp">분석</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="BA02.jsp">문의하기</a>
-                </li>
+				<li class="nav-item">
+  					<% if (loginUser == null) { %>
+    					<a class="nav-link" href="BA02.jsp">문의하기</a>
+  					<% } %>
+				</li>
                 <% if (loginUser != null) { %>
                   <li class="nav-item">
                     <a class="nav-link" href="DA01.jsp">마이페이지</a>

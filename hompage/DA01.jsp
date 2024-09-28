@@ -23,6 +23,22 @@
   <link href="css/responsive.css" rel="stylesheet" />
   <title>회원 정보 수정 전 비밀번호 확인</title>
   
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" />
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+  <link href="css/responsive.css" rel="stylesheet" />
+  <title>회원 정보 수정 전 비밀번호 확인</title>
+  
 <style>
     .container01 {
         max-width: 1200px;
@@ -71,12 +87,16 @@
         padding: 10px 20px;
         border: none;
         border-radius: 5px;
-        background-color: #003366; /* 버튼 색상 군청색 */
+        background-color: #ff8000; /* 기본 배경색 주황색 */
         color: white;
         cursor: pointer;
+        transition: all 0.3s ease; /* 호버 효과를 부드럽게 적용 */
     }
     button:hover {
-        background-color: #002244; /* 버튼 호버 시 더 어두운 색 */
+        background-color: transparent; /* 호버 시 배경색 투명 */
+        color: #ff8000; /* 호버 시 글자색 주황색 */
+        border: 2px solid #ff8000; /* 테두리 주황색 */
+        transform: scale(1.05); /* 버튼 크기 살짝 증가 */
     }
     .menu-title {
         font-size: 18px;
@@ -114,7 +134,7 @@
         padding: 5px 0;
         box-shadow: none;
         background-color: transparent;
-        z-index: 1000;
+        z-index: 0;
     }
 </style>
 
@@ -144,7 +164,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="main.jsp"><img src="images/logo.png" alt="logo" height="27px"></a>
+                  <a class="nav-link" href="main.jsp"><img src="images/logo.png" alt="logo" width = "77px"height="37px"></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="A01.jsp">회사소개</a>
@@ -158,9 +178,11 @@
                 <li class="nav-item">
                   <a class="nav-link" href="BA01.jsp">분석</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="BA02.jsp">문의하기</a>
-                </li>
+				<li class="nav-item">
+  					<% if (loginUser == null) { %>
+    					<a class="nav-link" href="BA02.jsp">문의하기</a>
+  					<% } %>
+				</li>
                 <% if (loginUser != null) { %>
                   <li class="nav-item">
                     <a class="nav-link" href="DA01.jsp">마이페이지</a>

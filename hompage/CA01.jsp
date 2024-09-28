@@ -26,7 +26,7 @@
 <style>
   body {
       font-family: 'Poppins', sans-serif;
-      background-color: #f8f9fa; /* 페이지 배경을 밝은 회색으로 설정 */
+      background-color: #ffffff; /* 페이지 배경을 밝은 회색으로 설정 */
       color: #333;
       font-size: 14px; /* 폰트 크기 축소 */
   }
@@ -54,12 +54,6 @@
       color: #003366; /* 제목 텍스트 색상 */
       background-color: #ffffff; /* 제목 부분 흰색 배경 */
       border-radius: 5px; /* 제목 배경에 둥근 모서리 */
-  }
-
-  /* 이모티콘 스타일 */
-  .notice-header .emoji {
-      margin-right: 10px; /* 이모티콘과 텍스트 간격 */
-      font-size: 36px; /* 이모티콘 크기 */
   }
 
   .notice-item {
@@ -122,22 +116,37 @@
 
   /* 공지 작성 버튼 스타일 */
   .edit-button {
-      background-color: #003366; /* 버튼은 군청색 */
+      background-color: #FF6600; /* 버튼은 주황색 */
       color: #ffffff; /* 버튼 텍스트는 흰색 */
       padding: 12px 25px;
       font-size: 16px;
       font-weight: bold;
       border: none;
       border-radius: 50px; /* 버튼 둥글게 */
-      transition: background-color 0.3s ease, transform 0.3s ease;
+      transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
       text-decoration: none;
       display: inline-block;
   }
 
   .edit-button:hover {
-      background-color: #002244; /* 호버 시 버튼 색상 더 진하게 변경 */
-      transform: scale(1.05);
+      background-color: transparent; /* 호버 시 배경 투명 */
+      color: #FF6600; /* 호버 시 글자색 주황색 */
+      transform: scale(1.05); /* 호버 시 크기 확대 */
+      border: 2px solid #FF6600; /* 호버 시 주황색 테두리 추가 */
   }
+  
+	.footer_section {
+  		position: bottom; /* 화면 하단에 고정 */
+  		bottom: 0;
+  		left: 0;
+  		width: 100%;
+  		color: blue; /* 텍스트 색상 */
+  		text-align: center;
+  		padding: 5px 0; /* 상하 패딩을 작게 설정 */
+ 		box-shadow: none; /* 그림자 효과 제거 */
+  		background-color: transparent; /* 배경색을 없앰 */
+  		z-index: 0; /* 다른 요소 위에 표시되도록 설정 */
+		}    
 </style>
 
 </head>
@@ -167,7 +176,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
                 <li class="nav-item active">
-                  <a class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" height="27px"></span></a>
+                  <a class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" width = "77px"height="37px"></span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="A01.jsp">회사소개</a>
@@ -181,9 +190,12 @@
                 <li class="nav-item">
                   <a class="nav-link" href="BA01.jsp">분석</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="BA02.jsp">문의하기</a>
-                </li>                
+				<li class="nav-item">
+  					<% if (loginUser == null) { %>
+    					<a class="nav-link" href="BA02.jsp">문의하기</a>
+  					<% } %>
+				</li>
+
                 <% if (loginUser != null) { %>
                 <li class="nav-item">
                   <a class="nav-link" href="DA01.jsp">마이페이지</a>
@@ -199,10 +211,9 @@
   </div>
   
   <div class="notice-container">
-	<div class="notice-header">
-    	<span class="emoji">📋</span> <!-- 이모티콘을 클립보드 모양으로 변경 -->
-    	<span>공지사항</span>
-	</div>
+    <div class="notice-header">
+        <span>공지사항</span>
+    </div>
 
     <% 
         NoticeDao noticeDao = new NoticeDao();
@@ -243,7 +254,7 @@
     <!-- 로그인된 경우 작성 버튼을 페이지네이션 위에 추가 -->
     <% if (loginUser != null) { %>
         <div class="center-button">
-            <a href="CA03.jsp" class="edit-button">📋 공지 작성</a>
+            <a href="CA03.jsp" class="edit-button">공지 작성</a>
         </div>
     <% } %>
 

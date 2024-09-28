@@ -50,19 +50,22 @@
   	}
 
   	.btn {
-    	background-color: #003366; /* 버튼 색깔 군청색 */
+    	background-color: #ff6600; /* 버튼 배경색 주황색 */
     	color: white;
     	padding: 12px 25px;
     	border-radius: 30px;
     	border: none;
     	font-size: 16px;
     	width: 100%;
-    	transition: background-color 0.3s ease;
+    	transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease, border 0.3s ease;
     	box-shadow: none; /* 그림자 제거 */
   	}
 
   	.btn:hover {
-    	background-color: #002244; /* 버튼 호버 시 더 진한 군청색 */
+    	background-color: transparent; /* 호버 시 배경 투명 */
+    	color: #ff6600; /* 호버 시 글자색 주황색 */
+    	transform: scale(1.05); /* 호버 시 크기 살짝 증가 */
+    	border: 2px solid #ff6600; /* 호버 시 테두리 주황색 */
   	}
 
     .heading_container h2 {
@@ -71,15 +74,6 @@
       color: #003366; /* 제목 글자 색상 군청색 */
       position: relative;
       display: inline-block;
-    }
-
-    .heading_container h2::before {
-      content: "🔑";
-      position: absolute;
-      left: -40px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 36px;
     }
 
     .heading_container span {
@@ -141,7 +135,7 @@
   		padding: 5px 0; /* 상하 패딩을 작게 설정 */
  		box-shadow: none; /* 그림자 효과 제거 */
   		background-color: transparent; /* 배경색을 없앰 */
-  		z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
+  		z-index: 0; /* 다른 요소 위에 표시되도록 설정 */
 	}
   </style>
 </head>
@@ -171,7 +165,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
                 <li class="nav-item active">
-                  <a class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" height="27px"></span></a>
+                  <a class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" width = "77px"height="37px"></span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="A01.jsp">회사소개</a>
@@ -185,9 +179,11 @@
                 <li class="nav-item">
                   <a class="nav-link" href="BA01.jsp">분석</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="BA02.jsp">문의하기</a>
-                </li>                
+				<li class="nav-item">
+  					<% if (loginUser == null) { %>
+    					<a class="nav-link" href="BA02.jsp">문의하기</a>
+  					<% } %>
+				</li>
                 <% if (loginUser != null) { %>
                 <li class="nav-item">
                   <a class="nav-link" href="DA01.jsp">마이페이지</a>
@@ -219,10 +215,10 @@
                 <input type="password" class="form-control" name="password" placeholder="비밀번호" required>
               </div>
               <div class="form-group">
-                <button type="submit" class="btn">🔐 로그인</button>
+                <button type="submit" class="btn">로그인</button>
               </div>
               <div class="form-group">
-                <a href="findPassword.jsp">🔑 비밀번호 찾기</a>
+                <a href="findPassword.jsp">비밀번호 찾기</a>
               </div>
 
             </form>

@@ -65,7 +65,6 @@
     <link href="css/font-awesome.min.css" rel="stylesheet" />
     <link href="css/style.css" rel="stylesheet" />
     
-    <!-- 그라데이션 스타일 및 이모티콘 추가 -->
 <style>
     body {
         font-family: 'Poppins', sans-serif;
@@ -89,15 +88,6 @@
         font-weight: 600;
         color: #003366; /* 제목 색상 군청색 */
         margin-bottom: 20px;
-        position: relative;
-        display: inline-block;
-    }
-
-    .message-container h2::before {
-        content: "❌";
-        position: absolute;
-        left: -50px;
-        font-size: 32px;
     }
 
     .message-container p {
@@ -121,18 +111,17 @@
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        background-color: #003366; /* 버튼 색깔 군청색 */
+        background-color: #ff8000; /* 버튼 배경색 주황색 */
         color: white;
-        border: 1px solid #003366;
-        transition: background-color 0.3s ease;
-    }
-
-    .button-group a i {
-        margin-right: 8px;
+        border: 1px solid #ff8000;
+        transition: all 0.3s ease;
     }
 
     .button-group a:hover {
-        background-color: #002244; /* 버튼 호버 시 더 진한 군청색 */
+        background-color: transparent; /* 호버 시 배경 투명 */
+        color: #ff8000; /* 호버 시 글자 주황색 */
+        border: 2px solid #ff8000; /* 테두리 주황색 */
+        transform: scale(1.1); /* 호버 시 크기 살짝 증가 */
     }
 
     /* 헤더 스타일 */
@@ -150,18 +139,18 @@
         color: #ffefba;
     }
 
-	.footer_section {
-  		position: fixed; /* 화면 하단에 고정 */
-  		bottom: 0;
-  		left: 0;
-  		width: 100%;
-  		color: blue; /* 텍스트 색상 */
-  		text-align: center;
-  		padding: 5px 0; /* 상하 패딩을 작게 설정 */
- 		box-shadow: none; /* 그림자 효과 제거 */
-  		background-color: transparent; /* 배경색을 없앰 */
-  		z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
-	}
+    .footer_section {
+        position: fixed; /* 화면 하단에 고정 */
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        color: blue; /* 텍스트 색상 */
+        text-align: center;
+        padding: 5px 0; /* 상하 패딩을 작게 설정 */
+        box-shadow: none; /* 그림자 효과 제거 */
+        background-color: transparent; /* 배경색을 없앰 */
+        z-index: 0; /* 다른 요소 위에 표시되도록 설정 */
+    }
 </style>
 
 </head>
@@ -191,7 +180,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
                 <li class="nav-item active">
-                  <a class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" height="27px"></span></a>
+                  <a class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" width = "77px"height="37px"></span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="A01.jsp">회사소개</a>
@@ -205,9 +194,11 @@
                 <li class="nav-item">
                   <a class="nav-link" href="BA01.jsp">분석</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="BA02.jsp">문의하기</a>
-                </li>
+				<li class="nav-item">
+  					<% if (loginUser == null) { %>
+    					<a class="nav-link" href="BA02.jsp">문의하기</a>
+  					<% } %>
+				</li>
                 <% if (loginUser != null) { %>
                 <li class="nav-item">
                   <a class="nav-link" href="DA01.jsp">마이페이지</a>
@@ -226,8 +217,8 @@
     <h2>공지사항 삭제</h2>
     <p>공지사항을 삭제하시겠습니까?</p>
     <div class="button-group">
-        <a href="DeleteNoticeServlet?num=<%= notice.getNum() %>" class="delete-btn"><i class="fa fa-trash"></i> 삭제</a>
-        <a href="CA01.jsp" class="cancel-btn"><i class="fa fa-ban"></i> 취소</a>
+        <a href="DeleteNoticeServlet?num=<%= notice.getNum() %>" class="delete-btn">삭제</a>
+        <a href="CA01.jsp" class="cancel-btn">취소</a>
     </div>
 </div>
 

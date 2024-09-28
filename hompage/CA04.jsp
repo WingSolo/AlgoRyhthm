@@ -94,12 +94,6 @@
         align-items: center;
     }
 
-    h2:before {
-        content: "✏️";
-        font-size: 24px;
-        margin-right: 10px;
-    }
-
     .form-group {
         margin-bottom: 20px;
     }
@@ -129,19 +123,22 @@
     }
 
     .button-group button, .button-group a {
-        background-color: #003366; /* 버튼 색깔 군청색 */
+        background-color: #ff8000; /* 기본 상태에서 주황색 버튼 */
         color: white;
         padding: 8px 15px;
         border: none;
         border-radius: 5px;
         font-size: 14px;
         text-decoration: none;
-        transition: background-color 0.3s ease;
+        transition: all 0.3s ease; /* 크기 및 색상 변화에 대한 부드러운 전환 */
         margin: 0 5px;
     }
 
     .button-group button:hover, .button-group a:hover {
-        background-color: #002244; /* 호버 시 더 진한 군청색 */
+        background-color: transparent; /* 호버 시 배경 투명 */
+        color: #ff8000; /* 호버 시 글자 주황색 */
+        border: 2px solid #ff8000; /* 테두리 주황색 */
+        transform: scale(1.1); /* 호버 시 크기 살짝 증가 */
     }
 
     .header_section {
@@ -157,19 +154,18 @@
         color: #ffefba;
     }
 
-	.footer_section {
-  		position: fixed; /* 화면 하단에 고정 */
-  		bottom: 0;
-  		left: 0;
-  		width: 100%;
-  		color: blue; /* 텍스트 색상 */
-  		text-align: center;
-  		padding: 5px 0; /* 상하 패딩을 작게 설정 */
- 		box-shadow: none; /* 그림자 효과 제거 */
-  		background-color: transparent; /* 배경색을 없앰 */
-  		z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
-	}
-
+    .footer_section {
+        position: bottom; /* 화면 하단에 고정 */
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        color: blue; /* 텍스트 색상 */
+        text-align: center;
+        padding: 5px 0; /* 상하 패딩을 작게 설정 */
+        box-shadow: none; /* 그림자 효과 제거 */
+        background-color: transparent; /* 배경색을 없앰 */
+        z-index: 0; /* 다른 요소 위에 표시되도록 설정 */
+    }
 </style>
 
 </head>
@@ -199,7 +195,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
                 <li class="nav-item active">
-                  <a class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" height="27px"></span></a>
+                  <a class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" width = "77px"height="37px"></span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="A01.jsp">회사소개</a>
@@ -214,9 +210,11 @@
                 <li class="nav-item">
                   <a class="nav-link" href="BA01.jsp">분석</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="BA02.jsp">문의하기</a>
-                </li>                
+				<li class="nav-item">
+  					<% if (loginUser == null) { %>
+    					<a class="nav-link" href="BA02.jsp">문의하기</a>
+  					<% } %>
+				</li>
                 <% if (loginUser != null) { %>
                 <li class="nav-item">
                   <a class="nav-link" href="DA01.jsp">마이페이지</a>

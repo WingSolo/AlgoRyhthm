@@ -184,9 +184,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="BA01.jsp">분석</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="BA02.jsp">문의하기</a>
-                </li>                
+				<li class="nav-item">
+  					<% if (loginUser == null) { %>
+    					<a class="nav-link" href="BA02.jsp">문의하기</a>
+  					<% } %>
+				</li>            
                 <!-- Show "마이페이지" next to "공지사항" if the user is logged in -->
                 <% if (loginUser != null) { %>
                 <li class="nav-item">
