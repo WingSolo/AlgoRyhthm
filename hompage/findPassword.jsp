@@ -138,7 +138,7 @@
         <div class="row">
             <div class="col-md-6 offset-md-3">
                 <div class="login_form">
-                    <h2>새로운 비밀번호 발송</h2>
+                    <h2><b>새로운 비밀번호 발송</b></h2>
                     <h5>(아이디와 등록된 이메일주소가 맞으면 전송)</h5>
                     <br>
                     <br>

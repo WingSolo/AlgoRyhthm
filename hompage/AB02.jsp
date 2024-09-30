@@ -120,9 +120,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="BA01.jsp">분석</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="BA02.jsp">문의하기</a>
-                </li>                
+				<li class="nav-item">
+  					<% if (loginUser == null) { %>
+    					<a class="nav-link" href="BA02.jsp">문의하기</a>
+  					<% } %>
+				</li>               
                 <!-- Show "마이페이지" next to "공지사항" if the user is logged in -->
                 <% if (loginUser != null) { %>
                 <li class="nav-item">
@@ -236,13 +238,13 @@
               <p class="p1">라벨링 유형</p>
             </div>
             <div class="sel2">
-              <p class="p2">내용</p>
+              <p class="p2"> - </p>
             </div>
             <div class="sel1">
               <p class="p1">라벨링 형식</p>
             </div>
             <div class="sel2">
-              <p class="p2">내용</p>
+              <p class="p2"> - </p>
             </div>
           </div>
           
@@ -252,9 +254,15 @@
           <div class="content_detail2">	
 			<div class='object-box'>
   				<!-- 이미지에 클릭 이벤트 추가 -->
-  				<a href="./images/jj_qc.png" target="_blank" onclick="window.open(this.href, 'newwindow', 'width=800,height=600'); return false;">
-    				<img src="./images/jj_qc.png" alt="분석 이미지" />
+  				<a href="./images/Heat01.png" target="_blank" onclick="window.open(this.href,  'newwindow', 'width=1000,height=720'); return false;">
+    				<img src="./images/Heat01.png" alt="분석 이미지" width=400 height=300 />
   				</a>
+  				<a href="./images/Heat02.png" target="_blank" onclick="window.open(this.href,  'newwindow', 'width=600,height=450'); return false;">
+    				<img src="./images/Heat02.png" alt="분석 이미지" width=200 height=150  />
+  				</a>
+  				<span><a href="./images/Heat03.png" target="_blank" onclick="window.open(this.href,  'newwindow', 'width=600,height=450'); return false;">
+    				<img src="./images/Heat03.png" alt="분석 이미지" width=200 height=150  />
+  				</a></span>
 			</div>
 
             <div style="display: inline-block; width: 450px; margin-right: 30px;">
@@ -266,10 +274,14 @@
               <p class="p1">분석 모델</p>
               <p class="p2">오토인코더, 활성화함수(ReLU), 옵티마이저 : Adam</p>
             </div>
-            <div class="sel3">
+            <div class="sel3" style="height: 100%;">
               <p class="p1">모델 성능</p>
-              <p class="p2">모델 성능 텍스트</p>
-            </div>
+              <p class="p2">accuracy_score(정확도) : 1.00</p>
+              <p class="p2">precision_score(정밀도) : 0/94</p>
+              <p class="p2">recall_score(재현율) : 0.99</p>
+              <p class="p2">F1 score : 0.96</p>
+              
+             </div>
           </div>
           </div>
 
