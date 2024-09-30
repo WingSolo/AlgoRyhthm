@@ -183,8 +183,10 @@
                                     <a class="nav-link" href="BA01.jsp">분석</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="BA02.jsp">문의하기</a>
-                                </li>
+					                 <% if (loginUser == null) { %>
+					                   <a class="nav-link" href="BA02.jsp">문의하기</a>
+					                 <% } %>
+					            </li>
                                 <% if (loginUser != null) { %>
                                     <li class="nav-item">
                                         <a class="nav-link" href="DA01.jsp">마이페이지</a>
