@@ -156,7 +156,7 @@
 							  주요 키워드
 						</p>
               <p class = "p2">
-                AI 학습데이터, 텍스트 데이터 
+                AI 학습데이터, 열처리, csv 파일
               </p>
             </div>
             <div class = "content_cat_2">
@@ -164,7 +164,7 @@
 							  주제
 						  </p>
               <p class = "p2">
-                열처리 : 품질보증 
+                열처리 : 예지보전 
               </p>
             </div>
             <div class = "content_cat_3">
@@ -172,7 +172,7 @@
 							  데이터 종류
 						  </p>
               <p class = "p2">
-                텍스트
+                CSV:쉼표로 구분한 text Data
               </p>
             </div>
           </div>
@@ -182,11 +182,25 @@
           </div>
           <div class="content_detail">	
             <p class="p1">소개</p>
-            <p class="p2">소개 텍스트</p>
+            <p class="p2">- 제조분야 : 자동차 부품(에어백, 안전벨트)</p>
+            <p class="p2">- 제조 공정명 : 열처리 공정</p>
+            <p class="p2">- 수집 장비 : Manufacturing Execution System(MES) 시스템</p>
+            <p class="p2">- 수집 주기 : 배치별 사이클 타임 약 1초</p>
           </div>
           <div class="content_detail">	
             <p class="p1">구축 목적</p>
-            <p class="p2">구축 목적 텍스트</p>
+            <p class="p2"> 
+            기존의 시간 기반보전(Time Based Maintenance, TBM) 유지보수활동에서  
+            </p>
+            <p class="p2">
+            열처리 설비에서 발생하는 다양한 설비 데이터 분석을 통해 설비 상태를 기반으로  
+            </p>
+            <p class="p2">
+            개별 Component나 설비의 고장이 발생할 시점을 예측하여 정비하는
+            </p>
+            <p class="p2">
+            예지보전(Predictive Maintenance, PdM)로의 전환을 통해 극복하고자 한다</p>
+            </p>
           </div>
           <div class="empty_box">
             <p>메타데이터 구조표</p>
@@ -196,25 +210,27 @@
               <p class="p1">데이터 영역</p>
             </div>
             <div class="sel2">
-              <p class="p2">내용</p>
+              <p class="p2">
+ 				데이터 수 7,598,580개
+ 			  </p>
             </div>
             <div class="sel1">
               <p class="p1">데이터 유형</p>
             </div>
             <div class="sel2">
-              <p class="p2">내용</p>
+              <p class="p2">CSV</p>
             </div>
             <div class="sel1">
               <p class="p1">데이터 형식</p>
             </div>
             <div class="sel2">
-              <p class="p2">내용</p>
+              <p class="p2">테이블 형식(Tabular)</p>
             </div>
             <div class="sel1">
               <p class="p1">데이터 출처</p>
             </div>
             <div class="sel2">
-              <p class="p2">내용</p>
+              <p class="p2">KAIST (수행기관 : ㈜임픽스)</p>
             </div>
             <div class="sel1">
               <p class="p1">라벨링 유형</p>
@@ -234,19 +250,21 @@
             <p>데이터 분석</p>
           </div>
           <div class="content_detail2">	
-            <div class='object-box'>
-              <!-- <div class="img-box"> -->
-                <img src="./images/jj_qc.png" alt="분석 이미지" />
-              <!-- </div> -->
-            </div>
+			<div class='object-box'>
+  				<!-- 이미지에 클릭 이벤트 추가 -->
+  				<a href="./images/jj_qc.png" target="_blank" onclick="window.open(this.href, 'newwindow', 'width=800,height=600'); return false;">
+    				<img src="./images/jj_qc.png" alt="분석 이미지" />
+  				</a>
+			</div>
+
             <div style="display: inline-block; width: 450px; margin-right: 30px;">
             <div class="sel3">
               <p class="p1">데이터 구조</p>
-              <p class="p2">데이터 구조 텍스트</p>
+              <p class="p2">text파일(CSV)</p>
             </div>
             <div class="sel3">
               <p class="p1">분석 모델</p>
-              <p class="p2">분석 모델 텍스트</p>
+              <p class="p2">오토인코더, 활성화함수(ReLU), 옵티마이저 : Adam</p>
             </div>
             <div class="sel3">
               <p class="p1">모델 성능</p>
