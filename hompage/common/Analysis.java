@@ -48,7 +48,7 @@ public class Analysis extends HttpServlet {
 		
 		// db에 email, type, path 업로드
 		String savePath = "C:\\savepath";
-		int sizeLimit = 1024*1024*15;
+		int sizeLimit = 2024*2024*15;
 		
 		MultipartRequest mr = new MultipartRequest(request, savePath, sizeLimit, "UTF-8", new DefaultFileRenamePolicy());
 		
@@ -73,7 +73,9 @@ public class Analysis extends HttpServlet {
 			}
 		
 		// 분석 실행
-		File batFile = new File("C:\\python\\Ana_bat.bat");
+		
+		if(ana_type.equals("품질보증")) {
+		File batFile = new File("C:\\python\\Ana_bat_qc.bat");
         ProcessBuilder processBuilder = new ProcessBuilder(batFile.getAbsolutePath());
         processBuilder.directory(new File("C:\\python\\"));
 
@@ -96,7 +98,58 @@ public class Analysis extends HttpServlet {
         } catch (IOException | InterruptedException e) {
             e.printStackTrace();
         }
-        
+		}
+		else if(ana_type.equals("예지보전")) {
+			File batFile = new File("C:\\python\\Ana_bat_yj.bat");
+	        ProcessBuilder processBuilder = new ProcessBuilder(batFile.getAbsolutePath());
+	        processBuilder.directory(new File("C:\\python\\"));
+
+	        try {
+	            Process process = processBuilder.start();
+
+	            new Thread(() -> {
+	                try (var reader = new java.io.BufferedReader(new java.io.InputStreamReader(process.getInputStream()))) {
+	                    String line;
+	                    while ((line = reader.readLine()) != null) {
+	                        System.out.println(line);
+	                    }
+	                } catch (IOException e) {
+	                    e.printStackTrace();
+	                }
+	            }).start();
+
+	            int exitCode = process.waitFor();
+	            System.out.println("Process exited with code: " + exitCode);
+	        } catch (IOException | InterruptedException e) {
+	            e.printStackTrace();
+	        }
+		}
+		
+		else if(ana_type.equals("공정최적화")) {
+			File batFile = new File("C:\\python\\Ana_bat_gj.bat");
+	        ProcessBuilder processBuilder = new ProcessBuilder(batFile.getAbsolutePath());
+	        processBuilder.directory(new File("C:\\python\\"));
+
+	        try {
+	            Process process = processBuilder.start();
+
+	            new Thread(() -> {
+	                try (var reader = new java.io.BufferedReader(new java.io.InputStreamReader(process.getInputStream()))) {
+	                    String line;
+	                    while ((line = reader.readLine()) != null) {
+	                        System.out.println(line);
+	                    }
+	                } catch (IOException e) {
+	                    e.printStackTrace();
+	                }
+	            }).start();
+
+	            int exitCode = process.waitFor();
+	            System.out.println("Process exited with code: " + exitCode);
+	        } catch (IOException | InterruptedException e) {
+	            e.printStackTrace();
+	        }
+		}
         
         // 결과 불러오기 및 출력
           try{
@@ -138,8 +191,8 @@ public class Analysis extends HttpServlet {
 			  System.out.println("업로드 실패");
 			  e.printStackTrace();
 			  }
-	}
-}   
+	}   
+}
 		
 		
 
