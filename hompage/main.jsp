@@ -55,9 +55,9 @@
 
     .notice-section {
         position: absolute;
-        bottom: 250px; /* 아래쪽에 배치 */
-        right: 200px; /* 오른쪽에 배치 */
-        background-color: rgba(255, 255, 255, 0.85);
+        top: 335px; /* 아래쪽에 배치 */
+        left: 800px; /* 오른쪽에 배치 */
+        background-color: rgba(255, 255, 255, 0.9);
         padding: 15px;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -233,26 +233,42 @@
     </section>
     <!-- end slider section -->
         <!-- 공지사항 섹션 -->
-    <span class="notice-section" style = "opacity : 1.0; margin-right : 25%; margin-bottom : 7%">
-        <h3 style = "margin-bottom : 30px; font-weight : bold;">최근 공지사항</h3>
-        <ul>
-            <% if (recentNotices != null && !recentNotices.isEmpty()) { %>
-                <% int count = 1; %> <!-- 번호를 수동으로 매길 때 사용 -->
-                <% for (Notice notice : recentNotices) { %>
-                    <li>
-                        <a href="CA02.jsp?num=<%= notice.getNum() %>">
-                            <%= count++ %>. <%= notice.getTitle() %>
-                        </a>
-                        <span class="notice-date">
-                            <%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(notice.getCreatedAt()) %>
-                        </span>
-                    </li>
-                <% } %>
-            <% } else { %>
-                <li>공지사항이 없습니다.</li>
-            <% } %>
-        </ul>
-    </span>              
+	<span class="notice-section" style="opacity: 1.0; margin-right: 25%; margin-bottom: 1%">
+    	<h3 style="margin-bottom: 30px; font-weight: bold;">최근 공지사항</h3>
+    	<table style="width: 100%; border-collapse: collapse; background-color: transparent;">
+       		<thead>
+            	<tr style="background-color: transparent; color: #003366; text-align: center;">
+                	<th style="padding: 10px; text-align: center;">번호</th>
+                	<th style="padding: 10px; text-align: center;">제목</th>
+                	<th style="padding: 10px; text-align: center;">작성일</th>
+            	</tr>
+        	</thead>
+        		<tbody>
+            	<% if (recentNotices != null && !recentNotices.isEmpty()) { %>
+                	<% int count = 1; %>
+                	<% for (Notice notice : recentNotices) { %>
+                    	<tr style="color: <%= (count == 1) ? "red" : "#003366" %>;">
+                        	<td style="padding: 10px; text-align: center;"><%= count %></td>
+                        	<td style="padding: 10px; color: inherit;">
+                            	<a href="CA02.jsp?num=<%= notice.getNum() %>" style="color: inherit; text-decoration: none;">
+                                	<%= notice.getTitle() %>
+                           	 	</a>
+                        	</td>
+                        	<td style="padding: 10px; text-align: center; color: inherit;">
+                            	<%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(notice.getCreatedAt()) %>
+                        	</td>
+                    	</tr>
+                    	<% count++; %>
+                	<% } %>
+            	<% } else { %>
+                	<tr>
+                    	<td colspan="3" style="padding: 10px; text-align: center; color: #003366;">공지사항이 없습니다.</td>
+                	</tr>
+            	<% } %>
+        	</tbody>
+    	</table>
+	</span>
+
   </div>
 
 
