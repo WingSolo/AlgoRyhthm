@@ -174,7 +174,7 @@
 							  데이터 종류
 						  </p>
               <p class = "p2">
-                텍스트
+                텍스트(.csv)
               </p>
             </div>
           </div>
@@ -236,10 +236,17 @@
             <p>데이터 분석</p>
           </div>
           <div class="content_detail2">	
-            <div class='object-box'>
-              <!-- <div class="img-box"> -->
-                <img src="./images/jj_qc.png" alt="분석 이미지" />
-              <!-- </div> -->
+            <div class='object-box' style = "text-align : center;">
+              <!-- 이미지에 클릭 이벤트 추가 -->
+  				<a href="./images/heat_qc_1.png" target="_blank" onclick="window.open(this.href,  'newwindow', 'width=768,height=358'); return false;">
+    				<img src="./images/heat_qc_1.png" alt="분석 이미지" width=430 height=246 />
+  				</a>
+  				<a href="./images/heat_qc_2.png" target="_blank" onclick="window.open(this.href,  'newwindow', 'width=396,height=312'); return false;">
+    				<img src="./images/heat_qc_2.png" alt="분석 이미지" width=230 height=250  />
+  				</a>
+  				<span><a href="./images/heat_qc_3.png" target="_blank" onclick="window.open(this.href,  'newwindow', 'width=918,height=502'); return false;">
+    				<img src="./images/heat_qc_3.png" alt="분석 이미지" width=200 height=250  />
+  				</a></span>
             </div>
             <div style="display: inline-block; width: 450px; margin-right: 30px;">
             <div class="sel3">
@@ -278,7 +285,7 @@
     <div class="container">
       <p>
         &copy; <span id="displayYear"></span> All Rights Reserved By
-        <a href="main.html">AlgoRhythm</a>
+        <a href="main.jsp">AlgoRhythm</a>
       </p>
     </div>
   </footer>

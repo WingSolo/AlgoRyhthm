@@ -40,9 +40,13 @@
   
   <!-- java script -->
   <script type="text/javascript" src="/js/custom.js"></script>
+  <!-- <script type="text/javascript">
+	$(window).load(function() {
+		$('#loading').hide();   
+	});
+  </script>  -->
   
   <style>
-  
 	.footer_section {
   		position: bottom; /* 화면 하단에 고정 */
   		bottom: 0;
@@ -54,12 +58,31 @@
  		box-shadow: none; /* 그림자 효과 제거 */
   		background-color: transparent; /* 배경색을 없앰 */
   		z-index: 1000; /* 다른 요소 위에 표시되도록 설정 */
-		}  
-  
+		}
+	#loading {
+		 width: 100%;   
+		 height: 100%;   
+		 top: 0px;
+		 left: 0px;
+		 position: fixed;   
+		 display: block;   
+		 opacity: 0.7;   
+		 background-color: #fff;   
+		 z-index: 2000;   
+		 text-align: center; }  
+		 
+	#loading-image {   
+		 position: absolute;   
+		 top: 50%;   
+		 left: 50%;  
+		 z-index: 2001; }	
+		 
   </style>
 </head>
-
 <body class="sub_page">
+  <!-- 로딩중 화면 -->
+  <div id="loading" class = "loading"><img id="loading-image" src="./images/loading.gif" alt="Loading" /></div>
+  
   <div class="hero_area">
     <!-- header section strats -->
     <header class="header_section">
@@ -166,7 +189,7 @@
                     </select>
                 </div>
                 <div class = 'data-upload'>
-                      <input class = 'upload-name' value="첨부파일" disabled = 'disabled'>
+                      <input class = 'upload-name' value="첨부파일(.csv)" disabled = 'disabled'>
                       <label for = 'file'>파일찾기</label>
                       <input type = 'file' id = 'file' class = 'upload-hidden' accept=".csv" name = 'ana_data' required/> <!-- 데이터 첨부 -->
                 </div>
@@ -177,6 +200,7 @@
                     <button class = 'email_btn' style = "margin-top : 10px" onclick = "location.href = 'BA02.jsp'">
                       문의하기
                     </button>
+                  
                   </div>
             </form>
           </div>
@@ -192,7 +216,7 @@
     <div class="container">
       <p>
         &copy; <span id="displayYear"></span> All Rights Reserved By
-        <a href="main.html">AlgoRhythm</a>
+        <a href="main.jsp">AlgoRhythm</a>
       </p>
     </div>
   </footer>
@@ -229,6 +253,18 @@
   });
   </script>
   <!-- fileupload js -->
+  <script>
+	  $(document).ready(function() {
+	      $('#loading').hide();
+	      $('#analysis').submit(function(){
+	          $("#loading").css({
+	              "top": (($(window).height()-$("#loading").outerHeight())/2+$(window).scrollTop())+"px",
+	              "left": (($(window).width()-$("#loading").outerWidth())/2+$(window).scrollLeft())+"px"
+	           }); 
+	          $('#loading').show();
+	          return true;
+	      });
+	  });
+  </script>
 </body>
-
 </html>

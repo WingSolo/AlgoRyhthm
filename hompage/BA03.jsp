@@ -175,6 +175,7 @@
                     </button>
                   </div>
             </form>
+            <!-- 성공 또는 실패 여부에 따른 메시지 표시 -->
           </div>
         </div>
       </div>
@@ -188,7 +189,7 @@
     <div class="container">
       <p>
         &copy; <span id="displayYear"></span> All Rights Reserved By
-        <a href="main.html">AlgoRhythm</a>
+        <a href="main.jsp">AlgoRhythm</a>
       </p>
     </div>
   </footer>
