@@ -26,64 +26,86 @@
 <style>
   body {
       font-family: 'Poppins', sans-serif;
-      background-color: #ffffff; /* 페이지 배경을 밝은 회색으로 설정 */
+      background-color: #ffffff;
       color: #333;
-      font-size: 14px; /* 폰트 크기 축소 */
+      font-size: 14px;
   }
 
-  /* 공지사항 컨테이너 */
   .notice-container {
       width: 80%;
       margin: 50px auto;
       padding: 30px;
-      background-color: #ffffff; /* 본문 전체 흰색 배경 */
-      border-radius: 10px; /* 테두리 둥글게 */
-      color: #333; /* 본문 텍스트 색상 */
-      border: 1px solid #ddd; /* 테두리 추가 */
+      background-color: #ffffff;
+      border-radius: 10px;
+      color: #333;
+      border: 1px solid #ddd;
   }
 
-  /* 공지사항 제목 라인 */
   .notice-header {
       display: flex;
-      justify-content: center; /* 중앙 정렬 */
-      align-items: center; /* 세로 중앙 정렬 */
-      font-size: 28px; /* 제목 폰트 크기 축소 */
+      justify-content: center;
+      align-items: center;
+      font-size: 28px;
       font-weight: 700;
       margin-bottom: 30px;
       padding: 20px;
-      color: #003366; /* 제목 텍스트 색상 */
-      background-color: #ffffff; /* 제목 부분 흰색 배경 */
-      border-radius: 5px; /* 제목 배경에 둥근 모서리 */
-  }
-
-  .notice-item {
-      border-bottom: 1px solid #ddd;
-      padding: 20px 0;
-  }
-
-  .notice-title {
-      font-size: 16px; /* 공지 제목 폰트 크기 축소 */
-      font-weight: bold;
-      color: #003366; /* 제목 글씨는 군청색 */
-      cursor: pointer;
-      text-decoration: none;
-  }
-
-  .notice-title:hover {
-      background-color: #f0f2f5;
+      color: #003366;
+      background-color: #ffffff;
       border-radius: 5px;
-      color: #003366; /* 호버 시 배경을 회색, 글씨는 군청색 유지 */
   }
 
-  .notice-date {
-      font-size: 12px; /* 날짜 폰트 크기 축소 */
-      color: #666; /* 날짜 색상 */
-      float: right;
+  .notice-table {
+      width: 100%;
+      border-collapse: collapse;
   }
 
+  .notice-table th, .notice-table td {
+     border: 1px solid #ddd;
+     padding: 12px;
+     text-align: left;
+  }
+
+  .notice-table th {
+     background-color: #f2f2f2;
+     font-size: 16px;
+     color: #003366;
+  }
+  
+  /* No 열의 너비를 축소 */
+  .notice-table th:nth-child(1), .notice-table td:nth-child(1) {
+     width: 80px; /* No 칼럼의 너비 */
+  } 
+
+ /* 작성자와 작성날짜 칼럼의 가로 길이를 줄이기 위해 width 설정 */
+  .notice-table th:nth-child(3), .notice-table td:nth-child(3) {
+     width: 120px; /* 작성자 칼럼의 너비 */
+  }
+
+  .notice-table th:nth-child(4), .notice-table td:nth-child(4) {
+     width: 120px; /* 작성날짜 칼럼의 너비 */
+  }
+
+  .notice-table td {
+     font-size: 14px;
+     color: #333;
+  }
+
+  .notice-title a {
+     text-decoration: none;
+     color: #003366;
+  }
+
+  .notice-title a:hover {
+     background-color: #f0f2f5;
+     color: #003366;
+  }
+
+
+  /* 페이지 네이션 테이블과 가깝게 배치 */
   .pagination {
-      text-align: center;
-      margin-top: 30px;
+      display: flex; /* Flexbox 사용 */
+      justify-content: center; /* 중앙 정렬 */
+      margin-top: 0px; /* 테이블과 가깝게 */
   }
 
   .pagination a, .pagination span {
@@ -92,61 +114,58 @@
       text-decoration: none;
       border: 1px solid #ddd;
       border-radius: 5px;
-      font-size: 12px; /* 페이지네이션 폰트 크기 축소 */
-      color: #333; /* 페이지네이션 기본 글씨 색상 */
+      font-size: 12px;
+      color: #333;
   }
 
   .pagination a:hover {
       background-color: #007bff;
-      color: white; /* 페이지네이션 호버 시 배경 파란색, 글씨 흰색 */
+      color: white;
   }
 
   .pagination span {
+  	
       font-weight: bold;
-      color: #007bff; /* 현재 페이지 강조 색상 */
+      color: #007bff;
   }
 
-  /* 중앙에 배치할 스타일 */
   .center-button {
       display: flex;
-      justify-content: center;
-      align-items: center;
+      justify-content: flex-end;
       margin-top: 20px;
   }
 
-  /* 공지 작성 버튼 스타일 */
   .edit-button {
-      background-color: #FF6600; /* 버튼은 주황색 */
-      color: #ffffff; /* 버튼 텍스트는 흰색 */
+      background-color: #FF6600;
+      color: #ffffff;
       padding: 12px 25px;
       font-size: 16px;
       font-weight: bold;
       border: none;
-      border-radius: 50px; /* 버튼 둥글게 */
+      border-radius: 50px;
       transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease;
       text-decoration: none;
       display: inline-block;
   }
 
   .edit-button:hover {
-      background-color: transparent; /* 호버 시 배경 투명 */
-      color: #FF6600; /* 호버 시 글자색 주황색 */
-      transform: scale(1.05); /* 호버 시 크기 확대 */
-      border: 2px solid #FF6600; /* 호버 시 주황색 테두리 추가 */
+      background-color: transparent;
+      color: #FF6600;
+      transform: scale(1.05);
+      border: 2px solid #FF6600;
   }
   
-	.footer_section {
-  		position: bottom; /* 화면 하단에 고정 */
-  		bottom: 0;
-  		left: 0;
-  		width: 100%;
-  		color: blue; /* 텍스트 색상 */
-  		text-align: center;
-  		padding: 5px 0; /* 상하 패딩을 작게 설정 */
- 		box-shadow: none; /* 그림자 효과 제거 */
-  		background-color: transparent; /* 배경색을 없앰 */
-  		z-index: 0; /* 다른 요소 위에 표시되도록 설정 */
-		}    
+  .footer_section {
+      position: bottom;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      color: blue;
+      text-align: center;
+      padding: 5px 0;
+      background-color: transparent;
+      z-index: 0;
+  }
 </style>
 
 </head>
@@ -214,10 +233,11 @@
     <div class="notice-header">
         <span>공지사항</span>
     </div>
-
+    <div><h5><center>알고리듬의 소식을 확인해보세요</center></h5></div>
+	<br>
     <% 
         NoticeDao noticeDao = new NoticeDao();
-        int pageSize = 10;  // 페이지당 표시할 공지사항 개수 10으로 증가
+        int pageSize = 10;  
         int currentPage = 1;
 
         String pageParam = request.getParameter("page");
@@ -232,33 +252,47 @@
         List<Notice> noticeList = noticeDao.getNoticesByPage(currentPage, pageSize);
         int totalNotices = noticeDao.getTotalNoticeCount();
         int totalPages = (int) Math.ceil((double) totalNotices / pageSize);
-        int startIndex = (currentPage - 1) * pageSize + 1;  // 공지사항 번호 매기기
+        int startIndex = (currentPage - 1) * pageSize + 1;  
     %>
 
-    <% if (noticeList != null && !noticeList.isEmpty()) { %>
-        <% for (int i = 0; i < noticeList.size(); i++) { 
-            Notice notice = noticeList.get(i); 
-        %>
-            <div class="notice-item">
-                <!-- 제목을 클릭하면 CA02.jsp로 이동하도록 설정 -->
-                <a href="CA02.jsp?num=<%= notice.getNum() %>" class="notice-title">
-                    <%= startIndex + i %>. <%= notice.getTitle() %>
-                </a>
-                <span class="notice-date"><%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(notice.getCreatedAt()) %></span>
-            </div>
+    <table class="notice-table">
+      <thead>
+        <tr>
+          <th>No</th>
+          <th>제목</th>
+          <th>작성자</th>
+          <th>작성일자</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% if (noticeList != null && !noticeList.isEmpty()) { %>
+            <% for (int i = 0; i < noticeList.size(); i++) { 
+                Notice notice = noticeList.get(i); 
+            %>
+            <tr>
+              <td><%= startIndex + i %></td>
+              <td class="notice-title">
+                <a href="CA02.jsp?num=<%= notice.getNum() %>"><%= notice.getTitle() %></a>
+              </td>
+              <td><%= notice.getEmpId() %></td> <!-- emp_id 추가 -->
+              <td><%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(notice.getCreatedAt()) %></td>
+            </tr>
+            <% } %>
+        <% } else { %>
+            <tr>
+              <td colspan="4">공지사항이 없습니다.</td>
+            </tr>
         <% } %>
-    <% } else { %>
-        <p>공지사항이 없습니다.</p>
-    <% } %>
+      </tbody>
+    </table>
 
-    <!-- 로그인된 경우 작성 버튼을 페이지네이션 위에 추가 -->
     <% if (loginUser != null) { %>
         <div class="center-button">
             <a href="CA03.jsp" class="edit-button">공지 작성</a>
         </div>
     <% } %>
 
-    <div class="pagination">
+    <div class="pagination" style="text-align: center;">
         <% for (int i = 1; i <= totalPages; i++) { %>
             <% if (i == currentPage) { %>
                 <span><%= i %></span>

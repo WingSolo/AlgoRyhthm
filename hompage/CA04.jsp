@@ -88,10 +88,14 @@
         font-weight: bold;
         color: #003366; /* 제목 색상 군청색 */
         text-align: center;
-        margin-bottom: 30px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        margin-bottom: 10px; /* 제목과 알림 문구 간격 */
+    }
+
+    .info-text {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #666;
     }
 
     .form-group {
@@ -117,8 +121,20 @@
         height: 300px;
     }
 
+    .additional-info {
+        display: flex;
+        justify-content: right;
+        margin-top: 10px;
+        font-size: 14px;
+        color: #666;
+    }
+
+    .right-align {
+        text-align: right;
+    }
+
     .button-group {
-        text-align: center;
+        text-align: right; /* 버튼 우측 정렬 */
         margin-top: 20px;
     }
 
@@ -231,16 +247,25 @@
   
     <div class="form-container">
         <h2>공지사항 수정</h2>
+        
         <form action="UpdateNoticeServlet" method="post">
             <input type="hidden" name="num" value="<%= notice.getNum() %>">
             <div class="form-group">
                 <label for="title">제목:</label>
                 <input type="text" id="title" name="title" value="<%= notice.getTitle() %>" required>
             </div>
+
+            <div class="additional-info">
+
+                <span class="right-align">작성자: <%= notice.getEmpId() %></span>&nbsp;&nbsp;&nbsp;
+                <span>작성일자: <%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(notice.getCreatedAt()) %></span>
+            </div>
+
             <div class="form-group">
                 <label for="content">내용:</label>
                 <textarea id="content" name="content" rows="5" required><%= notice.getContent() %></textarea>
             </div>
+
             <div class="button-group">
                 <button type="submit">수정 완료</button>
                 <a href="CA05.jsp?num=<%= notice.getNum() %>">삭제</a>
