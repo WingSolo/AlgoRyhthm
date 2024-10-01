@@ -158,7 +158,7 @@
 							  주요 키워드
 						</p>
               <p class = "p2">
-                AI 학습데이터, 열처리, csv 파일
+                AI 학습데이터, 열처리, 데이터 분석
               </p>
             </div>
             <div class = "content_cat_2">
@@ -174,7 +174,7 @@
 							  데이터 종류
 						  </p>
               <p class = "p2">
-                CSV:쉼표로 구분한 text Data
+                텍스트(.csv)
               </p>
             </div>
           </div>
@@ -191,17 +191,11 @@
           </div>
           <div class="content_detail">	
             <p class="p1">구축 목적</p>
-            <p class="p2"> 
-            기존의 시간 기반보전(Time Based Maintenance, TBM) 유지보수활동에서  
-            </p>
             <p class="p2">
             열처리 설비에서 발생하는 다양한 설비 데이터 분석을 통해 설비 상태를 기반으로  
             </p>
             <p class="p2">
-            개별 Component나 설비의 고장이 발생할 시점을 예측하여 정비하는
-            </p>
-            <p class="p2">
-            예지보전(Predictive Maintenance, PdM)로의 전환을 통해 극복하고자 한다</p>
+            개별 Component나 설비의 고장이 발생할 시점을 예측하여 정비
             </p>
           </div>
           <div class="empty_box">
@@ -213,26 +207,26 @@
             </div>
             <div class="sel2">
               <p class="p2">
- 				데이터 수 7,598,580개
+ 				열처리 공정 데이터
  			  </p>
             </div>
             <div class="sel1">
               <p class="p1">데이터 유형</p>
             </div>
             <div class="sel2">
-              <p class="p2">CSV</p>
+              <p class="p2">텍스트(.csv)</p>
             </div>
             <div class="sel1">
               <p class="p1">데이터 형식</p>
             </div>
             <div class="sel2">
-              <p class="p2">테이블 형식(Tabular)</p>
+              <p class="p2">DataFrame</p>
             </div>
             <div class="sel1">
               <p class="p1">데이터 출처</p>
             </div>
             <div class="sel2">
-              <p class="p2">KAIST (수행기관 : ㈜임픽스)</p>
+              <p class="p2">KAIST</p>
             </div>
             <div class="sel1">
               <p class="p1">라벨링 유형</p>
@@ -261,14 +255,14 @@
     				<img src="./images/Heat02.png" alt="분석 이미지" width=200 height=150  />
   				</a>
   				<span><a href="./images/Heat03.png" target="_blank" onclick="window.open(this.href,  'newwindow', 'width=600,height=450'); return false;">
-    				<img src="./images/Heat03.png" alt="분석 이미지" width=200 height=150  />
+    				<img src="./images/Heat03.png" alt="분석 이미지" width=260 height=180  />
   				</a></span>
 			</div>
 
             <div style="display: inline-block; width: 450px; margin-right: 30px;">
             <div class="sel3">
               <p class="p1">데이터 구조</p>
-              <p class="p2">text파일(CSV)</p>
+              <p class="p2">열처리 공정 데이터 7,598,580개</p>
             </div>
             <div class="sel3">
               <p class="p1">분석 모델</p>
@@ -276,10 +270,10 @@
             </div>
             <div class="sel3" style="height: 100%;">
               <p class="p1">모델 성능</p>
-              <p class="p2">accuracy_score(정확도) : 1.00</p>
-              <p class="p2">precision_score(정밀도) : 0/94</p>
-              <p class="p2">recall_score(재현율) : 0.99</p>
-              <p class="p2">F1 score : 0.96</p>
+              <p class="p2" style="line-height: 10px;">accuracy_score(정확도) : 1.00</p>
+              <p class="p2" style="line-height: 10px;">precision_score(정밀도) : 0.94</p>
+              <p class="p2" style="line-height: 10px;">recall_score(재현율) : 0.99</p>
+              <p class="p2" style="line-height: 10px;">F1 score : 0.96</p>
               
              </div>
           </div>

@@ -208,11 +208,11 @@
           <div class="carousel-item active">
             <div class="container ">
               <div class="detail-box">
-                <h1>
-                  Data 분석 전문회사 <br />
-                  알고리듬 <br />
-                  원하는 자료를 바로바로~~
+                <h1 style = "line-height : 60px">
+                  Data Analysis <br />
+                  ALGORHYTHNM<br/>
                 </h1>
+                <h4 style = "margin-top : 20px; color : white; font-weight : bold;">데이터 분석 기업</h4>
                 
                 <div class="btn-box">
                   <a href="A01.jsp" class="btn1">
@@ -233,8 +233,8 @@
     </section>
     <!-- end slider section -->
         <!-- 공지사항 섹션 -->
-    <span class="notice-section">
-        <h3>최근 공지사항</h3>
+    <span class="notice-section" style = "opacity : 1.0; margin-right : 25%; margin-bottom : 7%">
+        <h3 style = "margin-bottom : 30px; font-weight : bold;">최근 공지사항</h3>
         <ul>
             <% if (recentNotices != null && !recentNotices.isEmpty()) { %>
                 <% int count = 1; %> <!-- 번호를 수동으로 매길 때 사용 -->
