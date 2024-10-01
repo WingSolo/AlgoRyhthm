@@ -59,16 +59,19 @@
       border-collapse: collapse;
   }
 
-  .notice-table th, .notice-table td {
+  .notice-table td {
      border: 1px solid #ddd;
      padding: 12px;
      text-align: left;
   }
 
   .notice-table th {
+  	 border: 1px solid #ddd;
+     padding: 12px;
      background-color: #f2f2f2;
      font-size: 16px;
      color: #003366;
+     text-align: center;
   }
   
   /* No 열의 너비를 축소 */
@@ -105,7 +108,7 @@
   .pagination {
       display: flex; /* Flexbox 사용 */
       justify-content: center; /* 중앙 정렬 */
-      margin-top: 0px; /* 테이블과 가깝게 */
+      margin-top: 10px; /* 테이블과 가깝게 */
   }
 
   .pagination a, .pagination span {
@@ -258,7 +261,7 @@
     <table class="notice-table">
       <thead>
         <tr>
-          <th>No</th>
+          <th>No.</th>
           <th>제목</th>
           <th>작성자</th>
           <th>작성일자</th>
