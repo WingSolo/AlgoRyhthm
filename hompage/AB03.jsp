@@ -121,8 +121,10 @@
                     <a class="nav-link" href="BA01.jsp">분석</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="BA02.jsp">문의하기</a>
-                </li>                
+  					<% if (loginUser == null) { %>
+    					<a class="nav-link" href="BA02.jsp">문의하기</a>
+  					<% } %>
+				</li>                   
                 <!-- Show "마이페이지" next to "공지사항" if the user is logged in -->
                 <% if (loginUser != null) { %>
                 <li class="nav-item">
@@ -182,11 +184,11 @@
           </div>
           <div class="content_detail">	
             <p class="p1">소개</p>
-            <p class="p2">소개 텍스트</p>
+            <p class="p2">현장에서 발생하는 열처리의 소입로, 건조로 등 주요 존의 데이터 확보</p>
           </div>
           <div class="content_detail">	
             <p class="p1">구축 목적</p>
-            <p class="p2">구축 목적 텍스트</p>
+            <p class="p2">AI 모델 개발의 제조 공정 적용을 통해 열악한 중소기업에 빅데이터 및 AI 기술을 적용하여 실직적인 품질향상 및 비용절감이 기대</p>
           </div>
           <div class="empty_box">
             <p>메타데이터 구조표</p>
@@ -196,37 +198,37 @@
               <p class="p1">데이터 영역</p>
             </div>
             <div class="sel2">
-              <p class="p2">내용</p>
+              <p class="p2">한국어</p>
             </div>
             <div class="sel1">
               <p class="p1">데이터 유형</p>
             </div>
             <div class="sel2">
-              <p class="p2">내용</p>
+              <p class="p2">텍스트</p>
             </div>
             <div class="sel1">
               <p class="p1">데이터 형식</p>
             </div>
             <div class="sel2">
-              <p class="p2">내용</p>
+              <p class="p2">DataFrame</p>
             </div>
             <div class="sel1">
               <p class="p1">데이터 출처</p>
             </div>
             <div class="sel2">
-              <p class="p2">내용</p>
+              <p class="p2">-</p>
             </div>
             <div class="sel1">
               <p class="p1">라벨링 유형</p>
             </div>
             <div class="sel2">
-              <p class="p2">내용</p>
+              <p class="p2">-</p>
             </div>
             <div class="sel1">
               <p class="p1">라벨링 형식</p>
             </div>
             <div class="sel2">
-              <p class="p2">내용</p>
+              <p class="p2">-</p>
             </div>
           </div>
           
@@ -242,15 +244,19 @@
             <div style="display: inline-block; width: 450px; margin-right: 30px;">
             <div class="sel3">
               <p class="p1">데이터 구조</p>
-              <p class="p2">데이터 구조 텍스트</p>
+              <p class="p2">열처리 공정 데이터(텍스트)</p>
             </div>
             <div class="sel3">
               <p class="p1">분석 모델</p>
-              <p class="p2">분석 모델 텍스트</p>
+              <p class="p2">XGBoost (Extreme Gradient Boosting)</p>
             </div>
-            <div class="sel3">
+            <div class="sel3" style="height: 100%;">
               <p class="p1">모델 성능</p>
-              <p class="p2">모델 성능 텍스트</p>
+              <p class="p2" style="line-height: 10px;">Accuracy_score : 0.75000</p>
+              <p class="p2" style="line-height: 10px;">F1_score : 0.60404</p>
+              <p class="p2" style="line-height: 10px;">Precision_score : 0.71333</p>
+              <p class="p2" style="line-height: 10px;">Recall_score : 0.60000</p>
+              
             </div>
           </div>
           </div>

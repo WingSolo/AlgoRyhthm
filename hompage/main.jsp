@@ -46,63 +46,61 @@
   <!-- responsive style -->
   <link href="css/responsive.css" rel="stylesheet" />
   	<style>
-   		 .hero_area {
-   			background-image: url('images/hero-bg.jpg'); /* 배경 이미지 경로 설정 */
-  			background-size: cover; /* 화면에 맞게 배경 이미지 크기 조정 */
-    		background-position: center; /* 이미지가 가운데에 위치하도록 설정 */
-    		background-attachment: fixed; /* 배경이 스크롤되지 않고 고정되게 설정 */
-    		height: 100vh; /* 화면의 높이에 맞게 설정 */
-  			}
-  		
-        .notice-section {
-            position: fixed;
-            bottom: 120px;
-            right: 150px;
-            background-color: rgba(255, 255, 255, 0.7);
-            padding: 15px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            z-index: 1000;
-        }
+     .hero_area {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        position: relative;
+    }
 
-        .notice-section h3 {
-        	text-align: center;
-            font-size: 18px;
-            margin-bottom: 10px;
-            color: #003366;
-        }
+    .notice-section {
+        position: absolute;
+        bottom: 250px; /* 아래쪽에 배치 */
+        right: 200px; /* 오른쪽에 배치 */
+        background-color: rgba(255, 255, 255, 0.85);
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        z-index: 1000;
+    }
 
-        .notice-section ul {
-            list-style-type: decimal; /* 번호 자동 추가 */
-            padding-left: 20px; /* 번호와 내용 사이 간격 */
-            margin: 0;
-        }
+    .notice-section h3 {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 10px;
+        color: #003366;
+    }
 
-        .notice-section ul li {
-            margin-bottom: 10px;
-            display: flex;
-            justify-content: space-between; /* 제목과 날짜를 양쪽에 배치 */
-            align-items: center;
-        }
+    .notice-section ul {
+        list-style-type: decimal;
+        padding-left: 20px;
+        margin: 0;
+    }
 
-        .notice-section ul li a {
-            font-size: 14px;
-            color: #007bff;
-            text-decoration: none;
-            flex-grow: 1; /* 제목이 더 넓은 영역을 차지 */
-        }
+    .notice-section ul li {
+        margin-bottom: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-        .notice-section ul li a:hover {
-            text-decoration: underline;
-        }
+    .notice-section ul li a {
+        font-size: 14px;
+        color: #007bff;
+        text-decoration: none;
+        flex-grow: 1;
+    }
 
-        .notice-section .notice-date {
-            font-size: 12px;
-            color: #666;
-            white-space: nowrap; /* 날짜가 한 줄에 표시되도록 */
-        }
-  
+    .notice-section ul li a:hover {
+        text-decoration: underline;
+    }
+
+    .notice-section .notice-date {
+        font-size: 12px;
+        color: #666;
+        white-space: nowrap;
+    }
   		.footer_section {
   			position: bottom; /* 화면 하단에 고정 */
   			bottom: 0;
@@ -225,6 +223,8 @@
                   </a>
                 </div>
               </div>
+
+              
             </div>
           </div>
 
@@ -232,10 +232,8 @@
         </div>
     </section>
     <!-- end slider section -->
-  </div>
-
-    <!-- 공지사항 섹션 -->
-    <div class="notice-section">
+        <!-- 공지사항 섹션 -->
+    <span class="notice-section">
         <h3>최근 공지사항</h3>
         <ul>
             <% if (recentNotices != null && !recentNotices.isEmpty()) { %>
@@ -254,7 +252,10 @@
                 <li>공지사항이 없습니다.</li>
             <% } %>
         </ul>
-    </div>
+    </span>              
+  </div>
+
+
 
 
   <!-- footer section -->
