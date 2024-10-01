@@ -51,23 +51,24 @@
         margin: 30px auto;
         padding: 20px;
         display: flex;
-        justify-content: space-between;
-        gap: 200px;
+        justify-content: center; /* 사이드바와 콘텐츠 창을 중앙 정렬 */
+        gap: 30px; /* 좌우 간격 조정 */
     }
 
     /* 사이드바 */
     .sidebar {
         width: 15%;
-        background: linear-gradient(135deg, #f9f9f9, #d0e1ff);
+        background: #ffffff;
         padding: 20px;
         border-radius: 10px;
+        color: #003366; /* 글자 색상 군청색 */
     }
     
     .menu-title {
         font-size: 20px;
         font-weight: bold;
         margin-bottom: 20px;
-        color: #007bff;
+        color: #003366; /* 글자 색상 군청색 */
     }
 
     .menu-item {
@@ -77,13 +78,13 @@
 
     .menu-item a {
         text-decoration: none;
-        color: #007bff;
+        color: #003366; /* 글자 색상 군청색 */
         display: flex;
         align-items: center;
     }
 
     .menu-item a:hover {
-        color: #0056b3;
+        color: #002244; /* 호버 시 더 어두운 색상 */
     }
 
     .menu-item i {
@@ -92,15 +93,18 @@
     
     /* 오른쪽 콘텐츠 영역 */
     .content {
-        width: 70%;
+        width: 80%; /* 가로 길이를 최대화하여 텍스트 뭉침 방지 */
         text-align: center;
-        padding: 20px;
+        padding: 30px;
         background-color: #fff;
+        color: #003366; /* 글자 색상 군청색 */
+        border-radius: 10px;
     }
     
     /* 테이블 스타일 */
     .table-hover th, .table-hover td {
         text-align: center;
+        color: #003366; /* 테이블 글자 색상 군청색 */
     }
 
     .button-container {
@@ -108,7 +112,7 @@
     }
 
 	.footer_section {
-  		position: fixed;
+  		position: bottom;
   		bottom: 0;
   		left: 0;
   		width: 100%;
@@ -117,9 +121,8 @@
   		padding: 5px 0;
  		box-shadow: none;
   		background-color: transparent;
-  		z-index: 1000;
-		}
-
+  		z-index: 0;
+	}
   </style>
 </head>
 
@@ -148,7 +151,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a  class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" height="27px"></span></a>
+                  <a  class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" width = "77px"height="37px"></span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="A01.jsp">회사소개</a>
@@ -162,10 +165,10 @@
                 <li class="nav-item">
                     <a class="nav-link" href="BA01.jsp">분석</a>
                 </li>
-                <li class="nav-item">
-					<% if (loginUser == null) { %>
-					   <a class="nav-link" href="BA02.jsp">문의하기</a>
-					<% } %>
+				<li class="nav-item">
+  					<% if (loginUser == null) { %>
+    					<a class="nav-link" href="BA02.jsp">문의하기</a>
+  					<% } %>
 				</li>
                 <% if (loginUser != null) { %>
                 <li class="nav-item">
@@ -184,8 +187,8 @@
     <!-- Sidebar -->
     <div class="sidebar">
       <div class="menu-title">마이 메뉴</div>
-      <div class="menu-item"><a href="DA01.jsp">✏️ 정보 수정</a></div>
-      <div class="menu-item"> <a href="EA01.jsp"><i class="fa fa-envelope"></i> 문의 내역</a></div>
+      <div class="menu-item"><a href="DA01.jsp">정보 수정</a></div>
+      <div class="menu-item"> <a href="EA01.jsp">문의 내역</a></div>
     </div>
 
     <!-- Content Section -->

@@ -55,79 +55,94 @@
     <link href="css/responsive.css" rel="stylesheet" />
 
     <style>
-        /* 공지사항 컨테이너 */
-        .notice-container {
-            width: 80%;
-            margin: 0px auto;
-            padding: 20px;
-        }
-        .notice-header {
-            text-align: center;
-            font-size: 24px;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-        .notice-content {
-            margin: 20px 0;
-        }
-        .button-group {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .button-group a {
-            margin: 0 10px;
-            text-decoration: none;
-            padding: 8px 16px;
-            border: 1px solid #ddd;
-        }
         /* 전체 컨테이너 */
         .container01 {
             max-width: 1600px;
             margin: 30px auto;
             padding: 20px;
             display: flex;
-            justify-content: space-between;
-            gap: 100px;
+            justify-content: center; /* 사이드바와 오른쪽 창을 중앙 정렬 */
+            gap: 30px; /* 좌우 간격 조정 */
         }
+        
         /* 사이드바 */
         .sidebar {
             width: 15%;
-            background: linear-gradient(135deg, #f9f9f9, #d0e1ff);
+            background: #ffffff;
             padding: 20px;
             border-radius: 10px;
+            color: #003366; /* 글자 색상 군청색 */
         }
+
+        .menu-title {
+            font-size: 20px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            color: #003366; /* 글자 색상 군청색 */
+        }
+
+        .menu-item {
+            margin-bottom: 10px;
+            font-size: 16px;
+        }
+
+        .menu-item a {
+            text-decoration: none;
+            color: #003366; /* 글자 색상 군청색 */
+            display: flex;
+            align-items: center;
+        }
+
+        .menu-item a:hover {
+            color: #002244; /* 링크 호버 시 더 어두운 색상 */
+        }
+
+        /* 공지사항 섹션 */
         .content {
-            width: 70%;
+            width: 80%; /* 오른쪽 창의 가로 길이를 최대화 */
             text-align: center;
             padding: 20px;
             background-color: #fff;
+            color: #003366; /* 글자 색상 군청색 */
+            border-radius: 10px;
         }
-    .menu-title {
-        font-size: 20px;
-        font-weight: bold;
-        margin-bottom: 20px;
-        color: #007bff;
-    }
 
-    .menu-item {
-        margin-bottom: 10px;
-        font-size: 16px;
-    }
+        .notice-container {
+            width: 100%;
+            margin: 0px auto;
+            padding: 20px;
+        }
 
-    .menu-item a {
-        text-decoration: none;
-        color: #007bff;
-        display: flex;
-        align-items: center;
-    }
+        .notice-header {
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin-top: 0px;
+            color: #003366; /* 글자 색상 군청색 */
+        }
 
-    .menu-item a:hover {
-        color: #0056b3;
-    }
+        .notice-content {
+            margin: 20px 0;
+            color: #003366; /* 글자 색상 군청색 */
+        }
 
-    .menu-item i {
-        margin-right: 10px;
-    }
+        .button-group {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .button-group a {
+            margin: 0 10px;
+            text-decoration: none;
+            padding: 8px 16px;
+            border: 1px solid #ddd;
+            color: #003366; /* 버튼 글자 색상 군청색 */
+        }
+
+        .button-group a:hover {
+            color: #002244; /* 호버 시 버튼 글자색 더 어두운 군청색 */
+        }
+
         /* 하단 고정 푸터 */
         .footer_section {
             position: fixed;
@@ -138,7 +153,7 @@
             text-align: center;
             padding: 5px 0;
             background-color: transparent;
-            z-index: 1000;
+            z-index: 0;
         }
     </style>
 </head>
@@ -168,7 +183,7 @@
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                   <a  class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" height="27px"></span></a>
+                                   <a  class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" width = "77px"height="37px"></span></a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="A01.jsp">회사소개</a>
@@ -182,11 +197,11 @@
                                 <li class="nav-item">
                                     <a class="nav-link" href="BA01.jsp">분석</a>
                                 </li>
-                                <li class="nav-item">
-					                 <% if (loginUser == null) { %>
-					                   <a class="nav-link" href="BA02.jsp">문의하기</a>
-					                 <% } %>
-					            </li>
+								<li class="nav-item">
+  									<% if (loginUser == null) { %>
+    									<a class="nav-link" href="BA02.jsp">문의하기</a>
+  									<% } %>
+								</li>
                                 <% if (loginUser != null) { %>
                                     <li class="nav-item">
                                         <a class="nav-link" href="DA01.jsp">마이페이지</a>
@@ -204,52 +219,52 @@
         <!-- 왼쪽 메뉴 섹션 -->
         <div class="sidebar">
             <div class="menu-title">마이 메뉴</div>
-            <div class="menu-item"><a href="DA01.jsp">✏️ 정보 수정</a></div>
-            <div class="menu-item"><a href="EA01.jsp"><i class="fa fa-envelope"></i> 문의 내역</a></div>
+            <div class="menu-item"><a href="DA01.jsp">정보 수정</a></div>
+            <div class="menu-item"><a href="EA01.jsp">문의 내역</a></div>
         </div>
 
         <!-- 공지사항 내용 섹션 -->
-    <div class="notice-container">
-        <h2>공지사항 상세 내용</h2>
-        <table class="table table-bordered">
-            <tr>
-                <th>작성자:</th>
-                <td><%= intro.getCust_name() %></td>
-            </tr>
-            <tr>
-                <th>작성 일자:</th>
-                <td><%= intro.getTime() %></td>
-            </tr>
-            <tr>
-                <th>Email:</th>
-                <td><%= intro.getEmail() %></td>
-            </tr>
-            <tr>
-                <th>연락처:</th>
-                <td><%= intro.getPhone() %></td>
-            </tr>
-            <tr>
-                <th>기관명:</th>
-                <td><%= intro.getComp_name() %></td>
-            </tr>
-            <tr>
-                <th>데이터 유형:</th>
-                <td><%= intro.getData_type() %></td>
-            </tr>
-            <tr>
-                <th>상담 유형:</th>
-                <td><%= intro.getCoun_type() %></td>
-            </tr>
-            <tr>
-                <th>상담 내용:</th>
-                <td><%= intro.getContent() %></td>
-            </tr>
-        </table>
-        <a href="EA01.jsp">뒤로 가기</a>
+        <div class="content">
+            <div class="notice-container">
+                <h2 class="notice-header">문의사항 상세 내용</h2>
+                <table class="table table-bordered">
+                    <tr>
+                        <th>작성자:</th>
+                        <td><%= intro.getCust_name() %></td>
+                    </tr>
+                    <tr>
+                        <th>작성 일자:</th>
+                        <td><%= intro.getTime() %></td>
+                    </tr>
+                    <tr>
+                        <th>Email:</th>
+                        <td><%= intro.getEmail() %></td>
+                    </tr>
+                    <tr>
+                        <th>연락처:</th>
+                        <td><%= intro.getPhone() %></td>
+                    </tr>
+                    <tr>
+                        <th>기관명:</th>
+                        <td><%= intro.getComp_name() %></td>
+                    </tr>
+                    <tr>
+                        <th>데이터 유형:</th>
+                        <td><%= intro.getData_type() %></td>
+                    </tr>
+                    <tr>
+                        <th>상담 유형:</th>
+                        <td><%= intro.getCoun_type() %></td>
+                    </tr>
+                    <tr>
+                        <th>상담 내용:</th>
+                        <td><%= intro.getContent() %></td>
+                    </tr>
+                </table>
+                <a href="EA01.jsp">뒤로 가기</a>
+            </div>
+        </div>
     </div>
-    
-    </div>
-
 
     <!-- Footer -->
     <footer class="footer_section">
