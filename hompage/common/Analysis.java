@@ -47,6 +47,9 @@ public class Analysis extends HttpServlet {
 //		request.setCharacterEncoding("UTF-8");
 		
 		// db에 email, type, path 업로드
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=utf-8");
+		
 		String savePath = "C:\\savepath";
 		int sizeLimit = 2024*2024*15;
 		
@@ -63,6 +66,25 @@ public class Analysis extends HttpServlet {
 		AnaDo.setAna_data(ana_data); // 파일 이름
 		AnaDo.setAna_path(ana_data_path); //경로 + 파일 이름
 		
+		// 데이터 입력 확인
+		if (ana_email == null || ana_email.isEmpty()) {
+            response.getWriter().println("<script>alert('이메일을 입력해 주세요.'); history.back();</script>");
+            return;
+        }
+		if (ana_type == null || ana_type.isEmpty()) {
+            response.getWriter().println("<script>alert('분석 종류를 선택해주세요.'); history.back();</script>");
+            return;
+        }
+        if (ana_data == null || ana_data.isEmpty()) {
+            response.getWriter().println("<script>alert('분석 데이터를 첨부해주세요.'); history.back();</script>");
+            return;
+        }
+        // 유효성 검사 - 이메일 형식 확인
+        if (!ana_email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$")) {
+            response.getWriter().println("<script>alert('유효한 이메일 형식을 입력해 주세요.'); history.back();</script>");
+            return;
+        }
+		
 		try{
 			AnaDao.db_upload(AnaDo);
 			
@@ -71,10 +93,13 @@ public class Analysis extends HttpServlet {
 			System.out.println("업로드 실패");
 			e.printStackTrace();
 			}
-		
 		// 분석 실행
 		
 		if(ana_type.equals("품질보증")) {
+			// 데이터 일치 여부 확인
+			if (!ana_data.contains("Ana_data_qc")) {
+	            response.getWriter().println("<script>alert('데이터 형식과 종류가 일치하지 않습니다.'); history.back();</script>");
+	            return;}
 		File batFile = new File("C:\\python\\Ana_bat_qc.bat");
         ProcessBuilder processBuilder = new ProcessBuilder(batFile.getAbsolutePath());
         processBuilder.directory(new File("C:\\python\\"));
@@ -100,6 +125,10 @@ public class Analysis extends HttpServlet {
         }
 		}
 		else if(ana_type.equals("예지보전")) {
+			// 데이터 일치 여부 확인
+			if (!ana_data.contains("Ana_data_yj")) {
+	            response.getWriter().println("<script>alert('데이터 형식과 종류가 일치하지 않습니다.'); history.back();</script>");
+	            return;}
 			File batFile = new File("C:\\python\\Ana_bat_yj.bat");
 	        ProcessBuilder processBuilder = new ProcessBuilder(batFile.getAbsolutePath());
 	        processBuilder.directory(new File("C:\\python\\"));
@@ -126,6 +155,10 @@ public class Analysis extends HttpServlet {
 		}
 		
 		else if(ana_type.equals("공정최적화")) {
+			// 데이터 일치 여부 확인
+			if (!ana_data.contains("Ana_data_gj")) {
+	            response.getWriter().println("<script>alert('데이터 형식과 종류가 일치하지 않습니다.'); history.back();</script>");
+	            return;}
 			File batFile = new File("C:\\python\\Ana_bat_gj.bat");
 	        ProcessBuilder processBuilder = new ProcessBuilder(batFile.getAbsolutePath());
 	        processBuilder.directory(new File("C:\\python\\"));

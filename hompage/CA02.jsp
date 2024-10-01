@@ -76,7 +76,14 @@
         font-weight: bold;
         color: #003366; /* 제목 글자색 군청색 */
         text-align: center;
-        margin-bottom: 30px;
+        margin-bottom: 10px; /* 제목과 알림 문구 간격 줄임 */
+    }
+
+    .info-text {
+        text-align: center;
+        font-size: 18px;
+        margin-bottom: 20px;
+        color: #666;
     }
 
     .form-group {
@@ -102,9 +109,17 @@
         height: 300px;
     }
 
+    .additional-info {
+        display: flex;
+        justify-content: right;
+        margin-top: 10px;
+        font-size: 14px;
+        color: #666;
+    }
+
     .button-group {
         display: flex;
-        justify-content: center; /* 중앙 정렬 */
+        justify-content: flex-end; /* 우측 정렬 */
         gap: 10px; /* 버튼 사이 간격 추가 */
         margin-top: 20px;
     }
@@ -121,24 +136,6 @@
     }
 
     .button-group a:hover {
-        background-color: transparent; /* 호버 시 배경 투명 */
-        color: #FF6600; /* 호버 시 글자색 주황색 */
-        transform: scale(1.05); /* 호버 시 크기 확대 */
-        border: 2px solid #FF6600; /* 호버 시 주황색 테두리 추가 */
-    }
-
-    .submit-btn button {
-        background-color: #FF6600; /* 버튼 색깔 주황색 */
-        color: white;
-        padding: 8px 15px;
-        border: none;
-        border-radius: 5px;
-        font-size: 14px;
-        cursor: pointer;
-        margin-right: 10px; /* 간격 추가 */
-    }
-
-    .submit-btn button:hover {
         background-color: transparent; /* 호버 시 배경 투명 */
         color: #FF6600; /* 호버 시 글자색 주황색 */
         transform: scale(1.05); /* 호버 시 크기 확대 */
@@ -236,14 +233,24 @@
   
     <div class="form-container">
         <h2>공지사항 확인</h2>
+        <br>
+        <p class="info-text">알고리듬의 소식을 확인해보세요</p>
+        
         <div class="form-group">
             <label for="title">제목:</label>
             <input type="text" id="title" name="title" value="<%= notice.getTitle() %>" readonly>
         </div>
+
+        <div class="additional-info">
+            <span>작성자: <%= notice.getEmpId() %></span>&nbsp;&nbsp;&nbsp;
+            <span>작성일자: <%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(notice.getCreatedAt()) %></span>
+        </div>
+
         <div class="form-group">
             <label for="content">내용:</label>
             <textarea id="content" name="content" rows="5" readonly><%= notice.getContent() %></textarea>
         </div>
+
         <div class="button-group">
             <% if (loginUser != null && notice.getEmpId().equals(loginUser.getEmp_id())) { %> <!-- 로그인한 사용자에게만 편집 버튼 보이기 -->
                 <a href="CA04.jsp?num=<%= notice.getNum() %>" class="btn btn-primary">편집</a>

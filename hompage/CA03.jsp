@@ -87,7 +87,7 @@
     }
 
     .submit-btn {
-        text-align: center; /* 버튼 중앙 정렬 */
+        text-align: right; /* 버튼 우측 정렬 */
         margin-top: 30px;
     }
 

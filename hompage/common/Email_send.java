@@ -56,6 +56,8 @@ public class Email_send extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		request.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html; charset=utf-8");
 		Properties p = System.getProperties();
         p.put("mail.smtp.starttls.enable", "true");     
         p.put("mail.smtp.host", "smtp.naver.com");      // smtp 서버 주소
@@ -104,7 +106,9 @@ public class Email_send extends HttpServlet {
             msg.setHeader("content-Type", "text/html");
             //메일보내기
             javax.mail.Transport.send(msg, msg.getAllRecipients());
-            response.sendRedirect("BA01.jsp");
+            System.out.println("이메일이 정상적으로 전송되었습니다.");
+            response.getWriter().println("<script>alert('결과가 이메일로 전송되었습니다.'); location.href='BA01.jsp';</script>");
+//            response.sendRedirect("BA01.jsp");
              
         }catch (AddressException addr_e) {
             addr_e.printStackTrace();
