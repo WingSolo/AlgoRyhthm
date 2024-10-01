@@ -45,7 +45,7 @@
   <style>
   
 	.footer_section {
-  		position: fixed; /* 화면 하단에 고정 */
+  		position: bottom; /* 화면 하단에 고정 */
   		bottom: 0;
   		left: 0;
   		width: 100%;
@@ -100,7 +100,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
                 <li class="nav-item active">
-                  <a  class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" height="27px"></span></a>
+                  <a  class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" width = "77px"height="37px"></span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="A01.jsp">회사소개</a>
@@ -115,10 +115,10 @@
                     <a class="nav-link" href="BA01.jsp">분석</a>
                 </li>
                 <li class="nav-item">
-					<% if (loginUser == null) { %>
-					      <a class="nav-link" href="BA02.jsp">문의하기</a>
-					<% } %>
-				</li>               
+  					<% if (loginUser == null) { %>
+    					<a class="nav-link" href="BA02.jsp">문의하기</a>
+  					<% } %>
+				</li>
                 <% if (loginUser != null) { %>
                 <li class="nav-item">
                   <a class="nav-link" href="DA01.jsp">마이페이지</a>
@@ -155,7 +155,7 @@
                     <input type="text" class="form-control" name="phone" placeholder="휴대폰 번호" required />
                 </div>
                 <div class="form-group col-lg-6">
-                    <input type="text" class="form-control" name="company" placeholder="가관명(선택)" />
+                    <input type="text" class="form-control" name="company" placeholder="기관명(선택)" />
                 </div>
                 <div class="form-group col-lg-6">
                     <select name="data_type" class="form-control wide">
