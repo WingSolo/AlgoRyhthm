@@ -55,7 +55,7 @@
 
     .notice-section {
         position: absolute;
-        top: 335px; /* 아래쪽에 배치 */
+        bottom: 110px; /* 아래쪽에 배치 */
         left: 800px; /* 오른쪽에 배치 */
         background-color: rgba(255, 255, 255, 0.9);
         padding: 15px;
@@ -250,12 +250,14 @@
                     	<tr style="color: <%= (count == 1) ? "black" : "gray" %>; font-size: 14px ; ">
                         	<td style="padding: 10px; text-align: center;
                         	font-weight : <%= (count == 1) ? "bold" : "normal"%>"><%= count %></td>
-                        	<td style="padding: 10px; color: inherit;">
-                            	<a href="CA02.jsp?num=<%= notice.getNum() %>" style="color: inherit; text-decoration: none;
-                            	font-weight : <%= (count == 1) ? "bold" : "normal"%>">
-                                	<%= notice.getTitle() %>
-                           	 	</a>
-                        	</td>
+							
+							<td style="padding: 10px; color: inherit;">
+							    <a href="CA02.jsp?num=<%= notice.getNum() %>" style="color: inherit; text-decoration: none;
+							    font-weight : <%= (count == 1) ? "bold" : "normal"%>">
+							        <%= (notice.getTitle().length() > 10) ? notice.getTitle().substring(0, 10) + "..." : notice.getTitle() %>
+							    </a>
+							</td>
+
                         	<td style="padding: 10px; text-align: center; color: inherit;
                         	font-weight : <%= (count == 1) ? "bold" : "normal"%>">
                             	<%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(notice.getCreatedAt()) %>
