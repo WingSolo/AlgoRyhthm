@@ -55,8 +55,8 @@
 
     .notice-section {
         position: absolute;
-        top: 360px; /* 아래쪽에 배치 */
-        left: 770px; /* 오른쪽에 배치 */
+        top: 335px; /* 아래쪽에 배치 */
+        left: 800px; /* 오른쪽에 배치 */
         background-color: rgba(255, 255, 255, 0.9);
         padding: 15px;
         border-radius: 8px;
@@ -233,32 +233,31 @@
     </section>
     <!-- end slider section -->
         <!-- 공지사항 섹션 -->
-<<<<<<< .merge_file_nEI4Y6
-	<div class="notice-section" style="opacity: 1.0; margin-right: 1%; margin-bottom: 1%">
-=======
 	<span class="notice-section" style="opacity: 1.0; margin-right: 25%; margin-bottom: 1%">
->>>>>>> .merge_file_fu5CMb
-    	<h3 style="margin-bottom: 30px; font-weight: bold;">최근 공지사항</h3>
+    	<h3 style="margin-bottom: 10px; font-weight: bold;">최근 공지사항</h3>
     	<table style="width: 100%; border-collapse: collapse; background-color: transparent;">
        		<thead>
             	<tr style="background-color: transparent; color: #003366; text-align: center;">
-                	<th style="padding: 10px; text-align: center;">번호</th>
-                	<th style="padding: 10px; text-align: center;">제목</th>
-                	<th style="padding: 10px; text-align: center;">작성일</th>
+                	<th style="padding: 10px; text-align: center;">No.</th>
+                	<th style="padding: 10px; text-align: center;">Title</th>
+                	<th style="padding: 10px; text-align: center;">Date</th>
             	</tr>
         	</thead>
         		<tbody>
             	<% if (recentNotices != null && !recentNotices.isEmpty()) { %>
                 	<% int count = 1; %>
                 	<% for (Notice notice : recentNotices) { %>
-                    	<tr style="color: <%= (count == 1) ? "red" : "#003366" %>;">
-                        	<td style="padding: 10px; text-align: center;"><%= count %></td>
+                    	<tr style="color: <%= (count == 1) ? "black" : "gray" %>; font-size: 14px ; ">
+                        	<td style="padding: 10px; text-align: center;
+                        	font-weight : <%= (count == 1) ? "bold" : "normal"%>"><%= count %></td>
                         	<td style="padding: 10px; color: inherit;">
-                            	<a href="CA02.jsp?num=<%= notice.getNum() %>" style="color: inherit; text-decoration: none;">
+                            	<a href="CA02.jsp?num=<%= notice.getNum() %>" style="color: inherit; text-decoration: none;
+                            	font-weight : <%= (count == 1) ? "bold" : "normal"%>">
                                 	<%= notice.getTitle() %>
                            	 	</a>
                         	</td>
-                        	<td style="padding: 10px; text-align: center; color: inherit;">
+                        	<td style="padding: 10px; text-align: center; color: inherit;
+                        	font-weight : <%= (count == 1) ? "bold" : "normal"%>">
                             	<%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(notice.getCreatedAt()) %>
                         	</td>
                     	</tr>
@@ -271,7 +270,7 @@
             	<% } %>
         	</tbody>
     	</table>
-	</div>
+	</span>
 
   </div>
 
