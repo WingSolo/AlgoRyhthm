@@ -55,8 +55,8 @@
 
     .notice-section {
         position: absolute;
-        bottom: 110px; /* 아래쪽에 배치 */
-        left: 800px; /* 오른쪽에 배치 */
+        bottom: 23%; /* 아래쪽에 배치 */
+        left:42%; /* 오른쪽에 배치 */
         background-color: rgba(255, 255, 255, 0.9);
         padding: 15px;
         border-radius: 8px;
