@@ -120,9 +120,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="BA01.jsp">분석</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="BA02.jsp">문의하기</a>
-                </li>                
+				<li class="nav-item">
+  					<% if (loginUser == null) { %>
+    					<a class="nav-link" href="BA02.jsp">문의하기</a>
+  					<% } %>
+				</li>               
                 <!-- Show "마이페이지" next to "공지사항" if the user is logged in -->
                 <% if (loginUser != null) { %>
                 <li class="nav-item">
@@ -156,7 +158,7 @@
 							  주요 키워드
 						</p>
               <p class = "p2">
-                AI 학습데이터, 텍스트 데이터 
+                AI 학습데이터, 열처리, 데이터 분석
               </p>
             </div>
             <div class = "content_cat_2">
@@ -164,7 +166,7 @@
 							  주제
 						  </p>
               <p class = "p2">
-                열처리 : 품질보증 
+                열처리 : 공정최적화 
               </p>
             </div>
             <div class = "content_cat_3">
@@ -172,7 +174,7 @@
 							  데이터 종류
 						  </p>
               <p class = "p2">
-                텍스트
+                텍스트(.csv)
               </p>
             </div>
           </div>
@@ -182,11 +184,18 @@
           </div>
           <div class="content_detail">	
             <p class="p1">소개</p>
-            <p class="p2">소개 텍스트</p>
+            <p class="p2">- 제조분야 : 뿌리(열처리)</p>
+            <p class="p2">- 제조 공정명 : 열처리 공정최적화</p>
+            <p class="p2">- 수집 장비 : 열처리의 소입로, 건조로 등 주요 존의 데이터 확보</p>
           </div>
           <div class="content_detail">	
             <p class="p1">구축 목적</p>
-            <p class="p2">구축 목적 텍스트</p>
+            <p class="p2">
+            열처리 공정에서 발생하는 품질문제와 공정 데이터들을 분석하여  
+            </p>
+            <p class="p2">
+            데이터 간의 상관관계를 찾고 주요 문제별 원인 인자를 분석하여 공정 최적화 모델을 활용하여 해결하고자 한다
+            </p>
           </div>
           <div class="empty_box">
             <p>메타데이터 구조표</p>
@@ -196,37 +205,39 @@
               <p class="p1">데이터 영역</p>
             </div>
             <div class="sel2">
-              <p class="p2">내용</p>
+              <p class="p2">
+ 				열처리 공정최적화
+ 			  </p>
             </div>
             <div class="sel1">
               <p class="p1">데이터 유형</p>
             </div>
             <div class="sel2">
-              <p class="p2">내용</p>
+              <p class="p2">텍스트(.csv, xlsx)</p>
             </div>
             <div class="sel1">
               <p class="p1">데이터 형식</p>
             </div>
             <div class="sel2">
-              <p class="p2">내용</p>
+              <p class="p2">DataFrame</p>
             </div>
             <div class="sel1">
               <p class="p1">데이터 출처</p>
             </div>
             <div class="sel2">
-              <p class="p2">내용</p>
+              <p class="p2">스마트제조혁신추진단</p>
             </div>
             <div class="sel1">
               <p class="p1">라벨링 유형</p>
             </div>
             <div class="sel2">
-              <p class="p2">내용</p>
+              <p class="p2"> - </p>
             </div>
             <div class="sel1">
               <p class="p1">라벨링 형식</p>
             </div>
             <div class="sel2">
-              <p class="p2">내용</p>
+              <p class="p2"> - </p>
             </div>
           </div>
           
@@ -234,24 +245,39 @@
             <p>데이터 분석</p>
           </div>
           <div class="content_detail2">	
-            <div class='object-box'>
-              <!-- <div class="img-box"> -->
-                <img src="./images/jj_qc.png" alt="분석 이미지" />
-              <!-- </div> -->
-            </div>
+			<div class='object-box'>
+  				<!-- 이미지에 클릭 이벤트 추가 -->
+  				<a href="./images/heat_po01.png" target="_blank" onclick="window.open(this.href,  'newwindow', 'width=1000,height=720'); return false;">
+    				<img src="./images/heat_po01.png" alt="분석 이미지" right=10 width=400 height=300 />
+  				</a>
+  				<a href="./images/heat_po02.png" target="_blank" onclick="window.open(this.href,  'newwindow', 'width=600,height=450'); return false;">
+    				<img src="./images/heat_po02.png" alt="분석 이미지" width=200 height=150  />
+  				</a>
+  				<span><a href="./images/heat_po03.png" target="_blank" onclick="window.open(this.href,  'newwindow', 'width=600,height=450'); return false;">
+    				<img src="./images/heat_po03.png" alt="분석 이미지" width=260 height=180  />
+  				</a></span>
+			</div>
+
             <div style="display: inline-block; width: 450px; margin-right: 30px;">
             <div class="sel3">
               <p class="p1">데이터 구조</p>
-              <p class="p2">데이터 구조 텍스트</p>
+              <p class="p2"> raw_total_data:총 58,794,440개 , label: 총 2,992개</p>
+
             </div>
             <div class="sel3">
               <p class="p1">분석 모델</p>
-              <p class="p2">분석 모델 텍스트</p>
+              <p class="p2">선형회귀(Linear Regression)</p>
             </div>
-            <div class="sel3">
+            <div class="sel3" style="height: 100%;">
               <p class="p1">모델 성능</p>
-              <p class="p2">모델 성능 텍스트</p>
-            </div>
+              <p class="p2" style="line-height: 10px;">선형 회귀 결정계수</p>
+              <p class="p2" style="line-height: 10px;">Train R2 Score:0.295</p>
+              <p class="p2" style="line-height: 10px;">Test R2 Score : 0.261</p>
+              <p class="p2" style="line-height: 10px;">의사결정나무 결정 계수</p>
+               <p class="p2" style="line-height: 10px;">Train R2 Score:1.0</p>
+                <p class="p2" style="line-height: 10px;">Train R2 Score:-0.229</p>
+              
+             </div>
           </div>
           </div>
 
