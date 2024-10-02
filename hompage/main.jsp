@@ -55,8 +55,8 @@
 
     .notice-section {
         position: absolute;
-        top: 335px; /* 아래쪽에 배치 */
-        left: 800px; /* 오른쪽에 배치 */
+        top: 360px; /* 아래쪽에 배치 */
+        left: 770px; /* 오른쪽에 배치 */
         background-color: rgba(255, 255, 255, 0.9);
         padding: 15px;
         border-radius: 8px;
@@ -233,7 +233,7 @@
     </section>
     <!-- end slider section -->
         <!-- 공지사항 섹션 -->
-	<span class="notice-section" style="opacity: 1.0; margin-right: 25%; margin-bottom: 1%">
+	<div class="notice-section" style="opacity: 1.0; margin-right: 1%; margin-bottom: 1%">
     	<h3 style="margin-bottom: 30px; font-weight: bold;">최근 공지사항</h3>
     	<table style="width: 100%; border-collapse: collapse; background-color: transparent;">
        		<thead>
@@ -267,7 +267,7 @@
             	<% } %>
         	</tbody>
     	</table>
-	</span>
+	</div>
 
   </div>
 
