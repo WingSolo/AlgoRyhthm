@@ -233,11 +233,11 @@
     </section>
     <!-- end slider section -->
         <!-- 공지사항 섹션 -->
-	<span class="notice-section" style="opacity: 1.0; margin-right: 25%; margin-bottom: 1%">
-    	<h3 style="margin-bottom: 10px; font-weight: bold;">최근 공지사항</h3>
+	<span class="notice-section" style="opacity: 0.8; margin-right: 25%; margin-bottom: 1%; background-color : #003471;";>
+    	<h3 style="margin-bottom: 10px; font-weight: bold; color : white;">NEWS</h3>
     	<table style="width: 100%; border-collapse: collapse; background-color: transparent;">
        		<thead>
-            	<tr style="background-color: transparent; color: #003366; text-align: center;">
+            	<tr style="background-color: transparent; color: #003366; text-align: center; color : white;">
                 	<th style="padding: 10px; text-align: center;">No.</th>
                 	<th style="padding: 10px; text-align: center;">Title</th>
                 	<th style="padding: 10px; text-align: center;">Date</th>
@@ -247,7 +247,7 @@
             	<% if (recentNotices != null && !recentNotices.isEmpty()) { %>
                 	<% int count = 1; %>
                 	<% for (Notice notice : recentNotices) { %>
-                    	<tr style="color: <%= (count == 1) ? "black" : "gray" %>; font-size: 14px ; ">
+                    	<tr style="color: <%= (count == 1) ? "white" : "#dee2e6" %>; font-size: 14px ; ">
                         	<td style="padding: 10px; text-align: center;
                         	font-weight : <%= (count == 1) ? "bold" : "normal"%>"><%= count %></td>
 							
