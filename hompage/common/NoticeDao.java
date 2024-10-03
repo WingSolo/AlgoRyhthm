@@ -192,10 +192,10 @@ public class NoticeDao {
         return noticeList;
     }
 
-    // 공지사항 검색 메서드
+ // 공지사항 검색 메서드 (날짜 역순으로 정렬)
     public List<Notice> searchNoticesByKeyword(String keyword, int page, int pageSize) {
         List<Notice> noticeList = new ArrayList<>();
-        String sql = "SELECT * FROM notice WHERE title LIKE ? OR content LIKE ? LIMIT ?, ?";
+        String sql = "SELECT * FROM notice WHERE title LIKE ? OR content LIKE ? ORDER BY created_at DESC LIMIT ?, ?";
 
         try (Connection conn = getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -224,6 +224,7 @@ public class NoticeDao {
         }
         return noticeList;
     }
+
 
     // 검색된 공지사항의 총 개수 가져오는 메서드
     public int getSearchNoticeCount(String keyword) {

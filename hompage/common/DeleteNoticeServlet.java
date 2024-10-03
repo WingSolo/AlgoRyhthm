@@ -30,13 +30,6 @@ public class DeleteNoticeServlet extends HttpServlet {
         // 공지사항 번호 가져오기
         String numStr = request.getParameter("num");
         String searchKeyword = request.getParameter("searchKeyword");  // searchKeyword 값 가져오기
-        
-        if (searchKeyword == null) {
-            searchKeyword = "";  // 검색어가 없으면 빈 문자열로 처리
-        }
-
-        // 검색어를 URL에서 안전하게 전달하기 위해 인코딩 처리
-        String encodedKeyword = URLEncoder.encode(searchKeyword, "UTF-8");
 
         if (numStr != null && !numStr.isEmpty()) {
             try {
@@ -48,22 +41,53 @@ public class DeleteNoticeServlet extends HttpServlet {
 
                 if (notice != null && notice.getEmpId().equals(currentUser.getEmp_id())) {  // 삭제 권한 확인
                     if (noticeDao.deleteNotice(num)) {
-                        response.sendRedirect("CA01.jsp?message=deleted&searchKeyword=" + encodedKeyword);  // 삭제 성공 시 목록 페이지로 리디렉션
+                        // 검색 키워드가 null이거나 빈 문자열인 경우 searchKeyword를 URL에 포함하지 않음
+                        if (searchKeyword == null || searchKeyword.trim().isEmpty() || "null".equals(searchKeyword)) {
+                            response.sendRedirect("CA01.jsp?message=deleted");  // 검색어 없으면 검색 키워드 없이 리디렉션
+                        } else {
+                            String encodedKeyword = URLEncoder.encode(searchKeyword, "UTF-8");
+                            response.sendRedirect("CA01.jsp?message=deleted&searchKeyword=" + encodedKeyword);  // 검색어 있을 때
+                        }
                     } else {
-                        response.sendRedirect("CA01.jsp?error=deleteFailed&searchKeyword=" + encodedKeyword);  // 삭제 실패 시 오류 메시지와 함께 목록 페이지로 리디렉션
+                        if (searchKeyword == null || searchKeyword.trim().isEmpty() || "null".equals(searchKeyword)) {
+                            response.sendRedirect("CA01.jsp?error=deleteFailed");
+                        } else {
+                            String encodedKeyword = URLEncoder.encode(searchKeyword, "UTF-8");
+                            response.sendRedirect("CA01.jsp?error=deleteFailed&searchKeyword=" + encodedKeyword);
+                        }
                     }
                 } else {
-                    response.sendRedirect("CA01.jsp?error=noPermission&searchKeyword=" + encodedKeyword);  // 권한이 없는 경우 목록 페이지로 리디렉션
+                    if (searchKeyword == null || searchKeyword.trim().isEmpty() || "null".equals(searchKeyword)) {
+                        response.sendRedirect("CA01.jsp?error=noPermission");
+                    } else {
+                        String encodedKeyword = URLEncoder.encode(searchKeyword, "UTF-8");
+                        response.sendRedirect("CA01.jsp?error=noPermission&searchKeyword=" + encodedKeyword);
+                    }
                 }
 
             } catch (NumberFormatException e) {
-                response.sendRedirect("CA01.jsp?error=invalidNumber&searchKeyword=" + encodedKeyword);  // 잘못된 번호 형식인 경우
+                if (searchKeyword == null || searchKeyword.trim().isEmpty() || "null".equals(searchKeyword)) {
+                    response.sendRedirect("CA01.jsp?error=invalidNumber");
+                } else {
+                    String encodedKeyword = URLEncoder.encode(searchKeyword, "UTF-8");
+                    response.sendRedirect("CA01.jsp?error=invalidNumber&searchKeyword=" + encodedKeyword);
+                }
             } catch (Exception e) {
                 e.printStackTrace();
-                response.sendRedirect("CA01.jsp?error=exception&searchKeyword=" + encodedKeyword);  // 기타 예외 발생 시
+                if (searchKeyword == null || searchKeyword.trim().isEmpty() || "null".equals(searchKeyword)) {
+                    response.sendRedirect("CA01.jsp?error=exception");
+                } else {
+                    String encodedKeyword = URLEncoder.encode(searchKeyword, "UTF-8");
+                    response.sendRedirect("CA01.jsp?error=exception&searchKeyword=" + encodedKeyword);
+                }
             }
         } else {
-            response.sendRedirect("CA01.jsp?error=missingNumber&searchKeyword=" + encodedKeyword);  // 번호가 지정되지 않은 경우
+            if (searchKeyword == null || searchKeyword.trim().isEmpty() || "null".equals(searchKeyword)) {
+                response.sendRedirect("CA01.jsp?error=missingNumber");
+            } else {
+                String encodedKeyword = URLEncoder.encode(searchKeyword, "UTF-8");
+                response.sendRedirect("CA01.jsp?error=missingNumber&searchKeyword=" + encodedKeyword);
+            }
         }
     }
 }
