@@ -235,10 +235,11 @@ EmpUser userInfo = userDao.getEmpUserById(loginUser.getEmp_id());
     <!-- Content -->
     <div class="content">
       <h2>회원 정보 수정</h2>
-      <form action="UpdatePasswordServlet" method="post">
+		<form action="UpdatePasswordServlet" method="post" onsubmit="return validatePassword();">
+
         <div class="form-group">
           <label for="newPassword">새 비밀번호</label>
-          <input type="password" id="newPassword" name="newPassword" placeholder="영문 대소문자, 숫자, 특수문자 조합 8글자 이상" required>
+          <input type="password" id="newPassword" name="newPassword" placeholder="영문 대소문자, 숫자, 특수문자 포함 8글자 이상" required>
         </div>
         <div class="form-group">
           <label for="confirmPassword">비밀번호 확인</label>
@@ -281,6 +282,29 @@ EmpUser userInfo = userDao.getEmpUserById(loginUser.getEmp_id());
       <p>&copy; <span id="displayYear"></span> All Rights Reserved By <a href="main.jsp">AlgoRhythm</a></p>
     </div>
   </footer>
+  
+	  <script>
+	  function validatePassword() {
+	    const password = document.getElementById("newPassword").value;
+	    const confirmPassword = document.getElementById("confirmPassword").value;
+	    
+	    // 비밀번호 패턴: 최소 8자, 영문 대소문자, 숫자, 특수문자 포함
+	    const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{8,}$/;
+	    
+	    if (!passwordPattern.test(password)) {
+	      alert("비밀번호는 영문 대소문자, 숫자, 특수문자를 포함하여 8자 이상이어야 합니다.");
+	      return false;
+	    }
+	
+	    if (password !== confirmPassword) {
+	      alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+	      return false;
+	    }
+	
+	    return true;
+	  }
+	</script>
+  
 
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="js/bootstrap.js"></script>
