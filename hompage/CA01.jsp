@@ -318,23 +318,29 @@
         </tr>
       </thead>
       <tbody>
-        <% if (noticeList != null && !noticeList.isEmpty()) { %>
-            <% for (int i = 0; i < noticeList.size(); i++) { 
-                Notice notice = noticeList.get(i); 
-            %>
-            <tr>
-              <td><%= startIndex + i %></td>
-              <td class="notice-title">
-                <a href="CA02.jsp?num=<%= notice.getNum() %>&searchKeyword=<%= searchKeyword %>"><%= notice.getTitle() %></a>
-              </td>
-              <td><%= notice.getEmpId() %></td>
-              <td><%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(notice.getCreatedAt()) %></td>
-            </tr>
-            <% } %>
-        <% } else { %>
-            <tr>
-              <td colspan="4">공지사항이 없습니다.</td>
-            </tr>
+        <% 
+          if (noticeList != null && !noticeList.isEmpty()) { 
+              for (int i = 0; i < noticeList.size(); i++) { 
+                  Notice notice = noticeList.get(i); 
+        %>
+        <tr>
+          <td><%= startIndex + i %></td>
+          <td class="notice-title">
+            <a href="CA02.jsp?num=<%= notice.getNum() %>&searchKeyword=<%= searchKeyword %>"><%= notice.getTitle() %></a>
+          </td>
+          <td><%= notice.getEmpId() %></td>
+          <td><%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(notice.getCreatedAt()) %></td>
+        </tr>
+        <% 
+              } 
+          } else { 
+              // 공지사항이 없는 경우 처리
+        %>
+        <tr>
+          <td colspan="4" style="text-align: center;">
+            <%= (searchKeyword != null && !searchKeyword.trim().isEmpty()) ? "검색된 공지사항이 없습니다." : "공지사항이 없습니다." %>
+          </td>
+        </tr>
         <% } %>
       </tbody>
     </table>

@@ -272,8 +272,8 @@
             <div class="button-group">
                 <button type="submit">수정 완료</button>
                 <a href="CA05.jsp?num=<%= notice.getNum() %>&searchKeyword=<%= searchKeyword %>">삭제</a>             
-                <% if (searchKeyword != null && !searchKeyword.trim().isEmpty()) { %>
-                    <a href="CA01.jsp?searchKeyword=<%= searchKeyword %>">검색한 목록으로</a>
+          	   	<% if (searchKeyword != null && !searchKeyword.trim().isEmpty() && !"null".equals(searchKeyword)) { %> <!-- 검색어가 있을 경우에만 '검색목록으로' 버튼 표시 -->
+                <a href="CA01.jsp?searchKeyword=<%= searchKeyword %>" class="btn btn-secondary">검색한 목록으로</a>
                 <% } %>
                 <a href="CA01.jsp">목록으로</a>
             </div>
