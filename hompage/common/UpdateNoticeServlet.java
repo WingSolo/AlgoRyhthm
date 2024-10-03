@@ -11,20 +11,33 @@ import javax.servlet.http.HttpServletResponse;
 public class UpdateNoticeServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
+    // POST 요청 처리
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("UTF-8");
 
         int num = Integer.parseInt(request.getParameter("num"));
         String title = request.getParameter("title");
         String content = request.getParameter("content");
+        String searchKeyword = request.getParameter("searchKeyword");
 
         NoticeDao noticeDao = new NoticeDao();
-        Notice notice = new Notice(num, title, content, null, null, null);  // 필요한 정보로 Notice 객체 생성
+        Notice notice = new Notice(num, title, content, null, null, null);
+
+        if (searchKeyword == null) {
+            searchKeyword = "";
+        }
+
+        String encodedKeyword = java.net.URLEncoder.encode(searchKeyword, "UTF-8");
 
         if (noticeDao.updateNotice(notice)) {
-            response.sendRedirect("CA01.jsp"); // 수정 성공 시 목록 페이지로 리디렉션
+            response.sendRedirect("CA02.jsp?num=" + notice.getNum() + "&searchKeyword=" + encodedKeyword);
         } else {
-            response.sendRedirect("CA04.jsp?num=" + num + "&error=updateFailed"); // 수정 실패 시 다시 수정 페이지로
+            response.sendRedirect("CA04.jsp?num=" + num + "&error=updateFailed&searchKeyword=" + encodedKeyword);
         }
-    }  
+    }
+
+    // GET 요청 처리 (GET 요청 시 POST로 리디렉션)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doPost(request, response);  // GET 요청을 POST 요청처럼 처리
+    }
 }

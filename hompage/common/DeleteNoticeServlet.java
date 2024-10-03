@@ -1,6 +1,7 @@
 package common;
 
 import java.io.IOException;
+import java.net.URLEncoder;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -28,6 +29,14 @@ public class DeleteNoticeServlet extends HttpServlet {
 
         // 공지사항 번호 가져오기
         String numStr = request.getParameter("num");
+        String searchKeyword = request.getParameter("searchKeyword");  // searchKeyword 값 가져오기
+        
+        if (searchKeyword == null) {
+            searchKeyword = "";  // 검색어가 없으면 빈 문자열로 처리
+        }
+
+        // 검색어를 URL에서 안전하게 전달하기 위해 인코딩 처리
+        String encodedKeyword = URLEncoder.encode(searchKeyword, "UTF-8");
 
         if (numStr != null && !numStr.isEmpty()) {
             try {
@@ -39,23 +48,22 @@ public class DeleteNoticeServlet extends HttpServlet {
 
                 if (notice != null && notice.getEmpId().equals(currentUser.getEmp_id())) {  // 삭제 권한 확인
                     if (noticeDao.deleteNotice(num)) {
-                        response.sendRedirect("CA01.jsp?message=deleted");  // 삭제 성공 시 목록 페이지로 리디렉션
+                        response.sendRedirect("CA01.jsp?message=deleted&searchKeyword=" + encodedKeyword);  // 삭제 성공 시 목록 페이지로 리디렉션
                     } else {
-                        response.sendRedirect("CA01.jsp?error=deleteFailed");  // 삭제 실패 시 오류 메시지와 함께 목록 페이지로 리디렉션
+                        response.sendRedirect("CA01.jsp?error=deleteFailed&searchKeyword=" + encodedKeyword);  // 삭제 실패 시 오류 메시지와 함께 목록 페이지로 리디렉션
                     }
                 } else {
-                    response.sendRedirect("CA01.jsp?error=noPermission");  // 권한이 없는 경우 목록 페이지로 리디렉션
+                    response.sendRedirect("CA01.jsp?error=noPermission&searchKeyword=" + encodedKeyword);  // 권한이 없는 경우 목록 페이지로 리디렉션
                 }
 
             } catch (NumberFormatException e) {
-                response.sendRedirect("CA01.jsp?error=invalidNumber");  // 잘못된 번호 형식인 경우
+                response.sendRedirect("CA01.jsp?error=invalidNumber&searchKeyword=" + encodedKeyword);  // 잘못된 번호 형식인 경우
             } catch (Exception e) {
                 e.printStackTrace();
-                response.sendRedirect("CA01.jsp?error=exception");  // 기타 예외 발생 시
+                response.sendRedirect("CA01.jsp?error=exception&searchKeyword=" + encodedKeyword);  // 기타 예외 발생 시
             }
         } else {
-            response.sendRedirect("CA01.jsp?error=missingNumber");  // 번호가 지정되지 않은 경우
+            response.sendRedirect("CA01.jsp?error=missingNumber&searchKeyword=" + encodedKeyword);  // 번호가 지정되지 않은 경우
         }
     }
 }
-
