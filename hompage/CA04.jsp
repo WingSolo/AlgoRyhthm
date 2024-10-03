@@ -15,6 +15,8 @@
     String numStr = request.getParameter("num");
     Notice notice = null;
 
+    String searchKeyword = request.getParameter("searchKeyword"); // 검색어 가져오기
+
     if (numStr != null && !numStr.isEmpty()) {
         try {
             int num = Integer.parseInt(numStr);
@@ -66,7 +68,7 @@
   <link href="css/style.css" rel="stylesheet" />
   <link href="css/responsive.css" rel="stylesheet" />
 
-<style>
+  <style>
     body {
         font-family: 'Poppins', sans-serif;
         background-color: #ffffff; /* 전체 배경을 흰색으로 설정 */
@@ -182,7 +184,7 @@
         background-color: transparent; /* 배경색을 없앰 */
         z-index: 0; /* 다른 요소 위에 표시되도록 설정 */
     }
-</style>
+  </style>
 
 </head>
 
@@ -226,11 +228,11 @@
                 <li class="nav-item">
                   <a class="nav-link" href="BA01.jsp">분석</a>
                 </li>
-				<li class="nav-item">
-  					<% if (loginUser == null) { %>
-    					<a class="nav-link" href="BA02.jsp">문의하기</a>
-  					<% } %>
-				</li>
+                <li class="nav-item">
+                  <% if (loginUser == null) { %>
+                    <a class="nav-link" href="BA02.jsp">문의하기</a>
+                  <% } %>
+                </li>
                 <% if (loginUser != null) { %>
                 <li class="nav-item">
                   <a class="nav-link" href="DA01.jsp">마이페이지</a>
@@ -250,13 +252,14 @@
         
         <form action="UpdateNoticeServlet" method="post">
             <input type="hidden" name="num" value="<%= notice.getNum() %>">
+            <input type="hidden" name="searchKeyword" value="<%= searchKeyword %>"> <!-- 검색어 전달을 위한 hidden 필드 -->
+
             <div class="form-group">
                 <label for="title">제목:</label>
                 <input type="text" id="title" name="title" value="<%= notice.getTitle() %>" required>
             </div>
 
             <div class="additional-info">
-
                 <span class="right-align">작성자: <%= notice.getEmpId() %></span>&nbsp;&nbsp;&nbsp;
                 <span>작성일자: <%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(notice.getCreatedAt()) %></span>
             </div>
@@ -268,7 +271,10 @@
 
             <div class="button-group">
                 <button type="submit">수정 완료</button>
-                <a href="CA05.jsp?num=<%= notice.getNum() %>">삭제</a>
+                <a href="CA05.jsp?num=<%= notice.getNum() %>&searchKeyword=<%= searchKeyword %>">삭제</a>             
+                <% if (searchKeyword != null && !searchKeyword.trim().isEmpty()) { %>
+                    <a href="CA01.jsp?searchKeyword=<%= searchKeyword %>">검색한 목록으로</a>
+                <% } %>
                 <a href="CA01.jsp">목록으로</a>
             </div>
         </form>

@@ -66,26 +66,24 @@
   }
 
   .notice-table th {
-  	 border: 1px solid #ddd;
+     border: 1px solid #ddd;
      padding: 12px;
      background-color: #f2f2f2;
      font-size: 16px;
      color: #003366;
      text-align: center;
   }
-  
-  /* No 열의 너비를 축소 */
+
   .notice-table th:nth-child(1), .notice-table td:nth-child(1) {
-     width: 80px; /* No 칼럼의 너비 */
+     width: 80px; 
   } 
 
- /* 작성자와 작성날짜 칼럼의 가로 길이를 줄이기 위해 width 설정 */
   .notice-table th:nth-child(3), .notice-table td:nth-child(3) {
-     width: 120px; /* 작성자 칼럼의 너비 */
+     width: 120px; 
   }
 
   .notice-table th:nth-child(4), .notice-table td:nth-child(4) {
-     width: 120px; /* 작성날짜 칼럼의 너비 */
+     width: 120px; 
   }
 
   .notice-table td {
@@ -103,12 +101,10 @@
      color: #003366;
   }
 
-
-  /* 페이지 네이션 테이블과 가깝게 배치 */
   .pagination {
-      display: flex; /* Flexbox 사용 */
-      justify-content: center; /* 중앙 정렬 */
-      margin-top: 10px; /* 테이블과 가깝게 */
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
   }
 
   .pagination a, .pagination span {
@@ -127,7 +123,6 @@
   }
 
   .pagination span {
-  	
       font-weight: bold;
       color: #007bff;
   }
@@ -157,7 +152,7 @@
       transform: scale(1.05);
       border: 2px solid #FF6600;
   }
-  
+
   .footer_section {
       position: bottom;
       bottom: 0;
@@ -169,13 +164,47 @@
       background-color: transparent;
       z-index: 0;
   }
+
+  /* 검색 부분 오른쪽 정렬 */
+  .notice-search {
+      float: right;
+      margin-bottom: 20px;
+  }
+
+  /* 복귀 버튼 스타일 */
+  .back-button {
+      background-color: #FF6600;
+      color: #ffffff;
+      padding: 10px 20px;
+      font-size: 14px;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+      text-decoration: none;
+      transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, border 0.3s ease;
+      float: right; /* 우측 정렬 */
+  }
+
+  .back-button:hover {
+      background-color: transparent;
+      color: #FF6600;
+      border: 2px solid #FF6600;
+      transform: scale(1.05);
+  }
+
+  /* clearfix 스타일 추가 */
+  .clearfix::after {
+      content: "";
+      display: table;
+      clear: both;
+  }
+
 </style>
 
 </head>
 
 <body class="sub_page">
   <div class="hero_area">
-    <!-- header section starts -->
     <header class="header_section">
       <div class="header_top">
         <div class="container-fluid header_top_container">
@@ -229,7 +258,6 @@
         </div>
       </div>
     </header>
-    <!-- end header section -->
   </div>
   
   <div class="notice-container">
@@ -237,8 +265,19 @@
         <span>공지사항</span>
     </div>
     <div><h5><center>알고리듬의 소식을 확인해보세요</center></h5></div>
-	<br>
+    <br>
+
+    <!-- 검색 폼 추가 -->
+    <div class="notice-search">
+        <form action="CA01.jsp" method="get" class="form-inline">
+            <input type="text" name="searchKeyword" class="form-control" placeholder="제목 또는 내용 검색" 
+                   style="width: 250px; margin-right: 10px;" value="<%= (request.getParameter("searchKeyword") != null) ? request.getParameter("searchKeyword") : "" %>">
+            <button type="submit" class="btn btn-primary">검색</button>
+        </form>
+    </div>
+
     <% 
+        String searchKeyword = request.getParameter("searchKeyword");
         NoticeDao noticeDao = new NoticeDao();
         int pageSize = 10;  
         int currentPage = 1;
@@ -252,8 +291,19 @@
             }
         }
 
-        List<Notice> noticeList = noticeDao.getNoticesByPage(currentPage, pageSize);
-        int totalNotices = noticeDao.getTotalNoticeCount();
+        List<Notice> noticeList;
+        int totalNotices;
+
+        if (searchKeyword != null && !searchKeyword.trim().isEmpty()) {
+            // 검색어가 있을 경우: 제목 또는 내용에서 검색
+            noticeList = noticeDao.searchNoticesByKeyword(searchKeyword, currentPage, pageSize);
+            totalNotices = noticeDao.getSearchNoticeCount(searchKeyword);
+        } else {
+            // 검색어가 없을 경우: 전체 공지사항 조회
+            noticeList = noticeDao.getNoticesByPage(currentPage, pageSize);
+            totalNotices = noticeDao.getTotalNoticeCount();
+        }
+
         int totalPages = (int) Math.ceil((double) totalNotices / pageSize);
         int startIndex = (currentPage - 1) * pageSize + 1;  
     %>
@@ -275,9 +325,9 @@
             <tr>
               <td><%= startIndex + i %></td>
               <td class="notice-title">
-                <a href="CA02.jsp?num=<%= notice.getNum() %>"><%= notice.getTitle() %></a>
+                <a href="CA02.jsp?num=<%= notice.getNum() %>&searchKeyword=<%= searchKeyword %>"><%= notice.getTitle() %></a>
               </td>
-              <td><%= notice.getEmpId() %></td> <!-- emp_id 추가 -->
+              <td><%= notice.getEmpId() %></td>
               <td><%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(notice.getCreatedAt()) %></td>
             </tr>
             <% } %>
@@ -289,24 +339,29 @@
       </tbody>
     </table>
 
-    <% if (loginUser != null) { %>
-        <div class="center-button">
-            <a href="CA03.jsp" class="edit-button">공지 작성</a>
-        </div>
-    <% } %>
+	
+	<div class="clearfix" style="margin-top: 20px; display: flex; justify-content: flex-end; gap: 10px;">
+	    <!--  "목록으로" 버튼 표시 -->
+		<% if (searchKeyword != null && !searchKeyword.trim().isEmpty()) { %>    
+		    <a href="CA01.jsp" class="edit-button">목록으로</a>
+		<% } %>
+	    <% if (loginUser != null) { %>
+	        <a href="CA03.jsp" class="edit-button">공지 작성</a>
+	    <% } %>
+	</div>
+
 
     <div class="pagination" style="text-align: center;">
         <% for (int i = 1; i <= totalPages; i++) { %>
             <% if (i == currentPage) { %>
                 <span><%= i %></span>
             <% } else { %>
-                <a href="CA01.jsp?page=<%= i %>"><%= i %></a>
+                <a href="CA01.jsp?page=<%= i %>&searchKeyword=<%= searchKeyword %>"><%= i %></a>
             <% } %>
         <% } %>
     </div>
   </div>
   
-  <!-- footer section -->
   <footer class="footer_section">
     <div class="container">
       <p>&copy; <span id="displayYear"></span> All Rights Reserved By <a href="main.jsp">AlgoRhythm</a></p>

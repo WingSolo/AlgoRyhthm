@@ -6,8 +6,10 @@
     // 세션에서 user 객체 가져오기
     EmpUser loginUser = (EmpUser) session.getAttribute("loginUser");
 
-    // 공지사항 번호 가져오기
+    // 공지사항 번호와 검색어 가져오기
     String numStr = request.getParameter("num");
+    String searchKeyword = request.getParameter("searchKeyword"); // 검색어 가져오기
+
     Notice notice = null;
 
     if (numStr != null && !numStr.isEmpty()) {
@@ -57,26 +59,25 @@
 <style>
     body {
         font-family: 'Poppins', sans-serif;
-        background-color: #ffffff; /* 전체 배경을 완전 흰색으로 설정 */
-        color: #003366; /* 글자 색상 군청색 */
+        background-color: #ffffff;
+        color: #003366;
     }
     
     .form-container {
         width: 70%;
         margin: 50px auto;
         padding: 30px;
-        background-color: #ffffff; /* 창 바탕을 흰색으로 설정 */
+        background-color: #ffffff;
         border-radius: 10px;
-        border: 1px solid #ced4da; /* 흰 배경에 테두리 추가 */
-        box-shadow: none; /* 그림자 제거 */
+        border: 1px solid #ced4da;
     }
 
     h2 {
         font-size: 28px;
         font-weight: bold;
-        color: #003366; /* 제목 글자색 군청색 */
+        color: #003366;
         text-align: center;
-        margin-bottom: 10px; /* 제목과 알림 문구 간격 줄임 */
+        margin-bottom: 10px;
     }
 
     .info-text {
@@ -94,7 +95,7 @@
         font-weight: bold;
         margin-bottom: 5px;
         display: block;
-        color: #003366; /* 레이블 글자 색상 군청색 */
+        color: #003366;
     }
 
     input[type="text"], textarea {
@@ -119,13 +120,13 @@
 
     .button-group {
         display: flex;
-        justify-content: flex-end; /* 우측 정렬 */
-        gap: 10px; /* 버튼 사이 간격 추가 */
+        justify-content: flex-end;
+        gap: 10px;
         margin-top: 20px;
     }
 
     .button-group a {
-        background-color: #FF6600; /* 버튼 색깔 주황색 */
+        background-color: #FF6600;
         color: white;
         padding: 8px 15px;
         border: none;
@@ -136,14 +137,14 @@
     }
 
     .button-group a:hover {
-        background-color: transparent; /* 호버 시 배경 투명 */
-        color: #FF6600; /* 호버 시 글자색 주황색 */
-        transform: scale(1.05); /* 호버 시 크기 확대 */
-        border: 2px solid #FF6600; /* 호버 시 주황색 테두리 추가 */
+        background-color: transparent;
+        color: #FF6600;
+        transform: scale(1.05);
+        border: 2px solid #FF6600;
     }
 
     .header_section {
-        background: linear-gradient(135deg, #003366, #0056b3); /* 헤더 그라데이션 */
+        background: linear-gradient(135deg, #003366, #0056b3);
         padding: 10px 0;
     }
 
@@ -156,16 +157,16 @@
     }
 
     .footer_section {
-        position: bottom; /* 화면 하단에 고정 */
+        position: bottom;
         bottom: 0;
         left: 0;
         width: 100%;
-        color: blue; /* 텍스트 색상 */
+        color: blue;
         text-align: center;
-        padding: 5px 0; /* 상하 패딩을 작게 설정 */
-        box-shadow: none; /* 그림자 효과 제거 */
-        background-color: transparent; /* 배경색을 없앰 */
-        z-index: 0; /* 다른 요소 위에 표시되도록 설정 */
+        padding: 5px 0;
+        box-shadow: none;
+        background-color: transparent;
+        z-index: 0;
     }
 
 </style>
@@ -253,8 +254,13 @@
 
         <div class="button-group">
             <% if (loginUser != null && notice.getEmpId().equals(loginUser.getEmp_id())) { %> <!-- 로그인한 사용자에게만 편집 버튼 보이기 -->
-                <a href="CA04.jsp?num=<%= notice.getNum() %>" class="btn btn-primary">편집</a>
+				<a href="CA04.jsp?num=<%= notice.getNum() %>&searchKeyword=<%= searchKeyword %>" class="btn btn-primary">편집</a> <!-- 검색어 값 추가 -->
             <% } %>
+            
+            <% if (searchKeyword != null && !searchKeyword.trim().isEmpty() && !"null".equals(searchKeyword)) { %> <!-- 검색어가 있을 경우에만 '검색목록으로' 버튼 표시 -->
+                <a href="CA01.jsp?searchKeyword=<%= searchKeyword %>" class="btn btn-secondary">검색한 목록으로</a>
+            <% } %>
+
             <a href="CA01.jsp" class="btn btn-secondary">목록으로</a> <!-- 목록으로 버튼 -->
         </div>
     </div>

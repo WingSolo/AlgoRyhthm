@@ -9,6 +9,12 @@
         response.sendRedirect("login.jsp"); // 로그인 페이지로 리디렉션
         return;
     }
+    
+    // CA04.jsp에서 넘어오는 searchKeyword 값 가져오기
+    String searchKeyword = request.getParameter("searchKeyword");
+    if (searchKeyword == null) {
+        searchKeyword = ""; // 검색어가 없을 경우 빈 문자열로 처리
+    }
 
     // 공지사항 번호 가져오기
     String numStr = request.getParameter("num");
@@ -217,8 +223,12 @@
     <h2>공지사항 삭제</h2>
     <p>공지사항을 삭제하시겠습니까?</p>
     <div class="button-group">
-        <a href="DeleteNoticeServlet?num=<%= notice.getNum() %>" class="delete-btn">삭제</a>
-        <a href="CA01.jsp" class="cancel-btn">취소</a>
+
+        <!-- 삭제 버튼: DeleteNoticeServlet로 공지사항 번호와 검색어를 전달 -->
+        <a href="DeleteNoticeServlet?num=<%= notice.getNum() %>&searchKeyword=<%= searchKeyword %>" class="delete-btn">삭제</a>
+        
+        <!-- 취소 버튼: 검색어와 함께 CA01.jsp로 이동 -->
+        <a href="CA01.jsp?searchKeyword=<%= searchKeyword %>" class="cancel-btn">취소</a>
     </div>
 </div>
 
