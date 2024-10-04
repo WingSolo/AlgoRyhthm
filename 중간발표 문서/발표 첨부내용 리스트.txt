@@ -1,0 +1,49 @@
+<문서>
+클래스정의서
+ER다이어그램
+흐름도(UI flow) (완)
+요구사항정의서 (완)
+기능정의서 (완)
+테스트케이스(완)
+WBS
+
+구축환경
+[운영체제] Windows 11 Home 64bit, [CPU] 12th Gen Intel(R) Core(TM) i7-1260P 2.10GHz, 
+[RAM] 32GB, [GPU] Intel(R) Arc(TM) A350M Graphics
+
+개발 환경
+jdk 22
+eclipse 4.33.0
+apache-tomcat 9.0.95
+mariadb-java-client 3.4.1
+commons-fileupload 1.5
+commons-io 2.8.0
+mariaDB 10.3.11
+HeidiSQL 9.4.0.5125
+
+분석 환경
+python 3.12.0
+keras 3.5.0
+matplotlib 3.9.2
+numpy 1.26.4
+pandas 2.2.3
+seaborn 0.13.2
+scikit-learn 1.5.2
+tensorflow 2.17.0
+xgboost 2.1.1
+
+<내용>
+팀소개(팀빌딩 내용 + R&R)
+개요(프로젝트 소개)
+마일스톤
+요구사항 정의서
+기능정의서
+WBS
+UI flow
+ERD
+클래스 정의서
+테스트케이스
+기술스택
+회고
+
++ 시연
