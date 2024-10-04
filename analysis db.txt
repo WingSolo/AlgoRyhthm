@@ -1,0 +1,27 @@
+// analysis 결과 테이블
+CREATE TABLE `analysis_result` (
+	`num` INT(11) NOT NULL AUTO_INCREMENT,
+	`accuracy_score` VARCHAR(150) NULL DEFAULT '0',
+	`f1_score` VARCHAR(150) NULL DEFAULT '0',
+	`precision_score` VARCHAR(150) NULL DEFAULT '0',
+	`recall_score` VARCHAR(150) NULL DEFAULT '0',
+	`time` TIMESTAMP NULL DEFAULT '',
+	PRIMARY KEY (`num`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=78
+;
+
+// analysis 테이블
+CREATE TABLE `analysis` (
+	`num` INT(11) NOT NULL AUTO_INCREMENT,
+	`email` VARCHAR(255) NULL DEFAULT NULL,
+	`type` VARCHAR(255) NULL DEFAULT NULL,
+	`file_path` VARCHAR(255) NULL DEFAULT NULL,
+	PRIMARY KEY (`num`)
+)
+COLLATE='utf8_general_ci'
+ENGINE=InnoDB
+AUTO_INCREMENT=165
+;
