@@ -357,15 +357,16 @@
 	</div>
 
 
-    <div class="pagination" style="text-align: center;">
-        <% for (int i = 1; i <= totalPages; i++) { %>
-            <% if (i == currentPage) { %>
-                <span><%= i %></span>
-            <% } else { %>
-                <a href="CA01.jsp?page=<%= i %>&searchKeyword=<%= searchKeyword %>"><%= i %></a>
-            <% } %>
-        <% } %>
-    </div>
+	<div class="pagination" style="text-align: center;">
+	    <% for (int i = 1; i <= totalPages; i++) { %>
+	        <% if (i == currentPage) { %>
+	            <span><%= i %></span>
+	        <% } else { %>
+	            <a href="CA01.jsp?page=<%= i %><%= (searchKeyword != null && !searchKeyword.trim().isEmpty()) ? "&searchKeyword=" + searchKeyword : "" %>"><%= i %></a>
+	        <% } %>
+	    <% } %>
+	</div>
+
   </div>
   
   <footer class="footer_section">
