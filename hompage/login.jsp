@@ -4,12 +4,12 @@
 <%
     // 세션에서 user 객체 가져오기
     EmpUser loginUser = (EmpUser) session.getAttribute("loginUser");
+    String errorMessage = (String) request.getAttribute("errorMessage"); // request에서 오류 메시지 가져오기
 %>
 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -25,63 +25,61 @@
   <!-- Custom CSS for more modern design -->
   <style>
     body {
-    	font-family: 'Poppins', sans-serif;
-   		background: #ffffff; /* 바탕화면을 흰색으로 변경 */
-    	color: #003366; /* 글자 색상 군청색 */
-  	}
+      font-family: 'Poppins', sans-serif;
+      background: #ffffff;
+      color: #003366;
+    }
 
-  	.login_form {
-    	background: #ffffff; /* 로그인 창 바탕 흰색 */
-    	padding: 30px;
-    	border-radius: 10px;
-    	box-shadow: none; /* 그림자 제거 */
-    	text-align: center;
-  	}
+    .login_form {
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: none;
+      text-align: center;
+    }
 
-  	.form-control {
-    	border-radius: 10px;
-    	border: 2px solid #ced4da;
-    	padding: 12px 20px;
-    	font-size: 16px;
-  		}
+    .form-control {
+      border-radius: 10px;
+      border: 2px solid #ced4da;
+      padding: 12px 20px;
+      font-size: 16px;
+    }
 
-  	.form-group {
-    	margin-bottom: 20px;
-  	}
+    .form-group {
+      margin-bottom: 20px;
+    }
 
-  	.btn {
-    	background-color: #ff6600; /* 버튼 배경색 주황색 */
-    	color: white;
-    	padding: 12px 25px;
-    	border-radius: 30px;
-    	border: none;
-    	font-size: 16px;
-    	width: 100%;
-    	transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease, border 0.3s ease;
-    	box-shadow: none; /* 그림자 제거 */
-  	}
+    .btn {
+      background-color: #ff6600;
+      color: white;
+      padding: 12px 25px;
+      border-radius: 30px;
+      border: none;
+      font-size: 16px;
+      width: 100%;
+      transition: background-color 0.3s ease, transform 0.3s ease, color 0.3s ease, border 0.3s ease;
+      box-shadow: none;
+    }
 
-  	.btn:hover {
-    	background-color: transparent; /* 호버 시 배경 투명 */
-    	color: #ff6600; /* 호버 시 글자색 주황색 */
-    	transform: scale(1.05); /* 호버 시 크기 살짝 증가 */
-    	border: 2px solid #ff6600; /* 호버 시 테두리 주황색 */
-  	}
+    .btn:hover {
+      background-color: transparent;
+      color: #ff6600;
+      transform: scale(1.05);
+      border: 2px solid #ff6600;
+    }
 
     .heading_container h2 {
       font-size: 36px;
       font-weight: 700;
-      color: #003366; /* 제목 글자 색상 군청색 */
-      position: relative;
-      display: inline-block;
+      color: #003366;
     }
 
     .heading_container span {
-      color: #003366; /* 강조된 텍스트 군청색 */
+      color: #003366;
     }
 
     .login_form a {
-      color: #003366; /* 링크 글자색 군청색 */
+      color: #003366;
       text-decoration: none;
       font-weight: 600;
     }
@@ -90,54 +88,38 @@
       text-decoration: underline;
     }
 
-    .contact_nav a i {
-      margin-right: 8px;
-      font-size: 18px;
-      color: #fff;
-    }
-
-    /* header style improvement */
-    .header_section {
-      background: linear-gradient(135deg, #003366, #0056b3); /* 헤더 그라데이션 */
-      padding: 10px 0;
-    }
-
-    .navbar-nav .nav-link {
-      color: #fff;
-      font-weight: 500;
-      padding: 10px 15px;
-    }
-
-    .navbar-nav .nav-link:hover {
-      color: #ffefba;
-    }
-
-    .nav-item.active .nav-link {
-      color: #ffefba;
-    }
-
     .form-group input::placeholder {
       color: #adb5bd;
     }
 
     .form-control:focus {
-      border-color: #003366; /* 포커스 시 테두리 군청색 */
+      border-color: #003366;
       box-shadow: 0 0 5px rgba(0, 51, 102, 0.5);
     }
-    
-	.footer_section {
-  		position: fixed; /* 화면 하단에 고정 */
-  		bottom: 0;
-  		left: 0;
-  		width: 100%;
-  		color: blue; /* 텍스트 색상 */
-  		text-align: center;
-  		padding: 5px 0; /* 상하 패딩을 작게 설정 */
- 		box-shadow: none; /* 그림자 효과 제거 */
-  		background-color: transparent; /* 배경색을 없앰 */
-  		z-index: 0; /* 다른 요소 위에 표시되도록 설정 */
-	}
+
+    .footer_section {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      color: blue;
+      text-align: center;
+      padding: 5px 0;
+      box-shadow: none;
+      background-color: transparent;
+      z-index: 0;
+    }
   </style>
+  
+  <!-- 경고창 띄우는 스크립트 추가 -->
+  <script>
+    window.onload = function() {
+      <% if (errorMessage != null) { %>
+        alert("<%= errorMessage %>");
+      <% } %>
+    }
+  </script>
+  
 </head>
 
 <body class="sub_page">
@@ -155,17 +137,17 @@
             <% } else { %>
               <a href="login.jsp"><i class="fa fa-user" aria-hidden="true"></i><span>관리자</span></a>
             <% } %>
-          </div> 
+          </div>
         </div>
       </div>
-  
+
       <div class="header_bottom">
         <div class="container-fluid">
           <nav class="navbar navbar-expand-lg custom_nav-container">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav">
                 <li class="nav-item active">
-                  <a class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" width = "77px"height="37px"></span></a>
+                  <a class="nav-link" href="main.jsp"><span><img src="images/logo.png" alt="logo" width="77px" height="37px"></span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="A01.jsp">회사소개</a>
@@ -179,11 +161,11 @@
                 <li class="nav-item">
                   <a class="nav-link" href="BA01.jsp">분석</a>
                 </li>
-				<li class="nav-item">
-  					<% if (loginUser == null) { %>
-    					<a class="nav-link" href="BA02.jsp">문의하기</a>
-  					<% } %>
-				</li>
+                <li class="nav-item">
+                  <% if (loginUser == null) { %>
+                    <a class="nav-link" href="BA02.jsp">문의하기</a>
+                  <% } %>
+                </li>
                 <% if (loginUser != null) { %>
                 <li class="nav-item">
                   <a class="nav-link" href="DA01.jsp">마이페이지</a>
@@ -197,36 +179,40 @@
     </header>
     <!-- end header section -->
   </div>
-  
-  <!-- Login Section -->
+   
+ <body class="sub_page">
+  <!-- 로그인 섹션 시작 -->
   <section class="contact_section layout_padding">
-    <div class="container">
-      <div class="heading_container heading_center">
-        <h2>&nbsp;&nbsp; 관리자 <span> 로그인</span></h2>
-      </div>
-      <div class="row">
-        <div class="col-md-6 offset-md-3">
-          <div class="login_form">
-            <form action="Login" method="post">
-              <div class="form-group">
-                <input type="text" class="form-control" name="empId" placeholder="아이디" required>
-              </div>
-              <div class="form-group">
-                <input type="password" class="form-control" name="password" placeholder="비밀번호" required>
-              </div>
-              <div class="form-group">
-                <button type="submit" class="btn">로그인</button>
-              </div>
-              <div class="form-group">
-                <a href="findPassword.jsp">비밀번호 찾기</a>
-              </div>
+      <div class="container">
+        <div class="heading_container heading_center">
+          <h2>&nbsp;&nbsp; 관리자 <span> 로그인</span></h2>
+        </div>
 
-            </form>
+        <div class="row">
+          <div class="col-md-6 offset-md-3">
+            <div class="login_form">
+
+              <form action="Login" method="post">
+                <div class="form-group">
+                  <input type="text" class="form-control" name="empId" placeholder="아이디" required>
+                </div>
+                <div class="form-group">
+                  <input type="password" class="form-control" name="password" placeholder="비밀번호" required>
+                </div>
+                <div class="form-group">
+                  <button type="submit" class="btn">로그인</button>
+                </div>
+                <div class="form-group">
+                  <a href="findPassword.jsp">비밀번호 찾기</a>
+                </div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
-    </div>
   </section>
+  <!-- 로그인 섹션 끝 -->
+
 
   <!-- footer section -->
   <footer class="footer_section">
@@ -238,7 +224,7 @@
     </div>
   </footer>
   <!-- footer section -->
-  
+
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
   <script src="js/bootstrap.js"></script>
