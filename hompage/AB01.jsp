@@ -173,9 +173,11 @@
               <p class="p1">
 							  데이터 종류
 						  </p>
-              <p class = "p2">
-                텍스트(.csv)
-              </p>
+              <p class="p2">
+				  <span class="tooltip-container">텍스트(.csv)
+				    <span class="tooltip-text">쉼표(,)로 구분한 텍스트 데이터 및 텍스트 파일이다.</span>
+				  </span>
+				</p>
             </div>
           </div>
           
