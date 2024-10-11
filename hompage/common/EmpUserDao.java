@@ -127,34 +127,4 @@ public class EmpUserDao {
         return false;
     }
     
-
-
-public String login(String empId, String password) {
-    String sql = "SELECT password FROM emp_user WHERE emp_id = ?";
-
-    try (Connection conn = getConnection();
-         PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-        pstmt.setString(1, empId);
-        
-        try (ResultSet rs = pstmt.executeQuery()) {
-            if (rs.next()) {
-                String storedPassword = rs.getString("password");
-
-                // 비밀번호 평문 비교
-                if (storedPassword.equals(password)) {
-                    return "로그인 성공";
-                } else {
-                    return "비밀번호가 틀립니다";  // 비밀번호가 틀린 경우
-                }
-            } else {
-                return "등록된 아이디가 없습니다";  // ID가 없는 경우
-            }
-        }
-    } catch (SQLException e) {
-        logger.log(Level.SEVERE, "로그인 시도 중 오류 발생", e);
-        return "시스템 오류 발생";  // 예외 발생 시 오류 메시지
-    	}
-	}
 }
-

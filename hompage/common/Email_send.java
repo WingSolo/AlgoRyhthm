@@ -82,6 +82,7 @@ public class Email_send extends HttpServlet {
         	String ana_f1 = AnaDao.send_f1();
         	String ana_precision = AnaDao.send_precision();
         	String ana_recall = AnaDao.send_recall();
+        	String ana_model = AnaDao.send_model();
         	       	
         	//편지보낸시간
             msg.setSentDate(new Date());
@@ -96,6 +97,7 @@ public class Email_send extends HttpServlet {
             msg.setSubject("Algorhythnm_분석 결과", "UTF-8");
             // 이메일 내용
             msg.setText(
+            		"Analysis model : " + ana_model + "<br/>" +
             		"Accuracy score : " + ana_accuracy + "<br/>" +
             		"F1 score : " + ana_f1 + "<br/>" +
             		"Precision score : " + ana_precision + "<br/>" +

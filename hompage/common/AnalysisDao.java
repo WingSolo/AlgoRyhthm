@@ -194,6 +194,68 @@ public class AnalysisDao {
 		//		AnaDo.setAna_result(result);
 			return result;
 		}
+		public String db_model(AnaDo AnaDo) throws SQLException {
+			Connection connection = null;
+			String result = null;
+			ResultSet rs = null;
+			try {
+				Class.forName(driver);
+				connection = DriverManager.getConnection(DB_URL1, DB_USER, DB_PASSWORD);
+				if (connection != null) {
+					System.out.println("DB접속 성공");
+				}
+			} catch(ClassNotFoundException e) {
+				System.out.println("드라이버 로드 실패");
+				e.printStackTrace();
+			} catch(SQLException e) {
+				System.out.println("DB 접속 실패");
+				e.printStackTrace();
+			}
+			
+			PreparedStatement stmt = connection.prepareStatement
+					("select ana_model from analysis_result order by num DESC LIMIT 1;");
+			
+			System.out.println("db 다운로드 성공");	
+			rs = stmt.executeQuery();
+
+			if(rs.next()) {
+				result = rs.getString("ana_model");
+			}	
+		//		AnaDo.setAna_result(result);
+			return result;
+		}
+		
+		// image path 불러오기
+		public String db_image(AnaDo AnaDo) throws SQLException {
+			Connection connection = null;
+			String result = null;
+			ResultSet rs = null;
+			try {
+				Class.forName(driver);
+				connection = DriverManager.getConnection(DB_URL1, DB_USER, DB_PASSWORD);
+				if (connection != null) {
+					System.out.println("DB접속 성공");
+				}
+			} catch(ClassNotFoundException e) {
+				System.out.println("드라이버 로드 실패");
+				e.printStackTrace();
+			} catch(SQLException e) {
+				System.out.println("DB 접속 실패");
+				e.printStackTrace();
+			}
+			
+			PreparedStatement stmt = connection.prepareStatement
+					("select result_path from analysis_result order by num DESC LIMIT 1;");
+			
+			System.out.println("db 다운로드 성공");	
+			rs = stmt.executeQuery();
+
+			if(rs.next()) {
+				result = rs.getString("result_path");
+			}	
+		//		AnaDo.setAna_result(result);
+			return result;
+		}
 		
 		// ======================================================= 이메일 메서드
 		// 수신 이메일 불러오기 메서드
@@ -379,6 +441,37 @@ public class AnalysisDao {
 			
 		if(rs.next()) {
 			result = rs.getString("recall_score");
+		}
+		return result;
+		}
+		
+		public String send_model() throws SQLException {
+			Connection connection = null;
+			String result = null;
+			ResultSet rs = null;
+			try {
+				Class.forName(driver);
+				connection = DriverManager.getConnection(DB_URL1, DB_USER, DB_PASSWORD);
+				if (connection != null) {
+					System.out.println("DB접속 성공");
+				}
+			} catch(ClassNotFoundException e) {
+				System.out.println("드라이버 로드 실패");
+				e.printStackTrace();
+			} catch(SQLException e) {
+				System.out.println("DB 접속 실패");
+				e.printStackTrace();
+			}
+			
+			PreparedStatement stmt = connection.prepareStatement
+					("select ana_model from analysis_result order by num DESC LIMIT 1;");
+			
+			System.out.println("db 다운로드 성공");	
+			rs = stmt.executeQuery();
+			
+			
+		if(rs.next()) {
+			result = rs.getString("ana_model");
 		}
 		return result;
 		}

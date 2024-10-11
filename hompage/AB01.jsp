@@ -173,11 +173,9 @@
               <p class="p1">
 							  데이터 종류
 						  </p>
-              <p class="p2">
-				  <span class="tooltip-container">텍스트(.csv)
-				    <span class="tooltip-text">쉼표(,)로 구분한 텍스트 데이터 및 텍스트 파일이다.</span>
-				  </span>
-				</p>
+              <p class = "p2">
+                텍스트(.csv)
+              </p>
             </div>
           </div>
           
@@ -250,7 +248,7 @@
 			<div class='object-box'>
   				<!-- 이미지에 클릭 이벤트 추가 -->
   				<a href="./images/heat_po01.png" target="_blank" onclick="window.open(this.href,  'newwindow', 'width=1000,height=720'); return false;">
-    				<img src="./images/heat_po01.png" alt="분석 이미지" right=10 width=400 height=300 />
+    				<img src="./images/heat_po01.png" alt="분석 이미지" right=10 width=430 height=300 />
   				</a>
   				<a href="./images/heat_po02.png" target="_blank" onclick="window.open(this.href,  'newwindow', 'width=600,height=450'); return false;">
     				<img src="./images/heat_po02.png" alt="분석 이미지" width=200 height=150  />

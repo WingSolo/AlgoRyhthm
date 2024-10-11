@@ -324,12 +324,12 @@
                   Notice notice = noticeList.get(i); 
         %>
         <tr>
-          <td><%= startIndex + i %></td>
-          <td class="notice-title">
+          <td style = "text-align : center;"><%= startIndex + i %></td>
+          <td class="notice-title" style = "padding-left : 20px">
             <a href="CA02.jsp?num=<%= notice.getNum() %>&searchKeyword=<%= searchKeyword %>"><%= notice.getTitle() %></a>
           </td>
-          <td><%= notice.getEmpId() %></td>
-          <td><%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(notice.getCreatedAt()) %></td>
+          <td style = "text-align : center;"><%= notice.getEmpId() %></td>
+          <td style = "text-align : center;"><%= new java.text.SimpleDateFormat("yyyy-MM-dd").format(notice.getCreatedAt()) %></td>
         </tr>
         <% 
               } 

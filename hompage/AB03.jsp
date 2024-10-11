@@ -158,7 +158,7 @@
 							  주요 키워드
 						</p>
               <p class = "p2">
-                AI 학습데이터, 텍스트 데이터 
+                AI 학습데이터, 품질보증, 데이터 분석 
               </p>
             </div>
             <div class = "content_cat_2">
@@ -198,13 +198,13 @@
               <p class="p1">데이터 영역</p>
             </div>
             <div class="sel2">
-              <p class="p2">한국어</p>
+              <p class="p2">열처리 공정 데이터</p>
             </div>
             <div class="sel1">
               <p class="p1">데이터 유형</p>
             </div>
             <div class="sel2">
-              <p class="p2">텍스트</p>
+              <p class="p2">텍스트(.csv)</p>
             </div>
             <div class="sel1">
               <p class="p1">데이터 형식</p>
@@ -216,7 +216,7 @@
               <p class="p1">데이터 출처</p>
             </div>
             <div class="sel2">
-              <p class="p2">-</p>
+              <p class="p2">스마트제조혁신추진단</p>
             </div>
             <div class="sel1">
               <p class="p1">라벨링 유형</p>
@@ -251,7 +251,7 @@
             <div style="display: inline-block; width: 450px; margin-right: 30px;">
             <div class="sel3">
               <p class="p1">데이터 구조</p>
-              <p class="p2">열처리 공정 데이터(텍스트)</p>
+              <p class="p2">열처리 공정 데이터 61,734,162개</p>
             </div>
             <div class="sel3">
               <p class="p1">분석 모델</p>

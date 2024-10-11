@@ -4,6 +4,7 @@ import java.io.IOException;
 
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpSession;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -183,6 +184,10 @@ public class Analysis extends HttpServlet {
 	            e.printStackTrace();
 	        }
 		}
+		else if(ana_type.equals("분석 종류 (선택)")) {
+			response.getWriter().println("<script>alert('분석 종류를 선택해주시기 바랍니다.'); history.back();</script>");
+            return;
+		}
         
         // 결과 불러오기 및 출력
           try{
@@ -191,6 +196,8 @@ public class Analysis extends HttpServlet {
           	  String f1 = AnaDao.db_f1(AnaDo);
           	  String precision = AnaDao.db_precision(AnaDo);
           	  String recall = AnaDao.db_recall(AnaDo);
+          	  String ana_model = AnaDao.db_model(AnaDo);
+          	  String image_path = AnaDao.db_image(AnaDo);
           	  
           	  String email = AnaDo.getAna_email();
           	  
@@ -200,6 +207,9 @@ public class Analysis extends HttpServlet {
     		  System.out.println(f1);
     		  System.out.println(precision);
     		  System.out.println(recall);
+    		  System.out.println(ana_model);
+    		  System.out.println(image_path);
+//    		  HttpSession session = request.getSession();
     		  
     		  // 결과 파라미터 set
     		  request.setAttribute("date", date);
@@ -207,6 +217,9 @@ public class Analysis extends HttpServlet {
     		  request.setAttribute("f1", f1);
     		  request.setAttribute("precision", precision);
     		  request.setAttribute("recall", recall);
+    		  request.setAttribute("ana_model", ana_model);
+    		  request.setAttribute("image_path", image_path);
+    		
     		  
     		  // email 파라미터 set
     		  request.setAttribute("email", email);

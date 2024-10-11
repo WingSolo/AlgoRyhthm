@@ -20,13 +20,7 @@ public class LoginController extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // 세션에 로그인한 사용자가 있으면 메인 페이지로 바로 리디렉션
-        HttpSession session = request.getSession(false);
-        if (session != null && session.getAttribute("loginUser") != null) {
-            response.sendRedirect("main.jsp");
-        } else {
-            response.sendRedirect("login.jsp"); // 로그인 페이지로 리디렉션
-        }
+        response.sendRedirect("login.jsp"); // 로그인 페이지로 리디렉션
     }
 
     @Override
@@ -45,9 +39,8 @@ public class LoginController extends HttpServlet {
             session.setMaxInactiveInterval(30 * 60); // 세션 타임아웃 30분 설정
             response.sendRedirect("main.jsp"); // 메인 페이지로 리디렉션
         } else {
-            // 로그인 실패 시 에러 메시지를 request에 설정하고 JSP로 포워딩
-            request.setAttribute("errorMessage", "등록된 아이디가 없거나 비밀번호가 틀렸습니다.");
-            request.getRequestDispatcher("login.jsp").forward(request, response); // JSP로 포워딩
+            // 로그인 실패 시 login.jsp로 리디렉션하며 에러 메시지 전달
+            response.sendRedirect("login.jsp?error=Invalid credentials");
         }
     }
 }

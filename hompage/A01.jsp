@@ -216,7 +216,7 @@
               </div>
               <div class="work_detail_box2">
                 <p class="work_detail2">업체명 &nbsp;: &nbsp;ALGORHYTHNM</p>
-                <p class="work_detail2">주소 &nbsp;: &nbsp;경기도 &nbsp;수원시 &nbsp;영통구 &nbsp;영통동 &nbsp;977-4 </p>
+                <p class="work_detail2">주소 &nbsp;: &nbsp;경기도 &nbsp;수원시 &nbsp;영통구 &nbsp;영통동 &nbsp;977-4 &nbsp;(3층) </p>
               </div>
             </div>
             </section>

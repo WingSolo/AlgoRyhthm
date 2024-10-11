@@ -254,7 +254,7 @@
 							<td style="padding: 10px; color: inherit;">
 							    <a href="CA02.jsp?num=<%= notice.getNum() %>" style="color: inherit; text-decoration: none;
 							    font-weight : <%= (count == 1) ? "bold" : "normal"%>">
-							        <%= (notice.getTitle().length() > 10) ? notice.getTitle().substring(0, 10) + "..." : notice.getTitle() %>
+							        <%= (notice.getTitle().length() > 15) ? notice.getTitle().substring(0, 15) + "..." : notice.getTitle() %>
 							    </a>
 							</td>
 

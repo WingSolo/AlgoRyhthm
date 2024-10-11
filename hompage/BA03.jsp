@@ -1,8 +1,23 @@
+<%@page import="java.nio.file.Files"%>
+<%@page import="java.io.File"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.nio.file.Files" %>
+<%@ page import="java.io.File" %>
+<%@ page import="java.util.*" %>
+<%@ page import="java.nio.file.Paths" %>
+<%@ page import="javax.servlet.http.HttpSession" %>
+<%@ page import="java.sql.*" %>
 <%
     // 세션에서 user 객체 가져오기
     Object loginUser = session.getAttribute("loginUser");
 %>
+
+<%
+response.setHeader("Pragma","no-cache"); 
+response.setDateHeader("Expires",0); 
+response.setHeader("Cache-Control", "no-cache");
+%>
+
 
 <!DOCTYPE html>
 <html>
@@ -17,6 +32,7 @@
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
+
 
   <title>분석하기</title>
 
@@ -143,8 +159,54 @@
     </header>
     <!-- end header section -->
   </div>
+    <%
+        String url = "jdbc:mariadb://localhost:3306/algo"; // DB URL
+        String user = "root"; // DB 사용자 이름
+        String password = "1234"; // DB 비밀번호
+        
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        String base64String = null;
 
+        try {
+            // DB 연결
+            Class.forName("org.mariadb.jdbc.Driver");
+            connection = DriverManager.getConnection(url, user, password);
+            
+            String sql = "SELECT result_path FROM analysis_result ORDER BY num DESC LIMIT 1"; // SQL 쿼리
+            preparedStatement = connection.prepareStatement(sql);
+            resultSet = preparedStatement.executeQuery();
+            
+            if (resultSet.next()) {
+                String resultPath = resultSet.getString("result_path");
+                String path = "C:\\Users\\jungf\\OneDrive\\바탕 화면\\Study\\workspace\\Algo\\result_image\\" + resultPath;
 
+                try {
+                    // 이미지 파일의 바이트 읽기
+                    byte[] imageBytes = Files.readAllBytes(Paths.get(path));
+                    // 이미지 바이트를 Base64 문자열로 인코딩
+                    base64String = Base64.getEncoder().encodeToString(imageBytes);
+                } catch (java.nio.file.NoSuchFileException e) {
+                    System.out.println("파일을 찾을 수 없습니다: " + path);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // 자원 해제
+            try {
+                if (resultSet != null) resultSet.close();
+                if (preparedStatement != null) preparedStatement.close();
+                if (connection != null) connection.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
+       
+    %>
   <!-- ana section -->
   <section class="ana_section layout_padding">
     <div class="container">
@@ -158,7 +220,11 @@
                   <div class="form-row">
                     <div class="col-md-14">
                       <input type="text" class="ana-email" value="email   :   <%=request.getAttribute("email")%>" name = "ana_email" disabled/>
+                      <div style = "text-align : center; ">
+                      <img src="data:image/png;base64,<%=base64String %>"  width = "600" height = "500" style = "margin-bottom : 15px; margin-top : -40px"/>
+                      </div>
                       <input type="text" class="ana-result" value="Date   :   <%=request.getAttribute("date")%>" name = "ana_result" disabled/>
+                      <input type="text" class="ana-result" value="Analysis model   :   <%=request.getAttribute("ana_model")%>" name = "ana_result" disabled/>
                       <input type="text" class="ana-result" value="Accuracy score   :   <%=request.getAttribute("accuracy")%>" name = "ana_result" disabled/>
                       <input type="text" class="ana-result" value="F1 score   :   <%=request.getAttribute("f1")%>" name = "ana_result" disabled/>
                       <input type="text" class="ana-result" value="Precision score   :   <%=request.getAttribute("precision")%>" name = "ana_result" disabled/>
